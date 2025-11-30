@@ -22,12 +22,12 @@ export default function Breadcrumb() {
 
   return (
     <nav className="mb-6" aria-label="Breadcrumb">
-      <ol className="flex flex-wrap items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+      <ol className="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400">
         {crumbs.map((crumb, i) => (
           <li key={crumb.href} className="flex items-center">
             {i > 0 && (
               <span
-                className="mx-1 text-gray-400 dark:text-gray-600"
+                className="px-2 text-gray-400 dark:text-gray-600"
                 aria-hidden="true"
               >
                 /

@@ -1,8 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Loader2, ChevronDown } from "lucide-react";
+import { Loader2, ChevronDown, Download } from "lucide-react";
 import { uuidv1, uuidv3, uuidv4, uuidv5, uuidv7, uuidNil } from "./uuid-utils";
 import { CopyButton } from "./copy-button";
+import PrimaryButton from "@/components/primary-button";
 
 export function GeneratorUI() {
   const [version, setVersion] = useState<
@@ -19,6 +20,17 @@ export function GeneratorUI() {
     } catch (e) {
       // noop
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Generate once on first client render so users see a UUID immediately
+  useEffect(() => {
+    // call handleGenerate on mount but avoid triggering the button "generating"
+    // animation/state. We pass `{ animate: false }` so the initial value is
+    // produced silently.
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    handleGenerate({ animate: false });
+    // We intentionally run this only once on mount
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -48,9 +60,12 @@ export function GeneratorUI() {
   const [count, setCount] = useState(1);
   const [result, setResult] = useState<string[] | null>(null);
   const [generating, setGenerating] = useState(false);
+  const [exporting, setExporting] = useState(false);
 
-  async function handleGenerate() {
-    setGenerating(true);
+  async function handleGenerate(
+    { animate = true }: { animate?: boolean } = { animate: true }
+  ) {
+    if (animate) setGenerating(true);
     const start = Date.now();
     try {
       const uuids: string[] = [];
@@ -66,14 +81,39 @@ export function GeneratorUI() {
         uuids.push(uuid);
       }
       const elapsed = Date.now() - start;
-      if (elapsed < 1000) {
+      // Only enforce the minimum duration when animating so manual generation
+      // keeps the UX expectation of a visible activity. Silent initial
+      // generation returns results immediately.
+      if (animate && elapsed < 1000) {
         await new Promise((res) => setTimeout(res, 1000 - elapsed));
       }
       setResult(uuids);
     } catch (e) {
       setResult(["Error: " + (e as Error).message]);
     } finally {
-      setGenerating(false);
+      if (animate) setGenerating(false);
+    }
+  }
+
+  async function handleExport() {
+    if (!result) return;
+    try {
+      setExporting(true);
+      const text = result.join("\n");
+      const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const filename = `uuids-${version}-${new Date()
+        .toISOString()
+        .replace(/[:.]/g, "-")}.txt`;
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } finally {
+      setExporting(false);
     }
   }
 
@@ -178,37 +218,64 @@ export function GeneratorUI() {
           </div>
         </div>
 
-        <button
-          type="submit"
-          className="h-12 w-full cursor-pointer rounded-xl bg-teal-600 px-6 font-semibold text-white shadow-md transition hover:bg-teal-700 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60 dark:bg-teal-500 dark:hover:bg-teal-600"
-          style={{ marginTop: "23px" }}
-          disabled={generating}
-        >
-          {generating ? (
-            <span className="flex items-center justify-center gap-2">
-              <Loader2
-                className="h-5 w-5 animate-spin text-white"
-                aria-hidden="true"
-              />
-              Generating...
-            </span>
-          ) : (
-            "Generate"
+        <div style={{ marginTop: "23px" }} className="flex items-center gap-2">
+          <PrimaryButton type="submit" className="w-full" disabled={generating}>
+            {generating ? (
+              <span className="flex items-center justify-center gap-2">
+                <Loader2
+                  className="h-5 w-5 animate-spin text-white"
+                  aria-hidden="true"
+                />
+                Generating...
+              </span>
+            ) : (
+              "Generate"
+            )}
+          </PrimaryButton>
+
+          {result && result.length >= 5 && (
+            <PrimaryButton
+              type="button"
+              variant="outline"
+              onClick={handleExport}
+              disabled={exporting || generating}
+              className="px-4"
+            >
+              {exporting ? (
+                "Preparing..."
+              ) : (
+                <span className="flex items-center">
+                  <Download
+                    className="mr-2 h-4 w-4 text-teal-600 dark:text-teal-300"
+                    aria-hidden="true"
+                  />
+                  Export
+                </span>
+              )}
+            </PrimaryButton>
           )}
-        </button>
+        </div>
       </form>
 
       {result && (
         <div className="mt-4 flex w-full flex-col gap-2">
           {result.map((uuid, idx) => (
-            <div key={idx} className="flex w-full items-center gap-3">
+            <div key={idx} className="flex items-center gap-3">
               <input
+                id={`generated-uuid-${idx}`}
+                name={`generated-uuid-${idx}`}
                 type="text"
                 value={uuid}
                 readOnly
-                className="h-12 flex-1 rounded-xl border border-teal-200 bg-white/60 px-4 font-mono text-lg text-gray-900 shadow-inner transition focus:ring-2 focus:ring-teal-500 focus:outline-none dark:border-teal-800 dark:bg-gray-900/60 dark:text-gray-100"
+                className="h-12 rounded-xl border border-teal-200 bg-white/60 px-4 font-mono text-lg text-gray-900 shadow-inner transition focus:ring-2 focus:ring-teal-500 focus:outline-none dark:border-teal-800 dark:bg-gray-900/60 dark:text-gray-100"
                 aria-label={`Generated UUID ${idx + 1}`}
-                style={{ letterSpacing: "0.04em" }}
+                style={{
+                  letterSpacing: "0.04em",
+                  // Make input width match the UUID length in characters (ch).
+                  // Ensure a sensible minimum (36ch) so short values still look right.
+                  width: `${Math.max(uuid.length, 36)}ch`,
+                  maxWidth: "100%",
+                }}
               />
               <CopyButton value={uuid} />
             </div>

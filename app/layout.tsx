@@ -3,6 +3,7 @@ import "./globals.css";
 import { SITE_NAME } from "@/lib/i18n/en";
 import { ThemeProvider } from "@/lib/contexts/theme-context";
 import { Header, Footer } from "@/components/layout-client";
+import SidebarNav from "@/components/SidebarNav";
 import { LoadingBar } from "@/components/loading-bar";
 
 export const metadata: Metadata = {
@@ -30,7 +31,10 @@ export default function RootLayout({
         <ThemeProvider>
           <Header />
           <LoadingBar />
-          <main className="flex-1">{children}</main>
+          <div className="flex flex-1 w-full">
+            <SidebarNav />
+            <main className="flex-1 min-w-0 md:ml-72">{children}</main>
+          </div>
           <Footer />
         </ThemeProvider>
       </body>

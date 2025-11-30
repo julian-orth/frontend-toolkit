@@ -6,7 +6,10 @@ import {
   getUuidVariant,
   getV1Timestamp,
   formatUuid,
+  explainUuidInvalidity,
 } from "./uuid-utils";
+import { CheckCircle, XCircle } from "lucide-react";
+import PrimaryButton from "@/components/primary-button";
 
 export function UuidDecodeForm() {
   const [input, setInput] = useState("");
@@ -38,19 +41,14 @@ export function UuidDecodeForm() {
       <input
         id="uuid-decode-input"
         type="text"
-        className="rounded-lg border border-gray-300 bg-white px-3 py-2 font-mono text-sm font-medium text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+        className="rounded-lg border border-gray-300 bg-white px-3 py-2 font-mono text-sm font-medium text-gray-900 focus:border-teal-500 focus:ring-2 focus:ring-teal-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
         autoComplete="off"
         spellCheck={false}
       />
-      <button
-        type="submit"
-        className="rounded-lg bg-yellow-600 px-6 py-2.5 font-medium text-white transition-colors hover:bg-yellow-700 focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
-      >
-        Decode
-      </button>
+      <PrimaryButton type="submit">Decode</PrimaryButton>
       {result && (
         <div
           className={`mt-2 rounded p-4 font-mono text-lg ${result.valid ? "bg-yellow-50 text-yellow-900 dark:bg-yellow-950/20 dark:text-yellow-100" : "bg-red-50 text-red-900 dark:bg-red-950/20 dark:text-red-100"}`}
@@ -101,7 +99,7 @@ export function UuidFormatForm() {
       <input
         id="uuid-format-input"
         type="text"
-        className="rounded-lg border border-gray-300 bg-white px-3 py-2 font-mono text-sm font-medium text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+        className="rounded-lg border border-gray-300 bg-white px-3 py-2 font-mono text-sm font-medium text-gray-900 focus:border-teal-500 focus:ring-2 focus:ring-teal-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -142,12 +140,7 @@ export function UuidFormatForm() {
           URN <span className="text-xs">urn:uuid:...</span>
         </label>
       </div>
-      <button
-        type="submit"
-        className="rounded-lg bg-purple-600 px-6 py-2.5 font-medium text-white transition-colors hover:bg-purple-700 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
-      >
-        Convert
-      </button>
+      <PrimaryButton type="submit">Convert</PrimaryButton>
       {result && (
         <div className="mt-2 rounded bg-purple-50 p-4 font-mono text-lg break-all text-purple-900 select-all dark:bg-purple-950/20 dark:text-purple-100">
           {result}
@@ -162,6 +155,7 @@ export function UuidValidateForm() {
   const [result, setResult] = useState<null | {
     valid: boolean;
     version: number | null;
+    reasons?: string[];
   }>(null);
 
   function handleSubmit(e: React.FormEvent) {
@@ -173,7 +167,8 @@ export function UuidValidateForm() {
     }
     const valid = isValidUuid(trimmed);
     const version = valid ? getUuidVersion(trimmed) : null;
-    setResult({ valid, version });
+    const reasons = valid ? undefined : explainUuidInvalidity(trimmed);
+    setResult({ valid, version, reasons });
   }
 
   return (
@@ -184,34 +179,62 @@ export function UuidValidateForm() {
       <input
         id="uuid-validate-input"
         type="text"
-        className="rounded-lg border border-gray-300 bg-white px-3 py-2 font-mono text-sm font-medium text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+        className="rounded-lg border border-gray-300 bg-white px-3 py-2 font-mono text-sm font-medium text-gray-900 focus:border-teal-500 focus:ring-2 focus:ring-teal-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
         autoComplete="off"
         spellCheck={false}
       />
-      <button
-        type="submit"
-        className="rounded-lg bg-green-600 px-6 py-2.5 font-medium text-white transition-colors hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
-      >
-        Validate
-      </button>
+      <PrimaryButton type="submit">Validate</PrimaryButton>
       {result && (
         <div
-          className={`mt-2 rounded p-4 font-mono text-lg ${result.valid ? "bg-green-50 text-green-900 dark:bg-green-950/20 dark:text-green-100" : "bg-red-50 text-red-900 dark:bg-red-950/20 dark:text-red-100"}`}
+          className={`mt-2 rounded p-4 font-mono text-lg ${result.valid ? "bg-green-50 text-green-900 dark:bg-green-950/20 dark:text-green-100" : "border border-red-200 bg-red-100 text-red-900 dark:bg-red-900/80 dark:text-red-100"}`}
         >
           {result.valid ? (
-            <>
-              <span className="font-bold">Valid UUID</span>
-              {typeof result.version === "number" && (
-                <span className="ml-2">
-                  (version {result.version === 0 ? "NIL" : result.version})
-                </span>
-              )}
-            </>
+            <div className="flex items-start gap-3">
+              <CheckCircle
+                className="mt-1 h-6 w-6 text-green-600 dark:text-green-400"
+                aria-hidden="true"
+              />
+              <div>
+                <div className="font-bold">Valid UUID</div>
+                {typeof result.version === "number" && (
+                  <div className="mt-1 text-sm">
+                    (version {result.version === 0 ? "NIL" : result.version})
+                  </div>
+                )}
+              </div>
+            </div>
           ) : (
-            <span className="font-bold">Invalid UUID</span>
+            <div className="flex flex-col gap-3">
+              <div className="flex items-start gap-3">
+                <XCircle
+                  className="mt-1 h-6 w-6 text-red-600 dark:text-red-300"
+                  aria-hidden="true"
+                />
+                <div>
+                  <div className="font-bold">Invalid UUID</div>
+                  <div className="mt-1 text-sm text-gray-700 dark:text-gray-300">
+                    The input does not meet the RFC 4122 string requirements.
+                    Below are common reasons why it's invalid.
+                  </div>
+                </div>
+              </div>
+              <div className="ml-9">
+                {result.reasons && result.reasons.length > 0 ? (
+                  <ul className="mt-1 list-disc pl-4 text-sm text-gray-800 dark:text-gray-200">
+                    {result.reasons.map((r, i) => (
+                      <li key={i}>{r}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div className="text-sm text-gray-700 dark:text-gray-300">
+                    Unknown format error.
+                  </div>
+                )}
+              </div>
+            </div>
           )}
         </div>
       )}

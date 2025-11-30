@@ -117,6 +117,75 @@ export function isValidUuid(uuid: string): boolean {
   );
 }
 
+// Explain why a UUID string is considered invalid. Returns an array of
+// human-readable reasons to help the user correct the input.
+export function explainUuidInvalidity(uuid: string): string[] {
+  const reasons: string[] = [];
+  const s = uuid.trim();
+  if (s.length === 0) {
+    reasons.push("Input is empty.");
+    return reasons;
+  }
+
+  const stripped = s.replace(/-/g, "");
+  if (stripped.length !== 32) {
+    reasons.push(
+      `Incorrect length: expected 32 hex characters (without hyphens), got ${stripped.length}.`
+    );
+  }
+
+  if (/[^0-9a-fA-F-]/.test(s)) {
+    reasons.push(
+      "Contains invalid characters — only 0-9 and a-f (hex) are allowed."
+    );
+  }
+
+  // If hyphens are present, check placement
+  if (
+    s.includes("-") &&
+    !/^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$/.test(
+      s
+    )
+  ) {
+    reasons.push(
+      "Hyphen placement is incorrect — expected groups of 8-4-4-4-12."
+    );
+  }
+
+  // Check version nibble (first char of the 3rd group when hyphenated, or the 13th char in stripped form)
+  const versionChar = s.includes("-") ? s.split("-")[2]?.[0] : stripped[12];
+  if (versionChar) {
+    if (!/[0-9a-fA-F]/.test(versionChar)) {
+      reasons.push("Version nibble is not a hex digit.");
+    } else {
+      const v = parseInt(versionChar, 16);
+      // Accept common RFC versions 1,3,4,5 and NIL (0). Mention newer/unknown versions.
+      if (![0, 1, 3, 4, 5].includes(v)) {
+        reasons.push(
+          `Unsupported/unknown version nibble: expected 1,3,4,5 (or NIL=0); found '${versionChar}'.`
+        );
+      }
+    }
+  }
+
+  // Check variant (first nibble of the fourth group) — should be 8,9,a,b for RFC 4122
+  const variantChar = s.includes("-") ? s.split("-")[3]?.[0] : stripped[16];
+  if (variantChar && /[0-9a-fA-F]/.test(variantChar)) {
+    const vc = parseInt(variantChar, 16);
+    if ((vc & 0x8) !== 0x8) {
+      reasons.push(
+        "Variant bits indicate a non-RFC-4122 variant — expected one of 8,9,a or b in that position."
+      );
+    }
+  }
+
+  if (reasons.length === 0) {
+    reasons.push("Does not match the RFC 4122 UUID pattern.");
+  }
+
+  return reasons;
+}
+
 export function getUuidVersion(uuid: string): number | null {
   const m = uuid.match(
     /^([0-9a-fA-F]{8})-([0-9a-fA-F]{4})-([1-5])([0-9a-fA-F]{3})-([89abAB][0-9a-fA-F]{3})-([0-9a-fA-F]{12})$/
