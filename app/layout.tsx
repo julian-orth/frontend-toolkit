@@ -3,6 +3,7 @@ import "./globals.css";
 import { SITE_NAME } from "@/lib/i18n/en";
 import { ThemeProvider } from "@/lib/contexts/theme-context";
 import { Header, Footer } from "@/components/layout-client";
+import { LoadingBar } from "@/components/loading-bar";
 
 export const metadata: Metadata = {
   title: {
@@ -28,6 +29,7 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <Header />
+          <LoadingBar />
           <main className="flex-1">{children}</main>
           <Footer />
         </ThemeProvider>
