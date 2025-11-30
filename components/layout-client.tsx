@@ -7,7 +7,7 @@ import { Zap, Github, Twitter } from "lucide-react";
 
 export function Header() {
   return (
-    <header className="fixed top-0 left-0 w-full z-50 border-b border-gray-200/50 bg-white/70 backdrop-blur-xl dark:border-gray-800/50 dark:bg-gray-950/70 transition-all md:ml-72">
+    <header className="fixed top-0 left-0 z-50 w-full border-b border-gray-200/50 bg-white/70 backdrop-blur-xl transition-all md:ml-72 dark:border-gray-800/50 dark:bg-gray-950/70">
       <div className="flex items-center justify-between px-4 py-4 md:pl-8">
         <Link
           href="/"
@@ -22,9 +22,7 @@ export function Header() {
         </Link>
         <div className="flex items-center gap-3 md:gap-6">
           {/* Mobile menu button */}
-          <div className="md:hidden">
-            {require('./MobileNav').default()}
-          </div>
+          <div className="md:hidden">{require("./MobileNav").default()}</div>
           <nav className="hidden md:block">
             <ul className="flex gap-6">
               {NAV_ITEMS.map((item) => (

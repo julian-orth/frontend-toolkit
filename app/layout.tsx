@@ -31,9 +31,9 @@ export default function RootLayout({
         <ThemeProvider>
           <Header />
           <LoadingBar />
-          <div className="flex flex-1 w-full">
+          <div className="flex w-full flex-1">
             <SidebarNav />
-            <main className="flex-1 min-w-0 md:ml-72">{children}</main>
+            <main className="min-w-0 flex-1 md:ml-72">{children}</main>
           </div>
           <Footer />
         </ThemeProvider>
