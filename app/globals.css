@@ -41,8 +41,12 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 @layer utilities {
@@ -53,7 +57,8 @@ body {
 
 /* Animated gradient background */
 @keyframes gradient-shift {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -93,13 +98,18 @@ body {
 }
 
 .shine-effect::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
   transform: translateX(-100%);
 }
 
@@ -119,4 +129,40 @@ body {
 
 .animate-loading-bar {
   animation: loading-bar 1s ease-in-out infinite;
+}
+
+/* Custom select styling: hide native browser chevron and reserve space for custom icon */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-repeat: no-repeat;
+}
+
+select::-ms-expand {
+  display: none; /* IE/Edge */
+}
+
+/* Utility wrapper when adding a custom icon */
+.select-icon-wrapper {
+  position: relative;
+}
+
+.select-icon-wrapper select {
+  padding-right: 2.5rem; /* room for the custom chevron */
+}
+
+.select-icon {
+  position: absolute;
+  right: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-icon svg {
+  display: block;
 }

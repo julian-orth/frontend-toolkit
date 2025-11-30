@@ -59,11 +59,22 @@ All site content lives in `lib/i18n/en.ts`:
 
 ### Icon Pattern
 
-Each tool placeholder has a colored icon badge:
+**Lucide Icons Standard**
 
-- Structure: `rounded-full bg-{color}-100 p-4 dark:bg-{color}-900/30`
-- Icon: Heroicons SVG with `h-8 w-8 text-{color}-600 dark:text-{color}-400`
-- Unique colors per tool (blue, purple, green, orange, pink, red, indigo, cyan, teal, yellow)
+- All icon-related components must use [Lucide React icons](https://lucide.dev/icons/) via the `lucide-react` package.
+- Do **not** use inline SVGs or other icon libraries directly in components.
+- Import Lucide icons as React components and pass `className` for styling (color, size, etc.).
+- Example usage:
+
+```tsx
+import { Zap } from "lucide-react";
+<Zap className="h-6 w-6 text-blue-600 dark:text-blue-400" aria-hidden="true" />;
+```
+
+- Each tool placeholder has a colored icon badge:
+  - Structure: `rounded-full bg-{color}-100 p-4 dark:bg-{color}-900/30`
+  - Icon: Lucide icon with `h-8 w-8 text-{color}-600 dark:text-{color}-400`
+  - Unique colors per tool (blue, purple, green, orange, pink, red, indigo, cyan, teal, yellow)
 
 ## Development Workflow
 
@@ -100,6 +111,12 @@ Config: `postcss.config.js` with `@tailwindcss/postcss` and `autoprefixer`
 - Shared UI: `components/` directory
 - Must be client components if using hooks/interactivity
 - Import in server components without `"use client"` directive
+
+### Component Size Guideline
+
+- **Line limit:** Prefer React components to be at most **300 lines** (including imports and exports). If a component grows beyond this, split it into smaller, focused components (presentation vs logic). Keep utility functions in `*.utils.ts` or `*/utils.ts` files.
+- **Why:** Keeps files maintainable, easier to review, and improves reusability. Aim for single responsibility per component and prefer composition.
+- **When splitting:** Move pure helper functions, type definitions, and complex algorithms into `utils` files; extract UI sections into named child components and place them alongside the parent (same folder) with clear names.
 
 ## Critical Context Dependencies
 

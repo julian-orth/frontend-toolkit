@@ -1,3 +1,4 @@
+import Breadcrumb from "@/components/breadcrumb";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,6 +10,7 @@ export default function RegexTesterPage() {
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="mb-8">
+        <Breadcrumb />
         <h1 className="mb-3 text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
           Regex Tester
         </h1>
