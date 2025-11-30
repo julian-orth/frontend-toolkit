@@ -66,5 +66,5 @@ export const TOOLS = [
 
 export const NAV_ITEMS = [
   { name: "Home", href: "/" },
-  { name: "Tools", href: "/#tools" },
+  { name: "Tools", href: "/tools" },
 ];
