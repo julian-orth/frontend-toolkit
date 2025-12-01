@@ -167,3 +167,8 @@ select::-ms-expand {
 .select-icon svg {
   display: block;
 }
+
+/* JSON Syntax Highlighting - basic colors */
+.json-syntax {
+  color: var(--foreground);
+}

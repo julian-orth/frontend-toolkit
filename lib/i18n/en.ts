@@ -5,7 +5,8 @@ export const TOOLS = [
   {
     id: "json-formatter",
     name: "JSON Formatter",
-    description: "Format and validate JSON data",
+    description:
+      "Format, validate, minify, and beautify JSON with error detection",
     href: "/tools/json-formatter",
     group: "JSON",
     groupColor: "blue",
@@ -41,7 +42,8 @@ export const TOOLS = [
   {
     id: "uuid-format-converter",
     name: "UUID Format Converter",
-    description: "Convert UUIDs between formats (hyphens, uppercase, URN, etc.)",
+    description:
+      "Convert UUIDs between formats (hyphens, uppercase, URN, etc.)",
     href: "/tools/uuid-format-converter",
     group: "UUID",
     groupColor: "purple",
