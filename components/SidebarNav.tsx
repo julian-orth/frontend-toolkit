@@ -77,10 +77,9 @@ export function SidebarNav() {
     >
       <div className="flex h-full flex-col">
         <div className="relative mb-4 px-6 pt-4">
-          <Search
-            className="pointer-events-none absolute top-1/2 left-9 h-5 w-5 -translate-y-1/2 text-gray-400"
-            aria-hidden="true"
-          />
+          <div className="pointer-events-none absolute inset-y-0 left-6 flex items-center pl-3">
+            <Search className="h-5 w-5 text-gray-400" aria-hidden="true" />
+          </div>
           <input
             ref={inputRef}
             type="search"

@@ -10,6 +10,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "diff": "^8.0.2",
     "lucide-react": "^0.555.0",
     "next": "16.0.5",
     "react": "19.2.0",

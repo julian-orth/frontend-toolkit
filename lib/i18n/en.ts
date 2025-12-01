@@ -97,9 +97,20 @@ export const TOOLS = [
     groupIcon: "palette",
   },
   {
+    id: "gradient-generator",
+    name: "Gradient Generator",
+    description:
+      "Create stunning CSS gradients with 45+ presets and custom options",
+    href: "/tools/gradient-generator",
+    group: "Color",
+    groupColor: "pink",
+    groupIcon: "palette",
+  },
+  {
     id: "lorem-ipsum",
     name: "Lorem Ipsum Generator",
-    description: "Generate placeholder text",
+    description:
+      "Generate classic placeholder text for designs, mockups, and prototypes",
     href: "/tools/lorem-ipsum",
     group: "Text",
     groupColor: "yellow",
@@ -108,7 +119,7 @@ export const TOOLS = [
   {
     id: "timestamp-converter",
     name: "Timestamp Converter",
-    description: "Convert Unix timestamps",
+    description: "Convert Unix timestamps to dates and vice versa",
     href: "/tools/timestamp-converter",
     group: "Time",
     groupColor: "cyan",
