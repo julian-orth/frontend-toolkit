@@ -50,6 +50,67 @@ body {
     color 0.3s ease;
 }
 
+/* Custom scrollbar styling */
+html,
+body {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(229 231 235) transparent;
+}
+
+html.dark,
+.dark body {
+  scrollbar-color: rgb(31 41 55) transparent;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(229 231 235);
+  border-radius: 9999px;
+}
+
+html.dark::-webkit-scrollbar-thumb,
+.dark body::-webkit-scrollbar-thumb {
+  background-color: rgb(31 41 55);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(229 231 235) transparent;
+}
+
+.dark * {
+  scrollbar-color: rgb(31 41 55) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(229 231 235);
+  border-radius: 9999px;
+}
+
+.dark *::-webkit-scrollbar-thumb {
+  background-color: rgb(31 41 55);
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

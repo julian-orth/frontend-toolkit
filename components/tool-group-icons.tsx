@@ -1,23 +1,23 @@
 import {
-  CodeSquare,
+  Braces,
   Fingerprint,
-  RefreshCw,
-  Hash,
-  SwatchBook,
-  FileText,
+  Binary,
+  Regex,
+  Palette,
+  Text,
   Clock,
-  Key,
+  ShieldCheck,
 } from "lucide-react";
 
 const icons: Record<string, React.ComponentType<{ className?: string }>> = {
-  "code-bracket-square": CodeSquare,
-  "finger-print": Fingerprint,
-  "arrow-path": RefreshCw,
-  hashtag: Hash,
-  swatch: SwatchBook,
-  "document-text": FileText,
+  braces: Braces,
+  fingerprint: Fingerprint,
+  binary: Binary,
+  regex: Regex,
+  palette: Palette,
+  text: Text,
   clock: Clock,
-  key: Key,
+  "shield-check": ShieldCheck,
 };
 
 export function ToolGroupIcon({
@@ -27,6 +27,6 @@ export function ToolGroupIcon({
   icon: string;
   className?: string;
 }) {
-  const LucideIcon = icons[icon] || CodeSquare;
+  const LucideIcon = icons[icon] || Braces;
   return <LucideIcon className={className} />;
 }

@@ -10,7 +10,7 @@ export const TOOLS = [
     href: "/tools/json-formatter",
     group: "JSON",
     groupColor: "blue",
-    groupIcon: "code-bracket-square",
+    groupIcon: "braces",
   },
   {
     id: "uuid-generator",
@@ -19,7 +19,7 @@ export const TOOLS = [
     href: "/tools/uuid-generator",
     group: "UUID",
     groupColor: "purple",
-    groupIcon: "finger-print",
+    groupIcon: "fingerprint",
   },
   {
     id: "uuid-validator",
@@ -28,7 +28,7 @@ export const TOOLS = [
     href: "/tools/uuid-validator",
     group: "UUID",
     groupColor: "purple",
-    groupIcon: "finger-print",
+    groupIcon: "fingerprint",
   },
   {
     id: "uuid-decoder",
@@ -37,7 +37,7 @@ export const TOOLS = [
     href: "/tools/uuid-decoder",
     group: "UUID",
     groupColor: "purple",
-    groupIcon: "finger-print",
+    groupIcon: "fingerprint",
   },
   {
     id: "uuid-format-converter",
@@ -47,7 +47,7 @@ export const TOOLS = [
     href: "/tools/uuid-format-converter",
     group: "UUID",
     groupColor: "purple",
-    groupIcon: "finger-print",
+    groupIcon: "fingerprint",
   },
   {
     id: "base64",
@@ -56,7 +56,7 @@ export const TOOLS = [
     href: "/tools/base64",
     group: "Encoding",
     groupColor: "green",
-    groupIcon: "arrow-path",
+    groupIcon: "binary",
   },
   {
     id: "url-encoder",
@@ -65,7 +65,7 @@ export const TOOLS = [
     href: "/tools/url-encoder",
     group: "Encoding",
     groupColor: "green",
-    groupIcon: "arrow-path",
+    groupIcon: "binary",
   },
   {
     id: "regex-tester",
@@ -74,16 +74,27 @@ export const TOOLS = [
     href: "/tools/regex-tester",
     group: "Regex",
     groupColor: "orange",
-    groupIcon: "hashtag",
+    groupIcon: "regex",
   },
   {
     id: "color-picker",
     name: "Color Picker",
-    description: "Pick and convert colors",
+    description:
+      "Pick colors, convert formats (HEX, RGB, HSL), and generate palettes",
     href: "/tools/color-picker",
     group: "Color",
     groupColor: "pink",
-    groupIcon: "swatch",
+    groupIcon: "palette",
+  },
+  {
+    id: "color-palettes",
+    name: "Color Palette Generator",
+    description:
+      "Generate beautiful color palettes using color theory harmonies",
+    href: "/tools/color-palettes",
+    group: "Color",
+    groupColor: "pink",
+    groupIcon: "palette",
   },
   {
     id: "lorem-ipsum",
@@ -92,7 +103,7 @@ export const TOOLS = [
     href: "/tools/lorem-ipsum",
     group: "Text",
     groupColor: "yellow",
-    groupIcon: "document-text",
+    groupIcon: "text",
   },
   {
     id: "timestamp-converter",
@@ -110,7 +121,7 @@ export const TOOLS = [
     href: "/tools/text-diff",
     group: "Text",
     groupColor: "yellow",
-    groupIcon: "document-text",
+    groupIcon: "text",
   },
   {
     id: "jwt-decoder",
@@ -119,7 +130,7 @@ export const TOOLS = [
     href: "/tools/jwt-decoder",
     group: "JWT",
     groupColor: "red",
-    groupIcon: "key",
+    groupIcon: "shield-check",
   },
 ];
 

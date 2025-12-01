@@ -75,10 +75,10 @@ export function SidebarNav() {
       className="fixed top-0 left-0 z-40 hidden h-full w-72 flex-shrink-0 border-r border-gray-200 bg-white md:block dark:border-gray-800 dark:bg-gray-950"
       aria-label="Main navigation"
     >
-      <div className="flex h-full flex-col overflow-y-auto px-6 py-4">
-        <div className="relative mb-4">
+      <div className="flex h-full flex-col">
+        <div className="relative mb-4 px-6 pt-4">
           <Search
-            className="pointer-events-none absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-gray-400"
+            className="pointer-events-none absolute top-1/2 left-9 h-5 w-5 -translate-y-1/2 text-gray-400"
             aria-hidden="true"
           />
           <input
@@ -97,56 +97,58 @@ export function SidebarNav() {
               className="absolute top-1/2 h-5 w-5 -translate-y-1/2 text-white hover:text-gray-300 dark:text-white dark:hover:text-gray-300"
               aria-label="Clear search"
               title="Clear search"
-              style={{ right: "47px", cursor: "pointer" }}
+              style={{ right: "53px", cursor: "pointer" }}
             >
               <X className="h-5 w-5" />
             </button>
           )}
-          <kbd className="pointer-events-none absolute top-1/2 right-2.5 flex -translate-y-1/2 items-center gap-0.5 rounded border border-gray-300 bg-white px-1.5 py-0.5 font-mono text-xs font-semibold text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+          <kbd className="pointer-events-none absolute top-1/2 right-8 flex -translate-y-1/2 items-center gap-0.5 rounded border border-gray-300 bg-white px-1.5 py-0.5 font-mono text-xs font-semibold text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
             <span className="text-base leading-none">⌘</span>
             <span className="leading-none">K</span>
           </kbd>
         </div>
-        {Object.keys(grouped).length === 0 && (
-          <div className="px-3 py-2 text-gray-400 dark:text-gray-600">
-            No tools found.
-          </div>
-        )}
-        <div className="flex-1 space-y-6">
-          {Object.entries(grouped).map(([group, tools]) => (
-            <div key={group}>
-              <h2 className="mb-2 px-3 text-xs font-bold tracking-wider text-gray-500 uppercase dark:text-gray-400">
-                {group}
-              </h2>
-              <ul className="space-y-1">
-                {tools.map((tool) => {
-                  const Icon = getToolIcon(tool.groupIcon || "Zap");
-                  const badgeColor =
-                    GROUP_COLORS[tool.groupColor] || GROUP_COLORS.blue;
-                  const isActive = pathname === tool.href;
-                  return (
-                    <li key={tool.id}>
-                      <Link
-                        href={tool.href}
-                        className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:focus:ring-offset-gray-950 ${
-                          isActive
-                            ? "bg-blue-50 font-medium text-blue-600 dark:bg-blue-900/20 dark:text-blue-400"
-                            : "text-gray-900 hover:bg-gray-100 dark:text-gray-50 dark:hover:bg-gray-800"
-                        }`}
-                        aria-label={`Open ${tool.name} tool`}
-                        aria-current={isActive ? "page" : undefined}
-                      >
-                        <span className={`rounded-full p-2 ${badgeColor}`}>
-                          <Icon className="h-6 w-6" aria-hidden="true" />
-                        </span>
-                        <span>{tool.name}</span>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
+        <div className="flex-1 overflow-y-auto px-6 pb-4">
+          {Object.keys(grouped).length === 0 && (
+            <div className="px-3 py-2 text-gray-400 dark:text-gray-600">
+              No tools found.
             </div>
-          ))}
+          )}
+          <div className="space-y-6">
+            {Object.entries(grouped).map(([group, tools]) => (
+              <div key={group}>
+                <h2 className="mb-2 px-3 text-xs font-bold tracking-wider text-gray-500 uppercase dark:text-gray-400">
+                  {group}
+                </h2>
+                <ul className="space-y-1">
+                  {tools.map((tool) => {
+                    const Icon = getToolIcon(tool.groupIcon || "Zap");
+                    const badgeColor =
+                      GROUP_COLORS[tool.groupColor] || GROUP_COLORS.blue;
+                    const isActive = pathname === tool.href;
+                    return (
+                      <li key={tool.id}>
+                        <Link
+                          href={tool.href}
+                          className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:focus:ring-offset-gray-950 ${
+                            isActive
+                              ? "bg-blue-50 font-medium text-blue-600 dark:bg-blue-900/20 dark:text-blue-400"
+                              : "text-gray-900 hover:bg-gray-100 dark:text-gray-50 dark:hover:bg-gray-800"
+                          }`}
+                          aria-label={`Open ${tool.name} tool`}
+                          aria-current={isActive ? "page" : undefined}
+                        >
+                          <span className={`rounded-full p-2 ${badgeColor}`}>
+                            <Icon className="h-6 w-6" aria-hidden="true" />
+                          </span>
+                          <span>{tool.name}</span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </nav>
