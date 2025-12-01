@@ -14,7 +14,6 @@
 - Add and validate SEO metadata (title, description, Open Graph, Twitter Card)
 - Ensure sitemap and robots.txt are correct
 - Add favicon, manifest, and basic PWA support
-- Write and update `README.md` (usage, deployment, architecture)
 - Final self-review for bugs, performance, and accessibility
 - Deploy to production (Vercel/Netlify)
 

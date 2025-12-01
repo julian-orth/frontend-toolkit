@@ -9,6 +9,8 @@ import {
   CheckCircle,
   FileJson,
   Trash2,
+  Upload,
+  Link,
 } from "lucide-react";
 import PrimaryButton from "@/components/primary-button";
 import { Checkbox } from "@/components/checkbox";
@@ -29,6 +31,10 @@ export function JsonFormatterUI() {
   const [validation, setValidation] = useState<ValidationResult | null>(null);
   const [copied, setCopied] = useState(false);
   const [showLineNumbers, setShowLineNumbers] = useState(true);
+  const [isLoadingUrl, setIsLoadingUrl] = useState(false);
+  const [urlInput, setUrlInput] = useState("");
+  const [showUrlInput, setShowUrlInput] = useState(false);
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   const handleFormat = useCallback(() => {
     const result = formatJson(input, indentSize, sortKeys);
@@ -81,6 +87,63 @@ export function JsonFormatterUI() {
     setValidation(null);
   }, []);
 
+  const handleFileUpload = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const file = event.target.files?.[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const content = e.target?.result as string;
+        setInput(content);
+        setOutput("");
+        setValidation(null);
+      };
+      reader.onerror = () => {
+        setValidation({
+          isValid: false,
+          error: "Failed to read file",
+        });
+      };
+      reader.readAsText(file);
+
+      // Reset file input
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+    },
+    []
+  );
+
+  const handleLoadFromUrl = useCallback(async () => {
+    if (!urlInput.trim()) return;
+
+    setIsLoadingUrl(true);
+    setValidation(null);
+
+    try {
+      const response = await fetch(urlInput.trim());
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.text();
+      setInput(data);
+      setOutput("");
+      setShowUrlInput(false);
+      setUrlInput("");
+    } catch (error) {
+      setValidation({
+        isValid: false,
+        error:
+          error instanceof Error
+            ? `Failed to load from URL: ${error.message}`
+            : "Failed to load from URL",
+      });
+    } finally {
+      setIsLoadingUrl(false);
+    }
+  }, [urlInput]);
+
   // Calculate line numbers for output
   const outputLines = output.split("\n");
   const lineCount = outputLines.length;
@@ -112,15 +175,20 @@ export function JsonFormatterUI() {
             />
           </div>
         </div>
-
-        <Checkbox checked={sortKeys} onChange={setSortKeys} label="Sort keys" />
-
-        <Checkbox
-          checked={showLineNumbers}
-          onChange={setShowLineNumbers}
-          label="Line numbers"
-        />
-
+        <div style={{ position: "relative", top: "10px" }}>
+          <Checkbox
+            checked={sortKeys}
+            onChange={setSortKeys}
+            label="Sort keys"
+          />
+        </div>
+        <div style={{ position: "relative", top: "10px" }}>
+          <Checkbox
+            checked={showLineNumbers}
+            onChange={setShowLineNumbers}
+            label="Line numbers"
+          />
+        </div>
         <div className="ml-auto flex flex-wrap gap-2">
           <PrimaryButton onClick={handleFormat} className="px-6">
             Format
@@ -147,6 +215,83 @@ export function JsonFormatterUI() {
             <Trash2 className="h-4 w-4" aria-hidden="true" />
           </PrimaryButton>
         </div>
+      </div>
+
+      {/* Load from File/URL */}
+      <div className="flex flex-wrap items-center gap-3 rounded-xl border border-green-200 bg-green-50/50 p-4 dark:border-green-800 dark:bg-green-950/20">
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept=".json,application/json,text/plain"
+          onChange={handleFileUpload}
+          className="hidden"
+          id="file-upload"
+        />
+        <label
+          htmlFor="file-upload"
+          className="flex cursor-pointer items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-100 dark:bg-gray-900 dark:text-green-400 dark:hover:bg-gray-800"
+        >
+          <Upload className="h-4 w-4" aria-hidden="true" />
+          Load from file
+        </label>
+
+        {!showUrlInput ? (
+          <>
+            <button
+              type="button"
+              onClick={() => setShowUrlInput(true)}
+              className="flex cursor-pointer items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-100 dark:bg-gray-900 dark:text-green-400 dark:hover:bg-gray-800"
+            >
+              <Link className="h-4 w-4" aria-hidden="true" />
+              Load from URL
+            </button>
+            <button
+              type="button"
+              onClick={handleLoadSample}
+              className="flex cursor-pointer items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-100 dark:bg-gray-900 dark:text-green-400 dark:hover:bg-gray-800"
+            >
+              <FileJson className="h-4 w-4" aria-hidden="true" />
+              Load sample
+            </button>
+          </>
+        ) : (
+          <div className="flex flex-1 items-center gap-2">
+            <input
+              type="url"
+              value={urlInput}
+              onChange={(e) => setUrlInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleLoadFromUrl();
+                } else if (e.key === "Escape") {
+                  setShowUrlInput(false);
+                  setUrlInput("");
+                }
+              }}
+              placeholder="Enter JSON URL (e.g., https://api.example.com/data.json)"
+              className="flex-1 rounded-lg border border-green-300 bg-white px-3 py-2 text-sm focus:border-green-500 focus:ring-2 focus:ring-green-500 dark:border-green-700 dark:bg-gray-900 dark:text-gray-100"
+              disabled={isLoadingUrl}
+            />
+            <PrimaryButton
+              onClick={handleLoadFromUrl}
+              disabled={!urlInput.trim() || isLoadingUrl}
+              className="px-4"
+            >
+              {isLoadingUrl ? "Loading..." : "Load"}
+            </PrimaryButton>
+            <button
+              type="button"
+              onClick={() => {
+                setShowUrlInput(false);
+                setUrlInput("");
+              }}
+              className="cursor-pointer rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800"
+              disabled={isLoadingUrl}
+            >
+              Cancel
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Validation status */}
@@ -205,14 +350,6 @@ export function JsonFormatterUI() {
             >
               Input JSON
             </label>
-            <button
-              type="button"
-              onClick={handleLoadSample}
-              className="flex items-center gap-1 text-xs text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300"
-            >
-              <FileJson className="h-3 w-3" aria-hidden="true" />
-              Load sample
-            </button>
           </div>
           <textarea
             id="json-input"
@@ -235,7 +372,7 @@ export function JsonFormatterUI() {
                 <button
                   type="button"
                   onClick={handleCopy}
-                  className="flex items-center gap-1 text-xs text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300"
+                  className="flex cursor-pointer items-center gap-1 text-xs text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300"
                   disabled={copied}
                 >
                   {copied ? (
@@ -253,7 +390,7 @@ export function JsonFormatterUI() {
                 <button
                   type="button"
                   onClick={handleDownload}
-                  className="flex items-center gap-1 text-xs text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300"
+                  className="flex cursor-pointer items-center gap-1 text-xs text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300"
                 >
                   <Download className="h-3 w-3" aria-hidden="true" />
                   Download

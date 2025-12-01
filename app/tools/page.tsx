@@ -142,6 +142,113 @@ export default function ToolsPage() {
           })}
         </div>
       </section>
+
+      {/* FAQ Section for SEO */}
+      <section aria-label="Frequently asked questions" className="mt-16">
+        <h2 className="mb-6 text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-6">
+          <article className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-50">
+              Are these developer tools completely free to use?
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              Yes, all {TOOLS.length} developer tools on {SITE_NAME} are
+              completely free to use with no registration, sign-up, or payment
+              required. You can access any tool instantly and use it as many
+              times as you need.
+            </p>
+          </article>
+
+          <article className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-50">
+              Do these tools store my data or send it to a server?
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              No. All tools run entirely in your browser using client-side
+              JavaScript. Your data never leaves your computer and is not sent
+              to any server. This ensures complete privacy and security when
+              working with sensitive information like JSON data, UUIDs, or
+              encoded strings.
+            </p>
+          </article>
+
+          <article className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-50">
+              Can I use these tools offline?
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              Once you load a tool page in your browser, it will continue to
+              work even if your internet connection is lost. The tools are
+              designed to function entirely client-side, so you can use them
+              offline after the initial page load.
+            </p>
+          </article>
+
+          <article className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-50">
+              What types of developer tools are available?
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              We offer tools across multiple categories: JSON tools (formatter,
+              validator), UUID tools (generator, validator, decoder, format
+              converter), encoding tools (Base64, URL encoder/decoder), regex
+              testing, color picking, text generation, timestamp conversion,
+              text comparison, and JWT decoding. Each tool is designed for
+              common web development tasks.
+            </p>
+          </article>
+
+          <article className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-50">
+              Do I need to install anything to use these tools?
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              No installation required. All tools are web-based and work
+              directly in your browser. Simply visit the tool page and start
+              using it immediately. The tools are compatible with all modern
+              browsers including Chrome, Firefox, Safari, and Edge.
+            </p>
+          </article>
+
+          <article className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-50">
+              How do the UUID tools comply with RFC 4122 standards?
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              Our UUID generator creates standards-compliant UUIDs according to
+              RFC 4122 specifications, supporting versions 1, 3, 4, and 5, plus
+              the NIL UUID. The UUID validator, decoder, and format converter
+              also follow RFC 4122 standards to ensure compatibility with all
+              systems that use UUIDs.
+            </p>
+          </article>
+
+          <article className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-50">
+              Can the JSON formatter handle large JSON files?
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              Yes, the JSON formatter can handle large JSON files since it runs
+              in your browser and uses your computer's resources. However,
+              extremely large files (multiple megabytes) may take longer to
+              process depending on your device's performance.
+            </p>
+          </article>
+
+          <article className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-50">
+              Are the tools mobile-friendly?
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              Yes, all developer tools are fully responsive and work on mobile
+              devices, tablets, and desktops. The interface adapts to your
+              screen size for optimal usability on any device.
+            </p>
+          </article>
+        </div>
+      </section>
     </div>
   );
 }
