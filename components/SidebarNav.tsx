@@ -1,9 +1,10 @@
 "use client";
 
 import { TOOLS } from "@/lib/i18n/en";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Search } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Search, X } from "lucide-react";
 import * as Icons from "lucide-react";
 
 function getToolIcon(iconName: string) {
@@ -36,6 +37,23 @@ const GROUP_COLORS: Record<string, string> = {
 
 export function SidebarNav() {
   const [query, setQuery] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+  const pathname = usePathname();
+
+  // Ctrl+K keyboard shortcut handler
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Check for Ctrl+K (or Cmd+K on Mac)
+      if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+        e.preventDefault();
+        inputRef.current?.focus();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   const filtered = TOOLS.filter(
     (tool) =>
       tool.name.toLowerCase().includes(query.toLowerCase()) ||
@@ -57,17 +75,37 @@ export function SidebarNav() {
       className="fixed top-0 left-0 z-40 hidden h-full w-72 flex-shrink-0 border-r border-gray-200 bg-white md:block dark:border-gray-800 dark:bg-gray-950"
       aria-label="Main navigation"
     >
-      <div className="flex h-full flex-col overflow-y-auto p-4 pt-16">
-        <div className="mb-4 flex items-center gap-2">
-          <Search className="h-5 w-5 text-gray-400" aria-hidden="true" />
+      <div className="flex h-full flex-col overflow-y-auto px-6 py-4">
+        <div className="relative mb-4">
+          <Search
+            className="pointer-events-none absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-gray-400"
+            aria-hidden="true"
+          />
           <input
+            ref={inputRef}
             type="search"
             placeholder="Search tools…"
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900"
+            style={{ paddingRight: "71px" }}
+            className="w-full rounded-lg border border-gray-300 bg-gray-50 py-2 pl-10 text-sm text-gray-900 placeholder:text-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-400 [&::-webkit-search-cancel-button]:hidden"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             aria-label="Search tools"
           />
+          {query && (
+            <button
+              onClick={() => setQuery("")}
+              className="absolute top-1/2 h-5 w-5 -translate-y-1/2 text-white hover:text-gray-300 dark:text-white dark:hover:text-gray-300"
+              aria-label="Clear search"
+              title="Clear search"
+              style={{ right: "47px", cursor: "pointer" }}
+            >
+              <X className="h-5 w-5" />
+            </button>
+          )}
+          <kbd className="pointer-events-none absolute top-1/2 right-2.5 flex -translate-y-1/2 items-center gap-0.5 rounded border border-gray-300 bg-white px-1.5 py-0.5 font-mono text-xs font-semibold text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+            <span className="text-base leading-none">⌘</span>
+            <span className="leading-none">K</span>
+          </kbd>
         </div>
         {Object.keys(grouped).length === 0 && (
           <div className="px-3 py-2 text-gray-400 dark:text-gray-600">
@@ -85,12 +123,18 @@ export function SidebarNav() {
                   const Icon = getToolIcon(tool.groupIcon || "Zap");
                   const badgeColor =
                     GROUP_COLORS[tool.groupColor] || GROUP_COLORS.blue;
+                  const isActive = pathname === tool.href;
                   return (
                     <li key={tool.id}>
                       <Link
                         href={tool.href}
-                        className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-900 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:text-gray-50 dark:hover:bg-gray-800"
+                        className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:focus:ring-offset-gray-950 ${
+                          isActive
+                            ? "bg-blue-50 font-medium text-blue-600 dark:bg-blue-900/20 dark:text-blue-400"
+                            : "text-gray-900 hover:bg-gray-100 dark:text-gray-50 dark:hover:bg-gray-800"
+                        }`}
                         aria-label={`Open ${tool.name} tool`}
+                        aria-current={isActive ? "page" : undefined}
                       >
                         <span className={`rounded-full p-2 ${badgeColor}`}>
                           <Icon className="h-6 w-6" aria-hidden="true" />

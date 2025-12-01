@@ -39,13 +39,13 @@ export const metadata: Metadata = {
 
 export default function UuidGeneratorPage() {
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="px-6 py-8">
       <div className="mb-8">
         <Breadcrumb />
-        <h1 className="mb-3 text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
+        <h1 className="mb-3 text-4xl font-bold tracking-tight text-black dark:text-white">
           UUID / GUID Generator
         </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-400">
+        <p className="text-lg text-gray-700 dark:text-gray-300">
           Generate RFC 4122 compliant UUIDs (GUIDs — Microsoft term) instantly
           for use in databases, APIs, and applications
         </p>

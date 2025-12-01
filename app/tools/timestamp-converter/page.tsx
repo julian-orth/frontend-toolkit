@@ -8,13 +8,13 @@ export const metadata: Metadata = {
 
 export default function TimestampConverterPage() {
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="px-6 py-8">
       <div className="mb-8">
         <Breadcrumb />
-        <h1 className="mb-3 text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
+        <h1 className="mb-3 text-4xl font-bold tracking-tight text-black dark:text-white">
           Timestamp Converter
         </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-400">
+        <p className="text-lg text-gray-700 dark:text-gray-300">
           Convert Unix timestamps to human-readable dates
         </p>
       </div>

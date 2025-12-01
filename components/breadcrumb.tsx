@@ -4,7 +4,26 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 function toTitle(str: string) {
-  return str.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  // Special cases for acronyms
+  const acronyms: Record<string, string> = {
+    uuid: "UUID",
+    guid: "GUID",
+    json: "JSON",
+    jwt: "JWT",
+    url: "URL",
+    api: "API",
+    html: "HTML",
+    css: "CSS",
+    xml: "XML",
+  };
+
+  return str
+    .split("-")
+    .map((word) => {
+      const lower = word.toLowerCase();
+      return acronyms[lower] || word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
 }
 
 export default function Breadcrumb() {
@@ -43,7 +62,7 @@ export default function Breadcrumb() {
             ) : (
               <Link
                 href={crumb.href}
-                className="rounded hover:underline focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
+                className="rounded text-gray-600 hover:text-blue-600 hover:underline focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:text-gray-400 dark:hover:text-blue-400 dark:focus:ring-offset-gray-950"
               >
                 {crumb.name}
               </Link>

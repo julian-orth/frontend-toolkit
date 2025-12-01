@@ -23,7 +23,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const theme = localStorage.getItem('theme') || 'dark';
+                if (theme === 'dark') {
+                  document.documentElement.classList.add('dark');
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
         className="flex min-h-screen flex-col bg-gradient-to-br from-gray-50 via-white to-gray-50 text-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 dark:text-gray-50"
         suppressHydrationWarning
@@ -33,7 +47,7 @@ export default function RootLayout({
           <LoadingBar />
           <div className="flex w-full flex-1">
             <SidebarNav />
-            <main className="min-w-0 flex-1 md:ml-72">{children}</main>
+            <main className="min-w-0 flex-1 pt-20 md:ml-72">{children}</main>
           </div>
           <Footer />
         </ThemeProvider>

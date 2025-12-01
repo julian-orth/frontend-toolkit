@@ -120,20 +120,20 @@ export function GeneratorUI() {
   return (
     <div>
       <form
-        className="mb-6 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4"
+        className="mb-6 flex w-full flex-row flex-wrap items-end gap-3"
         onSubmit={(e) => {
           e.preventDefault();
           handleGenerate();
         }}
       >
-        <div className="flex w-full flex-col">
+        <div className="flex flex-col">
           <label
             className="mb-1 block text-sm font-medium"
             htmlFor="uuid-version"
           >
             Version
           </label>
-          <div className="select-icon-wrapper">
+          <div className="select-icon-wrapper" style={{ maxWidth: "150px" }}>
             <select
               id="uuid-version"
               className="h-12 w-full cursor-pointer appearance-none rounded-xl border border-teal-200 bg-white/80 px-3 pr-10 text-sm font-medium text-gray-900 focus:border-teal-500 focus:ring-2 focus:ring-teal-500 dark:border-teal-800 dark:bg-gray-900/60 dark:text-gray-100"
@@ -155,7 +155,7 @@ export function GeneratorUI() {
         </div>
 
         {(version === "v3" || version === "v5") && (
-          <div className="flex w-full flex-col">
+          <div className="flex flex-col">
             <label
               className="mb-1 block text-sm font-medium"
               htmlFor="uuid-namespace"
@@ -173,7 +173,7 @@ export function GeneratorUI() {
         )}
 
         {(version === "v3" || version === "v5") && (
-          <div className="flex w-full flex-col">
+          <div className="flex flex-col">
             <label
               className="mb-1 block text-sm font-medium"
               htmlFor="uuid-name"
@@ -190,14 +190,14 @@ export function GeneratorUI() {
           </div>
         )}
 
-        <div className="flex w-full flex-col">
+        <div className="flex flex-col">
           <label
             className="mb-1 block text-sm font-medium"
             htmlFor="uuid-count"
           >
             Count
           </label>
-          <div className="select-icon-wrapper">
+          <div className="select-icon-wrapper" style={{ maxWidth: "150px" }}>
             <select
               id="uuid-count"
               className="h-12 w-full cursor-pointer appearance-none rounded-xl border border-teal-200 bg-white/80 px-3 pr-10 text-sm font-medium text-gray-900 focus:border-teal-500 focus:ring-2 focus:ring-teal-500 dark:border-teal-800 dark:bg-gray-900/60 dark:text-gray-100"
@@ -219,7 +219,11 @@ export function GeneratorUI() {
         </div>
 
         <div style={{ marginTop: "23px" }} className="flex items-center gap-2">
-          <PrimaryButton type="submit" className="w-full" disabled={generating}>
+          <PrimaryButton
+            type="submit"
+            className="px-8 py-3"
+            disabled={generating}
+          >
             {generating ? (
               <span className="flex items-center justify-center gap-2">
                 <Loader2
@@ -259,6 +263,9 @@ export function GeneratorUI() {
 
       {result && (
         <div className="mt-4 flex w-full flex-col gap-2">
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            Generated UUID{result.length > 1 ? "s" : ""}
+          </label>
           {result.map((uuid, idx) => (
             <div key={idx} className="flex items-center gap-3">
               <input

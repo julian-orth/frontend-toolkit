@@ -25,7 +25,7 @@ export default function MobileNav() {
   return (
     <>
       <button
-        className="rounded-lg border border-gray-300 bg-white p-2 text-gray-700 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none md:hidden dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
+        className="rounded-lg border border-gray-300 bg-white p-2 text-gray-700 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none md:hidden dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus:ring-offset-gray-950"
         aria-label="Open navigation menu"
         onClick={() => setOpen(true)}
       >
@@ -45,7 +45,7 @@ export default function MobileNav() {
           />
           <aside className="animate-slide-in-left relative h-full w-72 max-w-full border-r border-gray-200 bg-white shadow-xl dark:border-gray-800 dark:bg-gray-950">
             <button
-              className="absolute top-4 right-4 rounded-lg border border-gray-300 bg-white p-2 text-gray-700 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
+              className="absolute top-4 right-4 rounded-lg border border-gray-300 bg-white p-2 text-gray-700 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus:ring-offset-gray-950"
               aria-label="Close navigation menu"
               onClick={() => setOpen(false)}
               autoFocus

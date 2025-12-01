@@ -20,7 +20,7 @@ export default function Home() {
         <div className="absolute right-1/4 -bottom-40 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-cyan-400/20 via-blue-400/20 to-indigo-400/20 blur-3xl dark:from-cyan-600/20 dark:via-blue-600/20 dark:to-indigo-600/20" />
       </div>
 
-      <div className="container mx-auto px-4 py-20">
+      <div className="px-6 py-20">
         {/* Hero Section */}
         <section className="mb-24 text-center">
           <div className="mx-auto max-w-4xl">

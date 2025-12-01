@@ -17,7 +17,7 @@ export default function PrimaryButton({
   const solid =
     "bg-teal-600 text-white hover:bg-teal-700 focus:ring-teal-500 dark:bg-teal-500 dark:hover:bg-teal-600";
   const outline =
-    "border border-teal-600 bg-white text-teal-700 hover:bg-teal-50 focus:ring-teal-500 dark:border-teal-400 dark:bg-gray-950 dark:text-teal-300 dark:hover:bg-gray-900";
+    "border-2 border-teal-600 bg-white text-teal-700 hover:bg-teal-50 focus:ring-teal-500 dark:border-teal-400 dark:bg-gray-950 dark:text-teal-300 dark:hover:bg-gray-900";
 
   const classes = [base, variant === "solid" ? solid : outline, className]
     .filter(Boolean)

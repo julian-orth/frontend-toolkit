@@ -10,6 +10,7 @@ import {
 } from "./uuid-utils";
 import { CheckCircle, XCircle } from "lucide-react";
 import PrimaryButton from "@/components/primary-button";
+import { Checkbox } from "@/components/checkbox";
 
 export function UuidDecodeForm() {
   const [input, setInput] = useState("");
@@ -107,38 +108,24 @@ export function UuidFormatForm() {
         spellCheck={false}
       />
       <div className="flex flex-wrap gap-4">
-        <label className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            checked={hyphens}
-            onChange={(e) => setHyphens(e.target.checked)}
-          />
-          Hyphens
-        </label>
-        <label className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            checked={uppercase}
-            onChange={(e) => setUppercase(e.target.checked)}
-          />
-          Uppercase
-        </label>
-        <label className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            checked={braces}
-            onChange={(e) => setBraces(e.target.checked)}
-          />
-          Braces <span className="text-xs">{"{uuid}"}</span>
-        </label>
-        <label className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            checked={urn}
-            onChange={(e) => setUrn(e.target.checked)}
-          />
-          URN <span className="text-xs">urn:uuid:...</span>
-        </label>
+        <Checkbox checked={hyphens} onChange={setHyphens} label="Hyphens" />
+        <Checkbox
+          checked={uppercase}
+          onChange={setUppercase}
+          label="Uppercase"
+        />
+        <Checkbox
+          checked={braces}
+          onChange={setBraces}
+          label="Braces"
+          helperText="{uuid}"
+        />
+        <Checkbox
+          checked={urn}
+          onChange={setUrn}
+          label="URN"
+          helperText="urn:uuid:..."
+        />
       </div>
       <PrimaryButton type="submit">Convert</PrimaryButton>
       {result && (
@@ -189,12 +176,12 @@ export function UuidValidateForm() {
       <PrimaryButton type="submit">Validate</PrimaryButton>
       {result && (
         <div
-          className={`mt-2 rounded p-4 font-mono text-lg ${result.valid ? "bg-green-50 text-green-900 dark:bg-green-950/20 dark:text-green-100" : "border border-red-200 bg-red-100 text-red-900 dark:bg-red-900/80 dark:text-red-100"}`}
+          className={`mt-2 rounded p-4 font-mono text-lg ${result.valid ? "bg-blue-50 text-blue-900 dark:bg-blue-950/20 dark:text-blue-100" : "border border-red-200 bg-red-100 text-red-900 dark:bg-red-900/80 dark:text-red-100"}`}
         >
           {result.valid ? (
             <div className="flex items-start gap-3">
               <CheckCircle
-                className="mt-1 h-6 w-6 text-green-600 dark:text-green-400"
+                className="mt-1 h-6 w-6 text-blue-600 dark:text-blue-400"
                 aria-hidden="true"
               />
               <div>

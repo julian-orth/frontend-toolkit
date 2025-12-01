@@ -55,7 +55,7 @@ export function LoadingBar() {
   }
 
   return (
-    <div className="fixed top-[73px] right-0 left-0 z-50 h-1 overflow-hidden bg-transparent">
+    <div className="fixed top-[73px] right-0 left-0 z-50 h-1 overflow-hidden bg-transparent md:left-72">
       <div className="animate-loading-bar h-full w-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 shadow-lg shadow-blue-500/50" />
     </div>
   );

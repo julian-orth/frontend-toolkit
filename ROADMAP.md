@@ -1,43 +1,55 @@
-# Frontend Toolkit – Go-Live Roadmap
+# Frontend Toolkit – Solo Dev Roadmap
 
-## 1. Feature Freeze & Final QA
+## Context
 
-**Deadline:** December 5, 2025
+- **Solo project:** Developed and maintained by a single person.
+- **Private GitHub:** Repository is private; no public collaboration.
+- **Goal:** Focus on core functionality, polish, and go-live. No team or community features for now.
+
+## Go-Live Priorities
 
 - Complete all planned tool implementations
-- Finalize UI/UX polish and accessibility checks
-- Run full browser/device compatibility tests
-- Fix all critical and high-priority bugs
+- Polish UI/UX and ensure accessibility (a11y, focus states, color contrast)
+- Test on all major browsers/devices
+- Add and validate SEO metadata (title, description, Open Graph, Twitter Card)
+- Ensure sitemap and robots.txt are correct
+- Add favicon, manifest, and basic PWA support
+- Write and update `README.md` (usage, deployment, architecture)
+- Final self-review for bugs, performance, and accessibility
+- Deploy to production (Vercel/Netlify)
 
-## 2. Content & SEO Finalization
+## After Go-Live (Solo Maintenance)
 
-**Deadline:** December 7, 2025
+- Add more tools (see backlog)
+- Add more i18n/locales
+- Add settings page (tool config, theme, etc)
+- Add keyboard shortcuts
+- Add tool search/filter
+- Add onboarding/tour
 
-- Review and update all tool descriptions and metadata
-- Ensure all pages export correct SEO metadata
-- Validate sitemap and robots.txt
-- Add Open Graph/Twitter Card tags
+## Stretch Goals
 
-## 3. Documentation & ReadMe
+- Tool state sync (localStorage, IndexedDB)
+- Export/import tool configs
+- Community tool suggestions (if repo goes public)
+- Analytics (local, opt-in, privacy-first)
 
-**Deadline:** December 8, 2025
+## Tool Ideas / Backlog
 
-- Update `README.md` with usage, contribution, and deployment instructions
-- Add tool usage examples/screenshots
-- Document theme system and architecture
+- CSS minifier/beautifier
+- HTML minifier/beautifier
+- SVG optimizer
+- Color palette generator
+- Markdown previewer
+- Unit converter
+- QR code generator/reader
+- Image base64 encoder/decoder
+- JWT encoder
+- Regex explainer
 
-## 4. Pre-Launch Review
+## Notes
 
-**Deadline:** December 9, 2025
-
-- Internal team review and sign-off
-- Final accessibility and performance audit
-- Prepare release notes and changelog
-
-## 5. Go-Live
-
-**Deadline:** December 10, 2025
-
-- Deploy to production (Vercel/Netlify or chosen host)
-- Announce release (social, newsletter, etc.)
-- Monitor for post-launch issues
+- All code is private on GitHub (for now)
+- No backend, no tracking, no cookies
+- Focus on privacy, speed, and UX
+- Solo project: all features and fixes are self-driven
