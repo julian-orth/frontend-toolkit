@@ -23,12 +23,25 @@ Next.js 15 App Router application providing client-side developer tools. All too
 
 ### Content Management Pattern
 
-All site content lives in `lib/i18n/en.ts`:
+**IMPORTANT: Tools now use a centralized registry system for better maintainability.**
 
-- Tool definitions: `TOOLS` array with `id`, `name`, `description`, `href`
-- Navigation: `NAV_ITEMS` array
-- Site metadata: `SITE_NAME`, `SITE_DESCRIPTION`
-- **To add a new tool**: Add to `TOOLS` array, create `app/tools/{tool-id}/page.tsx`, tool auto-appears on homepage
+- Tool registry: `lib/tools/registry.ts` exports `TOOL_REGISTRY` constant
+- Types: `lib/types/tool.ts` defines `Tool` interface and related types
+- Validation: `lib/tools/validator.ts` provides validation functions
+- Backward compatibility: `lib/i18n/en.ts` re-exports TOOLS from registry
+- **To add a new tool**:
+  1. Run `npm run create:tool` (recommended) OR
+  2. Manually add to `lib/tools/registry.ts` + create `app/tools/{tool-id}/page.tsx`
+  3. Run `npm run validate:tools` to verify
+  4. Tool auto-appears on homepage and in sidebar
+
+### Tool Maintenance System
+
+- **Tool Generator**: `npm run create:tool` - Interactive CLI to scaffold new tools
+- **Tool Validator**: `npm run validate:tools` - Validates all tools (runs before build)
+- **Registry Functions**: `getToolById()`, `getToolsByGroup()`, `searchTools()`, `getRelatedTools()`
+- **Type Safety**: TypeScript interfaces ensure consistency across all tools
+- **Related Tools**: Automatic cross-linking via `relatedTools` array in registry
 
 ### i18n Structure (Future-Ready)
 
@@ -81,11 +94,13 @@ import { Zap } from "lucide-react";
 ### Commands
 
 ```bash
-npm run dev          # Development server (default port 3000, uses 3002 if taken)
-npm run build        # Production build
-npm run start        # Production server
-npm run format       # Prettier (auto-sorts Tailwind classes)
-npm run lint         # ESLint
+npm run dev              # Development server (default port 3000, uses 3002 if taken)
+npm run build            # Production build (runs validate:tools first)
+npm run start            # Production server
+npm run format           # Prettier (auto-sorts Tailwind classes)
+npm run lint             # ESLint
+npm run create:tool      # Interactive CLI to scaffold new tools
+npm run validate:tools   # Validate all tools in registry
 ```
 
 ### Lock File Issues
@@ -99,12 +114,37 @@ Config: `postcss.config.js` with `@tailwindcss/postcss` and `autoprefixer`
 
 ## File Organization
 
-### Adding New Pages
+### Adding New Tools
 
-1. Create `app/tools/{tool-name}/page.tsx`
-2. Export metadata: `export const metadata: Metadata = { title: "...", description: "..." }`
-3. Use tool page template (see "Component Styling Pattern")
-4. Add to `TOOLS` in `lib/i18n/en.ts`
+**Recommended: Use the tool generator**
+
+```bash
+npm run create:tool
+```
+
+This interactive CLI will:
+
+- ✅ Scaffold all required files (page.tsx, UI component, utils)
+- ✅ Add tool to registry with proper structure
+- ✅ Generate Next.js metadata and SEO boilerplate
+- ✅ Create consistent styling and accessibility patterns
+
+**Manual process:**
+
+1. Add tool to `lib/tools/registry.ts` in `TOOL_REGISTRY` array
+2. Create `app/tools/{tool-name}/page.tsx` with metadata
+3. Create `app/tools/{tool-name}/{tool-name}-ui.tsx` (client component)
+4. Create `app/tools/{tool-name}/utils.ts` for logic
+5. Run `npm run validate:tools` to verify
+
+**Tool structure:**
+
+```
+app/tools/{tool-id}/
+  ├── page.tsx           # Server component with metadata
+  ├── {tool-id}-ui.tsx   # Client component with UI
+  └── utils.ts           # Tool logic and utilities
+```
 
 ### Component Extraction
 
@@ -122,8 +162,9 @@ Config: `postcss.config.js` with `@tailwindcss/postcss` and `autoprefixer`
 
 ### Imports Always Required
 
-- Content: `import { SITE_NAME, TOOLS, NAV_ITEMS } from "@/lib/i18n/en"`
+- Registry: `import { TOOLS } from "@/lib/tools/registry"` (or `@/lib/i18n/en` for backward compatibility)
 - Types: `import type { Metadata } from "next"`
+- Tool types: `import type { Tool } from "@/lib/types/tool"`
 - Theme: `import { useTheme } from "@/lib/contexts/theme-context"` (client only)
 
 ### TypeScript Path Aliases

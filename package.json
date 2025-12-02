@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "create:tool": "node scripts/create-tool.js",
+    "validate:tools": "node scripts/validate-tools.js",
+    "prebuild": "npm run validate:tools"
   },
   "dependencies": {
     "diff": "^8.0.2",

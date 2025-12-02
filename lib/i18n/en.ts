@@ -1,149 +1,19 @@
+/**
+ * Site Content and Configuration
+ *
+ * IMPORTANT: TOOLS has moved to lib/tools/registry.ts
+ * Import from there for better maintainability:
+ * import { TOOLS } from "@/lib/tools/registry"
+ */
+
 export const SITE_NAME = "Frontend Tools Hub";
 export const SITE_DESCRIPTION = "Free online tools for developers";
 
-export const TOOLS = [
-  {
-    id: "json-formatter",
-    name: "JSON Formatter",
-    description:
-      "Format, validate, minify, and beautify JSON with error detection",
-    href: "/tools/json-formatter",
-    group: "JSON",
-    groupColor: "blue",
-    groupIcon: "braces",
-  },
-  {
-    id: "uuid-generator",
-    name: "UUID Generator",
-    description: "Generate RFC 4122 UUIDs (v1, v3, v4, v5, NIL)",
-    href: "/tools/uuid-generator",
-    group: "UUID",
-    groupColor: "purple",
-    groupIcon: "fingerprint",
-  },
-  {
-    id: "uuid-validator",
-    name: "UUID Validator",
-    description: "Validate UUIDs and check their version",
-    href: "/tools/uuid-validator",
-    group: "UUID",
-    groupColor: "purple",
-    groupIcon: "fingerprint",
-  },
-  {
-    id: "uuid-decoder",
-    name: "UUID Decoder & Analyzer",
-    description: "Decode UUIDs: extract version, variant, timestamp",
-    href: "/tools/uuid-decoder",
-    group: "UUID",
-    groupColor: "purple",
-    groupIcon: "fingerprint",
-  },
-  {
-    id: "uuid-format-converter",
-    name: "UUID Format Converter",
-    description:
-      "Convert UUIDs between formats (hyphens, uppercase, URN, etc.)",
-    href: "/tools/uuid-format-converter",
-    group: "UUID",
-    groupColor: "purple",
-    groupIcon: "fingerprint",
-  },
-  {
-    id: "base64",
-    name: "Base64 Encoder/Decoder",
-    description: "Encode and decode Base64 strings",
-    href: "/tools/base64",
-    group: "Encoding",
-    groupColor: "green",
-    groupIcon: "binary",
-  },
-  {
-    id: "url-encoder",
-    name: "URL Encoder/Decoder",
-    description: "Encode and decode URLs",
-    href: "/tools/url-encoder",
-    group: "Encoding",
-    groupColor: "green",
-    groupIcon: "binary",
-  },
-  {
-    id: "regex-tester",
-    name: "Regex Tester",
-    description: "Test regular expressions",
-    href: "/tools/regex-tester",
-    group: "Regex",
-    groupColor: "orange",
-    groupIcon: "regex",
-  },
-  {
-    id: "color-picker",
-    name: "Color Picker",
-    description:
-      "Pick colors, convert formats (HEX, RGB, HSL), and generate palettes",
-    href: "/tools/color-picker",
-    group: "Color",
-    groupColor: "pink",
-    groupIcon: "palette",
-  },
-  {
-    id: "color-palettes",
-    name: "Color Palette Generator",
-    description:
-      "Generate beautiful color palettes using color theory harmonies",
-    href: "/tools/color-palettes",
-    group: "Color",
-    groupColor: "pink",
-    groupIcon: "palette",
-  },
-  {
-    id: "gradient-generator",
-    name: "Gradient Generator",
-    description:
-      "Create stunning CSS gradients with 45+ presets and custom options",
-    href: "/tools/gradient-generator",
-    group: "Color",
-    groupColor: "pink",
-    groupIcon: "palette",
-  },
-  {
-    id: "lorem-ipsum",
-    name: "Lorem Ipsum Generator",
-    description:
-      "Generate classic placeholder text for designs, mockups, and prototypes",
-    href: "/tools/lorem-ipsum",
-    group: "Text",
-    groupColor: "yellow",
-    groupIcon: "text",
-  },
-  {
-    id: "timestamp-converter",
-    name: "Timestamp Converter",
-    description: "Convert Unix timestamps to dates and vice versa",
-    href: "/tools/timestamp-converter",
-    group: "Time",
-    groupColor: "cyan",
-    groupIcon: "clock",
-  },
-  {
-    id: "text-diff",
-    name: "Text Diff",
-    description: "Compare text differences",
-    href: "/tools/text-diff",
-    group: "Text",
-    groupColor: "yellow",
-    groupIcon: "text",
-  },
-  {
-    id: "jwt-decoder",
-    name: "JWT Decoder",
-    description: "Decode JSON Web Tokens",
-    href: "/tools/jwt-decoder",
-    group: "JWT",
-    groupColor: "red",
-    groupIcon: "shield-check",
-  },
-];
+/**
+ * @deprecated Import from @/lib/tools/registry instead
+ * This export maintained for backward compatibility
+ */
+export { TOOLS } from "@/lib/tools/registry";
 
 export const NAV_ITEMS = [
   { name: "Home", href: "/" },
