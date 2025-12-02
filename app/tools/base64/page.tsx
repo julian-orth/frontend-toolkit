@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function Base64Page() {
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4 py-4">
       <div className="mb-8">
         <Breadcrumb />
         <h1 className="mb-3 text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-50">

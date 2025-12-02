@@ -50,138 +50,179 @@ export default function JsonFormatterPage() {
 
       <JsonFormatterClient />
 
-      <div className="mb-8 space-y-8">
-        <section className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-          <h2 className="mb-2 text-2xl font-semibold text-gray-900 dark:text-gray-50">
+      {/* SEO Content Sections */}
+      <div className="mt-16 space-y-12">
+        <section>
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-50">
             What is JSON?
           </h2>
-          <p className="text-gray-600 dark:text-gray-400">
-            JSON (JavaScript Object Notation) is a lightweight, text-based data
-            interchange format that is easy for humans to read and write, and
-            easy for machines to parse and generate. It&apos;s widely used for
-            transmitting data in web applications between servers and clients,
-            configuration files, and API responses.
-          </p>
-          <p className="mt-3 text-gray-600 dark:text-gray-400">
-            JSON is language-independent but uses conventions familiar to
-            programmers of C-family languages including C, C++, C#, Java,
-            JavaScript, Perl, Python, and many others.
-          </p>
+          <div className="space-y-4 text-gray-700 dark:text-gray-300">
+            <p>
+              JSON (JavaScript Object Notation) is a lightweight, text-based
+              data interchange format that is easy for humans to read and write,
+              and easy for machines to parse and generate. Despite its name
+              being derived from JavaScript, JSON is completely
+              language-independent and supported by virtually every modern
+              programming language through native functions or libraries.
+            </p>
+            <p>
+              Originally specified by Douglas Crockford in the early 2000s, JSON
+              has become the de facto standard for data exchange on the web. It
+              has largely replaced XML for web APIs due to its simpler syntax,
+              smaller payload size, and native support in JavaScript, making it
+              ideal for AJAX applications and RESTful APIs.
+            </p>
+            <p>
+              JSON is built on two universal data structures: objects
+              (collections of name-value pairs) and arrays (ordered lists of
+              values). This simplicity makes JSON extremely versatile—it can
+              represent complex hierarchical data structures while remaining
+              human-readable and easy to debug. From configuration files to API
+              responses, database exports to state management, JSON has become
+              ubiquitous in modern software development.
+            </p>
+          </div>
         </section>
 
-        <section className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-          <h2 className="mb-2 text-2xl font-semibold text-gray-900 dark:text-gray-50">
-            Key Features
+        {/* Common Use Cases */}
+        <section>
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-50">
+            Common Use Cases for JSON
           </h2>
-          <ul className="mt-4 list-disc pl-5 text-gray-600 dark:text-gray-400">
-            <li>
-              <strong>Format & Beautify:</strong> Convert minified JSON into
-              human-readable format with customizable indentation (2, 3, or 4
-              spaces)
-            </li>
-            <li>
-              <strong>Validate:</strong> Check JSON syntax and get detailed
-              error messages with line and column numbers
-            </li>
-            <li>
-              <strong>Minify:</strong> Compress JSON by removing whitespace for
-              reduced file size
-            </li>
-            <li>
-              <strong>Sort Keys:</strong> Alphabetically sort object keys for
-              better readability and consistency
-            </li>
-            <li>
-              <strong>Line Numbers:</strong> Optional line numbering for easier
-              navigation and debugging
-            </li>
-            <li>
-              <strong>Copy & Download:</strong> Easily copy formatted JSON to
-              clipboard or download as a file
-            </li>
-          </ul>
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="rounded-xl border border-blue-200 bg-blue-50/50 p-6 dark:border-blue-800 dark:bg-blue-950/20">
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-gray-50">
+                API Development & Integration
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                RESTful APIs use JSON as the primary data format for request and
+                response payloads. Format API responses to debug integration
+                issues, validate request payloads before sending, and ensure
+                proper data structure. JSON's lightweight nature and native
+                JavaScript support make it perfect for web APIs and
+                microservices communication.
+              </p>
+            </div>
+            <div className="rounded-xl border border-blue-200 bg-blue-50/50 p-6 dark:border-blue-800 dark:bg-blue-950/20">
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-gray-50">
+                Configuration Files
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Modern applications use JSON for configuration: package.json for
+                Node.js projects, tsconfig.json for TypeScript, settings.json
+                for VS Code, and countless other tools. Format and validate
+                these files to catch syntax errors early and maintain consistent
+                formatting across your project.
+              </p>
+            </div>
+            <div className="rounded-xl border border-blue-200 bg-blue-50/50 p-6 dark:border-blue-800 dark:bg-blue-950/20">
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-gray-50">
+                Database Operations
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                NoSQL databases like MongoDB use JSON-like documents for data
+                storage. Export data from databases in JSON format for backups,
+                migrations, or analysis. Format database queries and results to
+                understand data structures and troubleshoot issues in database
+                operations.
+              </p>
+            </div>
+            <div className="rounded-xl border border-blue-200 bg-blue-50/50 p-6 dark:border-blue-800 dark:bg-blue-950/20">
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-gray-50">
+                Data Exchange & Migration
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Transfer data between systems, applications, or services using
+                JSON. Import/export data from spreadsheets, migrate between
+                different database systems, or exchange information between
+                front-end and back-end applications. JSON's universal support
+                makes it ideal for cross-platform data exchange.
+              </p>
+            </div>
+            <div className="rounded-xl border border-blue-200 bg-blue-50/50 p-6 dark:border-blue-800 dark:bg-blue-950/20">
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-gray-50">
+                Frontend State Management
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Redux stores, Vuex state, React Context, and other state
+                management solutions serialize application state as JSON. Debug
+                state changes, persist state to localStorage, or share state
+                snapshots for debugging. Well-formatted JSON makes state
+                inspection and time-travel debugging much easier.
+              </p>
+            </div>
+            <div className="rounded-xl border border-blue-200 bg-blue-50/50 p-6 dark:border-blue-800 dark:bg-blue-950/20">
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-gray-50">
+                Logging & Analytics
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Structured logging systems output logs in JSON format for easy
+                parsing and analysis. Format log entries to troubleshoot
+                application issues, validate log structure before sending to log
+                aggregation services like Elasticsearch or Splunk, and ensure
+                consistent logging across microservices.
+              </p>
+            </div>
+          </div>
         </section>
 
-        <section className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-          <h2 className="mb-2 text-2xl font-semibold text-gray-900 dark:text-gray-50">
-            Common Use Cases
+        {/* JSON Syntax Rules */}
+        <section>
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-50">
+            JSON Syntax Rules & Specifications
           </h2>
-          <ul className="mt-4 list-disc pl-5 text-gray-600 dark:text-gray-400">
-            <li>
-              <strong>API Development:</strong> Format and validate API request
-              and response payloads
-            </li>
-            <li>
-              <strong>Configuration Files:</strong> Edit and validate JSON
-              configuration files for applications
-            </li>
-            <li>
-              <strong>Data Migration:</strong> Transform and validate data
-              during migration processes
-            </li>
-            <li>
-              <strong>Debugging:</strong> Identify syntax errors in JSON data
-              with precise error locations
-            </li>
-            <li>
-              <strong>Code Review:</strong> Format JSON for better readability
-              in code reviews and documentation
-            </li>
-            <li>
-              <strong>Performance:</strong> Minify JSON to reduce payload size
-              in production environments
-            </li>
-          </ul>
-        </section>
+          <div className="space-y-6">
+            <div className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-gray-50">
+                Basic Structure
+              </h3>
+              <p className="mb-3 text-gray-700 dark:text-gray-300">
+                JSON data must follow strict formatting rules to be valid:
+              </p>
+              <ul className="ml-6 list-disc space-y-2 text-gray-700 dark:text-gray-300">
+                <li>
+                  <strong>Objects:</strong> Enclosed in curly braces {"{}"} with
+                  name-value pairs separated by commas. Keys must be strings in
+                  double quotes.
+                </li>
+                <li>
+                  <strong>Arrays:</strong> Enclosed in square brackets [] with
+                  values separated by commas. Can contain any JSON data type.
+                </li>
+                <li>
+                  <strong>Strings:</strong> Must use double quotes ("), not
+                  single quotes. Special characters must be escaped with
+                  backslash.
+                </li>
+                <li>
+                  <strong>Numbers:</strong> Can be integers or floating-point.
+                  Scientific notation is supported (e.g., 1.2e+3).
+                </li>
+                <li>
+                  <strong>Booleans:</strong> Lowercase true or false without
+                  quotes.
+                </li>
+                <li>
+                  <strong>Null:</strong> Lowercase null represents an empty
+                  value.
+                </li>
+                <li>
+                  <strong>No trailing commas:</strong> The last item in objects
+                  or arrays cannot have a trailing comma.
+                </li>
+                <li>
+                  <strong>No comments:</strong> JSON specification doesn't allow
+                  comments (unlike JavaScript objects).
+                </li>
+              </ul>
+            </div>
 
-        <section className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-          <h2 className="mb-2 text-2xl font-semibold text-gray-900 dark:text-gray-50">
-            JSON Syntax Rules
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400">
-            To write valid JSON, follow these basic rules:
-          </p>
-          <ul className="mt-4 list-disc pl-5 text-gray-600 dark:text-gray-400">
-            <li>Data is in name/value pairs separated by colons</li>
-            <li>Data is separated by commas</li>
-            <li>
-              Objects are enclosed in curly braces <code>{"{}"}</code>
-            </li>
-            <li>
-              Arrays are enclosed in square brackets <code>[]</code>
-            </li>
-            <li>
-              Strings must be enclosed in double quotes{" "}
-              <code>&quot;text&quot;</code>
-            </li>
-            <li>
-              Numbers can be integers or floating-point (no quotes required)
-            </li>
-            <li>
-              Boolean values are <code>true</code> or <code>false</code> (no
-              quotes)
-            </li>
-            <li>
-              Null values are represented as <code>null</code>
-            </li>
-            <li>No trailing commas allowed after the last element</li>
-            <li>
-              No comments allowed (use a separate field for documentation if
-              needed)
-            </li>
-          </ul>
-        </section>
-
-        <section className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-          <h2 className="mb-2 text-2xl font-semibold text-gray-900 dark:text-gray-50">
-            Example JSON
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400">
-            Here&apos;s an example of well-formatted JSON representing a user
-            profile:
-          </p>
-          <pre className="mt-4 overflow-x-auto rounded bg-gray-100 p-4 text-sm dark:bg-gray-800">
-            <code>{`{
+            <div className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-gray-50">
+                Valid JSON Example
+              </h3>
+              <pre className="overflow-x-auto rounded-lg bg-gray-50 p-4 text-sm dark:bg-gray-950">
+                <code className="text-gray-900 dark:text-gray-100">{`{
   "name": "John Doe",
   "age": 30,
   "email": "john@example.com",
@@ -195,52 +236,331 @@ export default function JsonFormatterPage() {
   "balance": 1234.56,
   "metadata": null
 }`}</code>
-          </pre>
+              </pre>
+            </div>
+          </div>
         </section>
 
-        <section className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-          <h2 className="mb-2 text-2xl font-semibold text-gray-900 dark:text-gray-50">
-            Common JSON Errors
+        {/* Features Explanation */}
+        <section>
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-50">
+            Formatter Features Explained
           </h2>
-          <ul className="mt-4 list-disc pl-5 text-gray-600 dark:text-gray-400">
-            <li>
-              <strong>Trailing commas:</strong> Remove commas after the last
-              item in objects or arrays
-            </li>
-            <li>
-              <strong>Single quotes:</strong> Replace single quotes with double
-              quotes around strings
-            </li>
-            <li>
-              <strong>Unquoted keys:</strong> Always wrap object keys in double
-              quotes
-            </li>
-            <li>
-              <strong>Missing commas:</strong> Ensure items in arrays and
-              objects are separated by commas
-            </li>
-            <li>
-              <strong>Invalid escape sequences:</strong> Use proper escaping for
-              special characters like <code>\n</code>, <code>\t</code>,{" "}
-              <code>\"</code>
-            </li>
-            <li>
-              <strong>Unclosed brackets/braces:</strong> Every opening bracket
-              or brace must have a matching closing one
-            </li>
-          </ul>
+          <div className="space-y-6">
+            <div className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-gray-50">
+                Format & Beautify
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Transform minified or poorly formatted JSON into human-readable
+                format with proper indentation and line breaks. Choose between
+                2, 3, or 4 spaces for indentation based on your project's coding
+                standards. Proper formatting makes JSON much easier to read,
+                understand, and maintain, especially for complex nested
+                structures.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-gray-50">
+                Validate & Debug
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Instantly validate JSON syntax and receive detailed error
+                messages with exact line and column numbers. Common errors like
+                trailing commas, unquoted keys, single quotes, or missing
+                brackets are immediately identified. This saves significant
+                debugging time and prevents deployment issues caused by
+                malformed JSON in configuration files or API payloads.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-gray-50">
+                Minify for Production
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Remove all whitespace, line breaks, and unnecessary characters
+                to reduce file size. Minified JSON loads faster over networks
+                and reduces bandwidth costs, making it ideal for production
+                environments. A 100KB formatted JSON file might minify to
+                70-80KB, significantly improving API response times and reducing
+                data transfer costs.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-gray-50">
+                Sort Keys Alphabetically
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Alphabetically sort object keys for improved readability and
+                consistency. This makes it easier to find specific properties in
+                large JSON objects and enables better version control diffs by
+                reducing irrelevant changes caused by inconsistent key ordering.
+                Sorted JSON is especially useful for configuration files that
+                are maintained by multiple developers.
+              </p>
+            </div>
+          </div>
         </section>
 
-        <section className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-          <h2 className="mb-2 text-2xl font-semibold text-gray-900 dark:text-gray-50">
-            Privacy & Security
+        {/* FAQ Section */}
+        <section>
+          <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-50">
+            Frequently Asked Questions
           </h2>
-          <p className="text-gray-600 dark:text-gray-400">
-            All JSON formatting and validation is performed entirely in your
-            browser. Your data never leaves your device and is not sent to any
-            server. This ensures complete privacy and security for sensitive
-            data.
+          <div className="space-y-6">
+            <details className="group rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+              <summary className="cursor-pointer text-lg font-semibold text-gray-900 dark:text-gray-50">
+                What's the difference between JSON and JavaScript objects?
+              </summary>
+              <p className="mt-3 text-gray-700 dark:text-gray-300">
+                While JSON syntax is based on JavaScript object notation,
+                they're not identical. JSON requires double quotes for all keys
+                and string values, doesn't support trailing commas, cannot
+                contain functions or undefined values, and doesn't allow
+                comments. JavaScript objects are more flexible, allowing single
+                quotes, unquoted keys, trailing commas, functions, and comments.
+                Think of JSON as a strict subset of JavaScript object notation
+                designed specifically for data exchange.
+              </p>
+            </details>
+
+            <details className="group rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+              <summary className="cursor-pointer text-lg font-semibold text-gray-900 dark:text-gray-50">
+                Why does my JSON have a syntax error?
+              </summary>
+              <p className="mt-3 text-gray-700 dark:text-gray-300">
+                The most common JSON errors are: trailing commas after the last
+                item, using single quotes instead of double quotes, forgetting
+                to quote object keys, missing commas between items, unclosed
+                brackets or braces, and invalid escape sequences. Our formatter
+                provides detailed error messages with line and column numbers to
+                help you quickly identify and fix these issues. Copy your JSON
+                into the formatter to see exactly what needs to be corrected.
+              </p>
+            </details>
+
+            <details className="group rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+              <summary className="cursor-pointer text-lg font-semibold text-gray-900 dark:text-gray-50">
+                Can I add comments to JSON?
+              </summary>
+              <p className="mt-3 text-gray-700 dark:text-gray-300">
+                No, the JSON specification doesn't support comments. If you need
+                documentation within your JSON data, you can add a special key
+                like "_comment" or "description" with string values. Some tools
+                support JSON5 or JSONC (JSON with Comments) which allow
+                comments, but these are not standard JSON and won't work with
+                most JSON parsers. For configuration files that need comments,
+                consider using YAML, TOML, or your language's native
+                configuration format.
+              </p>
+            </details>
+
+            <details className="group rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+              <summary className="cursor-pointer text-lg font-semibold text-gray-900 dark:text-gray-50">
+                How do I escape special characters in JSON strings?
+              </summary>
+              <p className="mt-3 text-gray-700 dark:text-gray-300">
+                JSON strings must escape certain special characters using
+                backslash: \\ for backslash, \" for double quote, \n for
+                newline, \r for carriage return, \t for tab, \b for backspace,
+                \f for form feed, and \uXXXX for Unicode characters. For
+                example, to include a quote in a string, use "He said
+                \"Hello\"". Proper escaping ensures your JSON remains valid and
+                displays correctly when parsed.
+              </p>
+            </details>
+
+            <details className="group rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+              <summary className="cursor-pointer text-lg font-semibold text-gray-900 dark:text-gray-50">
+                Is my data safe when using this formatter?
+              </summary>
+              <p className="mt-3 text-gray-700 dark:text-gray-300">
+                Yes, completely safe. All JSON formatting, validation, and
+                processing happens entirely in your browser using JavaScript. No
+                data is ever transmitted to our servers, stored in databases, or
+                shared with third parties. You can even disconnect from the
+                internet after loading the page and the formatter will continue
+                to work. This makes it safe to format sensitive data like API
+                keys, configuration secrets, or proprietary data structures.
+              </p>
+            </details>
+
+            <details className="group rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+              <summary className="cursor-pointer text-lg font-semibold text-gray-900 dark:text-gray-50">
+                Should I use minified JSON in production?
+              </summary>
+              <p className="mt-3 text-gray-700 dark:text-gray-300">
+                Yes, for APIs and data transfer, minified JSON reduces file size
+                by 20-30%, improving load times and reducing bandwidth costs.
+                However, keep formatted versions for development and debugging.
+                Use minification as part of your build process, not manually.
+                For configuration files on servers, formatting matters less than
+                correctness, so choose what's more maintainable for your team.
+              </p>
+            </details>
+
+            <details className="group rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+              <summary className="cursor-pointer text-lg font-semibold text-gray-900 dark:text-gray-50">
+                Can JSON represent all data types?
+              </summary>
+              <p className="mt-3 text-gray-700 dark:text-gray-300">
+                JSON supports six data types: objects, arrays, strings, numbers,
+                booleans, and null. It cannot directly represent dates (use ISO
+                8601 strings), functions (not serializable), undefined (use
+                null), circular references (will cause errors), NaN or Infinity
+                (use null or strings), or binary data (use Base64 encoding). For
+                complex data types, you'll need to serialize them to
+                JSON-compatible formats and deserialize them on the receiving
+                end.
+              </p>
+            </details>
+
+            <details className="group rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+              <summary className="cursor-pointer text-lg font-semibold text-gray-900 dark:text-gray-50">
+                What indentation size should I use?
+              </summary>
+              <p className="mt-3 text-gray-700 dark:text-gray-300">
+                This depends on your project's coding standards. 2 spaces is
+                compact and widely used in modern web development (default for
+                Prettier). 4 spaces provides better visual separation and is
+                common in enterprise projects. 3 spaces is less common. Choose
+                what your team uses consistently across your codebase. Most
+                importantly, be consistent—mixing indentation styles causes
+                version control conflicts and reduces readability.
+              </p>
+            </details>
+
+            <details className="group rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+              <summary className="cursor-pointer text-lg font-semibold text-gray-900 dark:text-gray-50">
+                How do I handle large JSON files?
+              </summary>
+              <p className="mt-3 text-gray-700 dark:text-gray-300">
+                Our formatter handles reasonably large files (several
+                megabytes), but very large files (10MB+) may slow down or crash
+                your browser. For extremely large JSON files, consider:
+                streaming parsers that process data in chunks, command-line
+                tools like jq for large-scale processing, or database imports
+                instead of in-browser formatting. For web applications, paginate
+                or chunk large JSON responses instead of sending everything at
+                once.
+              </p>
+            </details>
+
+            <details className="group rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+              <summary className="cursor-pointer text-lg font-semibold text-gray-900 dark:text-gray-50">
+                Can I use this formatter programmatically?
+              </summary>
+              <p className="mt-3 text-gray-700 dark:text-gray-300">
+                This is a browser-based tool designed for manual use. For
+                programmatic JSON formatting, use your programming language's
+                built-in functions: JSON.stringify() in JavaScript, json.dumps()
+                in Python, json_encode() in PHP, or JSON.Marshal() in Go. For
+                command-line formatting, use jq (Unix/Linux/Mac) or integrate
+                Prettier into your build process for automated formatting across
+                your entire project.
+              </p>
+            </details>
+          </div>
+        </section>
+
+        {/* Best Practices */}
+        <section>
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-50">
+            JSON Best Practices
+          </h2>
+          <div className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+            <div className="space-y-4 text-gray-700 dark:text-gray-300">
+              <p>
+                <strong>Use consistent naming conventions:</strong> Choose
+                either camelCase (common in JavaScript), snake_case (common in
+                Python), or kebab-case and stick with it throughout your JSON
+                structure. Consistency makes your data easier to work with and
+                reduces confusion.
+              </p>
+              <p>
+                <strong>Validate before deploying:</strong> Always validate JSON
+                configuration files, API responses, and data exports before
+                deployment. Invalid JSON causes runtime errors that can crash
+                applications or APIs. Use automated validation in your CI/CD
+                pipeline.
+              </p>
+              <p>
+                <strong>Keep nesting reasonable:</strong> While JSON supports
+                deep nesting, structures more than 3-4 levels deep become hard
+                to read and maintain. Consider flattening your structure or
+                using references to other objects instead of deep nesting.
+              </p>
+              <p>
+                <strong>Use appropriate data types:</strong> Don't quote numbers
+                or booleans unnecessarily. Use null for missing values instead
+                of empty strings or zero. Represent dates as ISO 8601 strings
+                (YYYY-MM-DDTHH:mm:ss.sssZ) for consistency across timezones.
+              </p>
+              <p>
+                <strong>Document your schema:</strong> For complex JSON
+                structures, maintain documentation or use JSON Schema to define
+                the expected structure, data types, and validation rules. This
+                helps other developers understand and correctly use your JSON
+                data.
+              </p>
+              <p>
+                <strong>Compress for transmission:</strong> Use HTTP compression
+                (gzip, brotli) when sending JSON over networks. This typically
+                reduces JSON size by 70-80%, much more effective than just
+                minification. Most web servers and HTTP clients support this
+                automatically.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Tools */}
+        <section>
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-50">
+            Related Developer Tools
+          </h2>
+          <p className="mb-6 text-gray-700 dark:text-gray-300">
+            Explore other data formatting and validation tools to streamline
+            your development workflow:
           </p>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <a
+              href="/tools/base64"
+              className="group rounded-xl border border-gray-200 bg-white p-6 transition-all hover:border-green-300 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:border-green-700"
+            >
+              <h3 className="mb-2 text-lg font-semibold text-gray-900 group-hover:text-green-600 dark:text-gray-50 dark:group-hover:text-green-400">
+                Base64 Encoder/Decoder
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Encode JSON data to Base64 for transmission or storage
+              </p>
+            </a>
+            <a
+              href="/tools/jwt-decoder"
+              className="group rounded-xl border border-gray-200 bg-white p-6 transition-all hover:border-red-300 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:border-red-700"
+            >
+              <h3 className="mb-2 text-lg font-semibold text-gray-900 group-hover:text-red-600 dark:text-gray-50 dark:group-hover:text-red-400">
+                JWT Decoder
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Decode and format JSON payloads from JWT tokens
+              </p>
+            </a>
+            <a
+              href="/tools/url-encoder"
+              className="group rounded-xl border border-gray-200 bg-white p-6 transition-all hover:border-orange-300 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:border-orange-700"
+            >
+              <h3 className="mb-2 text-lg font-semibold text-gray-900 group-hover:text-orange-600 dark:text-gray-50 dark:group-hover:text-orange-400">
+                URL Encoder/Decoder
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                URL-encode JSON for API query parameters
+              </p>
+            </a>
+          </div>
         </section>
       </div>
     </div>

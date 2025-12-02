@@ -161,10 +161,14 @@ The end.`
       {/* Mode Selection */}
       <div className="flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
-          <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+          <label
+            htmlFor="diff-mode"
+            className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+          >
             Compare:
-          </span>
+          </label>
           <select
+            id="diff-mode"
             value={diffMode}
             onChange={(e) => setDiffMode(e.target.value as DiffMode)}
             className="rounded-lg border border-indigo-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 dark:border-indigo-800 dark:bg-gray-900 dark:text-gray-300"
@@ -176,10 +180,17 @@ The end.`
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+          <span
+            className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+            aria-label="View mode"
+          >
             View:
           </span>
-          <div className="flex rounded-xl border border-indigo-200 bg-white p-1 dark:border-indigo-800 dark:bg-gray-900">
+          <div
+            className="flex rounded-xl border border-indigo-200 bg-white p-1 dark:border-indigo-800 dark:bg-gray-900"
+            role="group"
+            aria-label="View mode selection"
+          >
             <button
               type="button"
               onClick={() => setViewMode("split")}
@@ -210,7 +221,11 @@ The end.`
 
       {/* Options */}
       <div className="flex flex-wrap items-center gap-4 rounded-xl border border-indigo-200 bg-indigo-50/30 p-4 dark:border-indigo-800 dark:bg-indigo-950/20">
-        <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+        <span
+          className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+          role="group"
+          aria-label="Diff options"
+        >
           Options:
         </span>
         <Checkbox

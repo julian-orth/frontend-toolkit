@@ -327,10 +327,14 @@ export function TimestampConverterUI() {
         {/* Output */}
         <div className="flex flex-col">
           <div className="mb-2 flex items-center justify-between">
-            <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+            <div
+              className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+              role="heading"
+              aria-level="3"
+            >
               Output{" "}
               {mode === "to-date" ? "(Date/Time Formats)" : "(Unix Timestamp)"}
-            </label>
+            </div>
             {output && (
               <div className="flex gap-2">
                 <button
@@ -388,10 +392,14 @@ export function TimestampConverterUI() {
             </h3>
           </div>
           <div className="mb-4">
-            <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label
+              htmlFor="timezone-select"
+              className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
               Select Timezone
             </label>
             <select
+              id="timezone-select"
               value={selectedTimezone}
               onChange={(e) => setSelectedTimezone(e.target.value)}
               className="w-full rounded-lg border border-cyan-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500 dark:border-cyan-800 dark:bg-gray-900 dark:text-gray-300"

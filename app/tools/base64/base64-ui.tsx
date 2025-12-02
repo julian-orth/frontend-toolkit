@@ -335,9 +335,13 @@ export function Base64UI() {
         {/* Output */}
         <div className="flex flex-col">
           <div className="mb-2 flex items-center justify-between">
-            <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+            <div
+              className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+              role="heading"
+              aria-level="3"
+            >
               Output {mode === "encode" ? "(Base64)" : "(Text)"}
-            </label>
+            </div>
             {output && (
               <div className="flex gap-2">
                 <button

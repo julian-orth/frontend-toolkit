@@ -76,11 +76,16 @@ export function SidebarNav() {
       aria-label="Main navigation"
     >
       <div className="flex h-full flex-col">
-        <div className="relative mb-4 px-6 pt-4">
-          <div className="pointer-events-none absolute inset-y-0 left-6 flex items-center pl-3">
-            <Search className="h-5 w-5 text-gray-400" aria-hidden="true" />
-          </div>
+        <div className="relative mt-4 mb-4 px-6">
+          <label htmlFor="sidebar-search" className="sr-only">
+            Search tools
+          </label>
+          <Search
+            className="pointer-events-none absolute top-1/2 left-9 h-4 w-4 -translate-y-1/2 text-gray-400"
+            aria-hidden="true"
+          />
           <input
+            id="sidebar-search"
             ref={inputRef}
             type="search"
             placeholder={`Search ${TOOLS.length} tools…`}
@@ -88,7 +93,6 @@ export function SidebarNav() {
             className="w-full rounded-lg border border-gray-300 bg-gray-50 py-2 pl-10 text-sm text-gray-900 placeholder:text-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-400 [&::-webkit-search-cancel-button]:hidden"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            aria-label="Search tools"
           />
           {query && (
             <button

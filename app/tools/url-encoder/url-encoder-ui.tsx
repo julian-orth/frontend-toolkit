@@ -206,9 +206,11 @@ export function UrlEncoderUI() {
 
         {mode === "encode" && (
           <select
+            id="encoding-mode"
             value={encodingMode}
             onChange={(e) => setEncodingMode(e.target.value as EncodingMode)}
             className="rounded-lg border border-green-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 focus:border-green-500 focus:ring-2 focus:ring-green-500 dark:border-green-800 dark:bg-gray-900 dark:text-gray-300"
+            aria-label="Encoding mode"
           >
             <option value="component">Component (Query Params)</option>
             <option value="uri">Full URI</option>
@@ -348,9 +350,13 @@ export function UrlEncoderUI() {
         {/* Output */}
         <div className="flex flex-col">
           <div className="mb-2 flex items-center justify-between">
-            <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+            <div
+              className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+              role="heading"
+              aria-level="3"
+            >
               Output {mode === "encode" ? "(URL-encoded)" : "(Text)"}
-            </label>
+            </div>
             {output && (
               <div className="flex gap-2">
                 <button

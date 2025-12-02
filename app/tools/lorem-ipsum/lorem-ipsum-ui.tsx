@@ -278,6 +278,7 @@ export function LoremIpsumUI() {
         </div>
         <textarea
           id="lorem-result"
+          aria-label="Generated Lorem Ipsum text"
           value={result}
           readOnly
           className="min-h-[400px] w-full rounded-xl border border-yellow-200 bg-white/60 p-4 font-serif text-base leading-relaxed text-gray-900 shadow-inner focus:ring-2 focus:ring-yellow-500 dark:border-yellow-800 dark:bg-gray-900/60 dark:text-gray-100"

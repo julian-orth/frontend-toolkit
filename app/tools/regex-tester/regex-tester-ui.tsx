@@ -177,7 +177,11 @@ export function RegexTesterUI() {
 
       {/* Flags */}
       <div className="flex flex-wrap items-center gap-4 rounded-xl border border-red-200 bg-red-50/30 p-4 dark:border-red-800 dark:bg-red-950/20">
-        <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+        <span
+          className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+          role="group"
+          aria-label="Regular expression flags"
+        >
           Flags:
         </span>
         <Checkbox
@@ -346,9 +350,13 @@ export function RegexTesterUI() {
       {/* Match Highlighting */}
       {highlightedSegments && result && result.matches.length > 0 && (
         <div className="space-y-3">
-          <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+          <div
+            className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+            role="heading"
+            aria-level="3"
+          >
             Highlighted Matches
-          </label>
+          </div>
           <div className="rounded-xl border border-red-200 bg-white p-4 dark:border-red-800 dark:bg-gray-900">
             <div className="font-mono text-sm text-gray-900 dark:text-gray-100">
               {highlightedSegments.map((segment, idx) =>
@@ -383,9 +391,13 @@ export function RegexTesterUI() {
       {/* Match Details */}
       {result && result.matches.length > 0 && (
         <div className="space-y-3">
-          <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+          <div
+            className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+            role="heading"
+            aria-level="3"
+          >
             Match Details
-          </label>
+          </div>
           <div className="space-y-2">
             {result.matches.map((match, idx) => (
               <details
