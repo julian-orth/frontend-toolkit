@@ -58,7 +58,7 @@ export function CustomizationOptions({
       </div>
 
       {/* Colors */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label
             htmlFor="fg-color"
@@ -72,13 +72,14 @@ export function CustomizationOptions({
               type="color"
               value={foregroundColor}
               onChange={(e) => onForegroundColorChange(e.target.value)}
-              className="h-10 w-16 cursor-pointer rounded-lg border-2 border-gray-300 dark:border-gray-600"
+              className="h-10 w-14 flex-shrink-0 cursor-pointer rounded-lg border-2 border-gray-300 sm:w-16 dark:border-gray-600"
             />
             <input
               type="text"
               value={foregroundColor.toUpperCase()}
               onChange={(e) => onForegroundColorChange(e.target.value)}
-              className="flex-1 rounded-lg border border-gray-200 bg-white px-3 py-2 font-mono text-sm text-gray-900 focus:border-purple-500 focus:ring-2 focus:ring-purple-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+              placeholder="#000000"
+              className="min-w-0 flex-1 rounded-lg border border-gray-200 bg-white px-2 py-2 font-mono text-sm text-gray-900 focus:border-purple-500 focus:ring-2 focus:ring-purple-500 sm:px-3 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
             />
           </div>
         </div>
@@ -95,13 +96,14 @@ export function CustomizationOptions({
               type="color"
               value={backgroundColor}
               onChange={(e) => onBackgroundColorChange(e.target.value)}
-              className="h-10 w-16 cursor-pointer rounded-lg border-2 border-gray-300 dark:border-gray-600"
+              className="h-10 w-14 flex-shrink-0 cursor-pointer rounded-lg border-2 border-gray-300 sm:w-16 dark:border-gray-600"
             />
             <input
               type="text"
               value={backgroundColor.toUpperCase()}
               onChange={(e) => onBackgroundColorChange(e.target.value)}
-              className="flex-1 rounded-lg border border-gray-200 bg-white px-3 py-2 font-mono text-sm text-gray-900 focus:border-purple-500 focus:ring-2 focus:ring-purple-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+              placeholder="#FFFFFF"
+              className="min-w-0 flex-1 rounded-lg border border-gray-200 bg-white px-2 py-2 font-mono text-sm text-gray-900 focus:border-purple-500 focus:ring-2 focus:ring-purple-500 sm:px-3 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
             />
           </div>
         </div>
@@ -131,7 +133,7 @@ export function CustomizationOptions({
       </div>
 
       {/* Action Buttons */}
-      <div className="flex gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row">
         <PrimaryButton onClick={onGenerate} className="flex-1">
           <QrCode className="mr-2 h-4 w-4" />
           Generate QR Code

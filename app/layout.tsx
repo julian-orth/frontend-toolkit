@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SITE_NAME } from "@/lib/i18n/en";
 import { ThemeProvider } from "@/lib/contexts/theme-context";
+import { MobileNavProvider } from "@/lib/contexts/mobile-nav-context";
 import { Header, Footer } from "@/components/layout-client";
 import SidebarNav from "@/components/SidebarNav";
 import { LoadingBar } from "@/components/loading-bar";
+import MobileNav from "@/components/MobileNav";
 
 export const metadata: Metadata = {
   title: {
@@ -52,13 +54,16 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <ThemeProvider>
-          <Header />
-          <LoadingBar />
-          <div className="flex w-full flex-1">
-            <SidebarNav />
-            <main className="min-w-0 flex-1 pt-20 md:ml-72">{children}</main>
-          </div>
-          <Footer />
+          <MobileNavProvider>
+            <MobileNav />
+            <Header />
+            <LoadingBar />
+            <div className="flex w-full flex-1">
+              <SidebarNav />
+              <main className="min-w-0 flex-1 pt-20 md:ml-72">{children}</main>
+            </div>
+            <Footer />
+          </MobileNavProvider>
         </ThemeProvider>
       </body>
     </html>

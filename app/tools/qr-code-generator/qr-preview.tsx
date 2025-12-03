@@ -26,13 +26,13 @@ export function QRPreview({
           Preview
         </h3>
         <div
-          className="flex items-center justify-center rounded-xl border-2 border-dashed border-gray-300 bg-gray-50 p-8 dark:border-gray-700 dark:bg-gray-800/50"
+          className="flex items-center justify-center overflow-auto rounded-xl border-2 border-dashed border-gray-300 bg-gray-50 p-8 dark:border-gray-700 dark:bg-gray-800/50"
           style={{ minHeight: "400px" }}
         >
           {/* Canvas is always rendered but hidden when no QR code */}
           <canvas
             ref={canvasRef}
-            className={`max-w-full ${qrDataUrl ? "" : "hidden"}`}
+            className={`${qrDataUrl ? "" : "hidden"}`}
             style={{
               imageRendering: "crisp-edges",
               width: `${size}px`,

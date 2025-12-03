@@ -6,6 +6,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { NAV_ITEMS, SITE_NAME, TOOLS } from "@/lib/i18n/en";
 import { Github, Twitter } from "lucide-react";
 import { Logo } from "@/components/logo";
+import { MobileNavButton } from "@/components/MobileNav";
 
 export function Header() {
   const pathname = usePathname();
@@ -28,8 +29,7 @@ export function Header() {
           </span>
         </Link>
         <div className="flex items-center gap-3 md:gap-6">
-          {/* Mobile menu button */}
-          <div className="md:hidden">{require("./MobileNav").default()}</div>
+          <MobileNavButton />
           <nav className="hidden md:block">
             <ul className="flex gap-6">
               {NAV_ITEMS.map((item) => {
