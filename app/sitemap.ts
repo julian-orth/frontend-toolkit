@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { TOOL_REGISTRY } from "@/lib/tools/registry";
+import { getAllBlogPosts } from "@/lib/content/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://frontend-tools-hub.com";
@@ -12,12 +13,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // Dynamically generate blog post URLs
+  const blogPosts = getAllBlogPosts();
+  const blogUrls = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.updatedAt || post.publishedAt),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   // Static pages
   const staticPages = [
     { url: baseUrl, priority: 1, changeFrequency: "weekly" as const },
     {
       url: `${baseUrl}/tools`,
       priority: 0.9,
+      changeFrequency: "weekly" as const,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      priority: 0.8,
       changeFrequency: "weekly" as const,
     },
     {
@@ -45,5 +60,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
   }));
 
-  return [...staticPages, ...toolUrls];
+  return [...staticPages, ...toolUrls, ...blogUrls];
 }
