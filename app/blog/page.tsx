@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { getAllBlogPosts } from "@/lib/content/blog";
 import { Calendar, Clock, Tag, ArrowRight } from "lucide-react";
 
@@ -80,6 +81,19 @@ export default function BlogPage() {
                   {post.description}
                 </p>
 
+                <div className="mb-4 flex items-center gap-2">
+                  <Image
+                    src={post.author.avatar}
+                    alt={post.author.name}
+                    width={24}
+                    height={24}
+                    className="h-6 w-6 rounded-full object-cover"
+                  />
+                  <span className="text-sm text-gray-600 dark:text-gray-400">
+                    {post.author.name}
+                  </span>
+                </div>
+
                 <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-500">
                   <div className="flex items-center gap-1">
                     <Calendar className="h-4 w-4" aria-hidden="true" />
@@ -139,6 +153,19 @@ export default function BlogPage() {
                 <p className="mb-4 line-clamp-2 text-gray-600 dark:text-gray-400">
                   {post.description}
                 </p>
+
+                <div className="mb-4 flex items-center gap-2">
+                  <Image
+                    src={post.author.avatar}
+                    alt={post.author.name}
+                    width={20}
+                    height={20}
+                    className="h-5 w-5 rounded-full object-cover"
+                  />
+                  <span className="text-sm text-gray-600 dark:text-gray-400">
+                    {post.author.name}
+                  </span>
+                </div>
 
                 <div className="mb-4 flex flex-wrap gap-2">
                   {post.tags.slice(0, 3).map((tag) => (

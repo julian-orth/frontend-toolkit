@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import type { BlogPost, BlogPostMetadata } from "@/lib/types/blog";
+import { getAuthor, type Author } from "@/lib/data/authors";
 
 const BLOG_CONTENT_DIR = path.join(process.cwd(), "content", "blog");
 
@@ -75,7 +76,7 @@ function parseMarkdown(fileContent: string): {
     slug: metadata.slug,
     title: metadata.title,
     description: metadata.description,
-    author: metadata.author,
+    authorId: metadata.author, // Store as authorId in metadata
     publishedAt: metadata.publishedAt,
     updatedAt: metadata.updatedAt || undefined,
     readTime: metadata.readTime,
@@ -119,9 +120,26 @@ export function getBlogPost(slug: string): BlogPost {
   const fileContent = fs.readFileSync(filePath, "utf8");
   const { metadata, content } = parseMarkdown(fileContent);
 
+  // Resolve author from ID
+  const author = getAuthor(metadata.authorId);
+  if (!author) {
+    throw new Error(`Author not found: ${metadata.authorId}`);
+  }
+
   return {
-    ...metadata,
+    slug: metadata.slug,
+    title: metadata.title,
+    description: metadata.description,
     content,
+    author,
+    publishedAt: metadata.publishedAt,
+    updatedAt: metadata.updatedAt,
+    readTime: metadata.readTime,
+    category: metadata.category,
+    tags: metadata.tags,
+    relatedTools: metadata.relatedTools,
+    featured: metadata.featured,
+    seo: metadata.seo,
   };
 }
 
@@ -159,6 +177,13 @@ export function getBlogPostsByCategory(category: string): BlogPost[] {
  */
 export function getBlogPostsByTag(tag: string): BlogPost[] {
   return getAllBlogPosts().filter((post) => post.tags.includes(tag));
+}
+
+/**
+ * Get blog posts by author
+ */
+export function getBlogPostsByAuthor(authorId: string): BlogPost[] {
+  return getAllBlogPosts().filter((post) => post.author.id === authorId);
 }
 
 /**
@@ -210,10 +235,14 @@ export function getRelatedBlogPosts(
 export function markdownToHtml(markdown: string): string {
   let html = markdown;
 
-  // Headers
-  html = html.replace(/^### (.*$)/gim, "<h3>$1</h3>");
-  html = html.replace(/^## (.*$)/gim, "<h2>$1</h2>");
-  html = html.replace(/^# (.*$)/gim, "<h1>$1</h1>");
+  // Code blocks (must be done before inline code)
+  html = html.replace(
+    /```([a-z]*)\n([\s\S]*?)```/g,
+    '<pre><code class="language-$1">$2</code></pre>'
+  );
+
+  // Inline code
+  html = html.replace(/`(.+?)`/g, "<code>$1</code>");
 
   // Bold
   html = html.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
@@ -221,43 +250,57 @@ export function markdownToHtml(markdown: string): string {
   // Italic
   html = html.replace(/\*(.+?)\*/g, "<em>$1</em>");
 
-  // Code blocks
+  // Links
   html = html.replace(
-    /```([a-z]*)\n([\s\S]*?)```/g,
-    "<pre><code>$2</code></pre>"
+    /\[([^\]]+)\]\(([^)]+)\)/g,
+    '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
   );
 
-  // Inline code
-  html = html.replace(/`(.+?)`/g, "<code>$1</code>");
+  // Split by paragraphs first
+  const sections = html.split("\n\n");
+  const processedSections = sections.map((section) => {
+    const trimmed = section.trim();
+    if (!trimmed) return "";
 
-  // Links
-  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+    // Headers
+    if (trimmed.startsWith("### ")) {
+      return trimmed.replace(/^### (.*)$/gim, "<h3>$1</h3>");
+    }
+    if (trimmed.startsWith("## ")) {
+      return trimmed.replace(/^## (.*)$/gim, "<h2>$1</h2>");
+    }
+    if (trimmed.startsWith("# ")) {
+      return trimmed.replace(/^# (.*)$/gim, "<h1>$1</h1>");
+    }
 
-  // Unordered lists
-  html = html.replace(/^\* (.+)$/gim, "<li>$1</li>");
-  html = html.replace(/(<li>[\s\S]*<\/li>)/, "<ul>$1</ul>");
+    // Code blocks (already processed)
+    if (trimmed.startsWith("<pre>")) {
+      return trimmed;
+    }
 
-  // Ordered lists
-  html = html.replace(/^\d+\. (.+)$/gim, "<li>$1</li>");
+    // Unordered lists
+    if (trimmed.match(/^\* /m)) {
+      const items = trimmed
+        .split("\n")
+        .filter((line) => line.trim().startsWith("* "))
+        .map((line) => line.replace(/^\* (.+)$/, "<li>$1</li>"))
+        .join("\n");
+      return `<ul>${items}</ul>`;
+    }
 
-  // Paragraphs (split by double newlines)
-  const paragraphs = html.split("\n\n");
-  html = paragraphs
-    .map((p) => {
-      const trimmed = p.trim();
-      // Don't wrap if already wrapped in a tag
-      if (
-        trimmed.startsWith("<h") ||
-        trimmed.startsWith("<ul") ||
-        trimmed.startsWith("<ol") ||
-        trimmed.startsWith("<pre") ||
-        trimmed.startsWith("<blockquote")
-      ) {
-        return trimmed;
-      }
-      return `<p>${trimmed}</p>`;
-    })
-    .join("\n");
+    // Ordered lists
+    if (trimmed.match(/^\d+\. /m)) {
+      const items = trimmed
+        .split("\n")
+        .filter((line) => line.trim().match(/^\d+\. /))
+        .map((line) => line.replace(/^\d+\. (.+)$/, "<li>$1</li>"))
+        .join("\n");
+      return `<ol>${items}</ol>`;
+    }
 
-  return html;
+    // Regular paragraph
+    return `<p>${trimmed}</p>`;
+  });
+
+  return processedSections.join("\n\n");
 }

@@ -2,12 +2,14 @@
  * Blog Post Type Definitions
  */
 
+import type { Author } from "@/lib/data/authors";
+
 export interface BlogPost {
   slug: string;
   title: string;
   description: string;
   content: string;
-  author: string;
+  author: Author;
   publishedAt: string; // ISO date string
   updatedAt?: string; // ISO date string
   readTime: string; // e.g., "5 min read"
@@ -28,7 +30,7 @@ export interface BlogPostMetadata {
   slug: string;
   title: string;
   description: string;
-  author: string;
+  authorId: string; // Author ID to be resolved to Author object
   publishedAt: string;
   updatedAt?: string;
   readTime: string;

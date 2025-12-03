@@ -2,7 +2,7 @@
 slug: json-formatting-best-practices
 title: JSON Formatting Best Practices for Developers
 description: Learn essential JSON formatting techniques, common pitfalls, and best practices to write clean, maintainable JSON for APIs, configs, and data storage.
-author: Frontend Toolkit Team
+author: sarah-johnson
 publishedAt: 2024-12-03
 readTime: 8 min read
 category: tutorial

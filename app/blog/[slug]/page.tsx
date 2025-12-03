@@ -9,6 +9,7 @@ import {
 } from "@/lib/content/blog";
 import { TOOLS } from "@/lib/tools/registry";
 import { Calendar, Clock, Tag, ArrowLeft, ExternalLink } from "lucide-react";
+import { AuthorCard } from "@/components/author-card";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -29,14 +30,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.title,
       description: post.description,
       keywords: post.seo.keywords,
-      authors: [{ name: post.author }],
+      authors: [{ name: post.author.name }],
       openGraph: {
         title: post.title,
         description: post.description,
         type: "article",
         publishedTime: post.publishedAt,
         modifiedTime: post.updatedAt,
-        authors: [post.author],
+        authors: [post.author.name],
         url: `https://yourdomain.com/blog/${post.slug}`,
         images: post.seo.ogImage ? [{ url: post.seo.ogImage }] : undefined,
       },
@@ -85,7 +86,7 @@ export default async function BlogPostPage({ params }: Props) {
     dateModified: post.updatedAt || post.publishedAt,
     author: {
       "@type": "Person",
-      name: post.author,
+      name: post.author.name,
     },
     publisher: {
       "@type": "Organization",
@@ -138,24 +139,13 @@ export default async function BlogPostPage({ params }: Props) {
             {post.description}
           </p>
 
-          <div className="flex flex-wrap items-center gap-6 border-b border-gray-200 pb-6 text-sm text-gray-600 dark:border-gray-800 dark:text-gray-400">
-            <div className="flex items-center gap-2">
-              <span className="font-medium">By {post.author}</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <Calendar className="h-4 w-4" aria-hidden="true" />
-              <time dateTime={post.publishedAt}>
-                {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </time>
-            </div>
-            <div className="flex items-center gap-1">
-              <Clock className="h-4 w-4" aria-hidden="true" />
-              <span>{post.readTime}</span>
-            </div>
+          {/* Author Card */}
+          <div className="mb-6">
+            <AuthorCard
+              author={post.author}
+              publishedAt={post.publishedAt}
+              readTime={post.readTime}
+            />
           </div>
 
           {post.tags.length > 0 && (
@@ -176,7 +166,7 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Article Content */}
         <div className="mx-auto max-w-3xl">
           <div
-            className="prose prose-lg prose-gray dark:prose-invert prose-headings:font-bold prose-headings:tracking-tight prose-h2:mb-4 prose-h2:mt-8 prose-h2:text-3xl prose-h3:mb-3 prose-h3:mt-6 prose-h3:text-2xl prose-p:mb-4 prose-p:leading-relaxed prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline dark:prose-a:text-blue-400 prose-strong:font-semibold prose-code:rounded prose-code:bg-gray-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-sm prose-code:font-mono prose-code:text-gray-900 dark:prose-code:bg-gray-800 dark:prose-code:text-gray-100 prose-pre:bg-gray-900 prose-pre:text-gray-100 dark:prose-pre:bg-gray-950 max-w-none"
+            className="blog-content"
             dangerouslySetInnerHTML={{ __html: contentHtml }}
           />
         </div>

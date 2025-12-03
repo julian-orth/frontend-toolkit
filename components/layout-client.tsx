@@ -61,7 +61,9 @@ export function Header() {
           <nav className="hidden md:block">
             <ul className="flex gap-6">
               {NAV_ITEMS.map((item) => {
-                const isActive = pathname === item.href;
+                const isActive =
+                  pathname === item.href ||
+                  pathname.startsWith(item.href + "/");
                 return (
                   <li key={item.href}>
                     <Link
@@ -136,7 +138,9 @@ export function Footer() {
             </h4>
             <ul className="space-y-2 text-sm">
               {NAV_ITEMS.map((item) => {
-                const isActive = pathname === item.href;
+                const isActive =
+                  pathname === item.href ||
+                  pathname.startsWith(item.href + "/");
                 return (
                   <li key={item.href}>
                     <Link
