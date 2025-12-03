@@ -27,6 +27,8 @@ keywords:
 
 # JSON Formatting Best Practices for Developers
 
+![JSON code on laptop screen - best practices for developers](/images/blog/json-formatting-best-practices-header.jpg)
+
 JSON (JavaScript Object Notation) has become the de facto standard for data exchange on the web. Whether you're working with APIs, configuration files, or storing data, understanding JSON formatting best practices is crucial for writing clean, maintainable code.
 
 ## What Makes Good JSON?
@@ -35,6 +37,8 @@ Good JSON is readable, valid, and follows consistent conventions. Here are the k
 
 ### 1. Always Validate Your JSON
 
+![Code editor showing JSON validation and formatting](/images/blog/json-validation-code-editor.jpg)
+
 Before deploying or sharing JSON, always validate it. Invalid JSON will break your application at runtime. Common validation errors include:
 
 - Missing or extra commas
@@ -42,7 +46,7 @@ Before deploying or sharing JSON, always validate it. Invalid JSON will break yo
 - Single quotes instead of double quotes
 - Trailing commas in arrays or objects
 
-**Use our JSON Formatter tool** to automatically validate and format your JSON with detailed error messages.
+**Use our free [JSON Formatter tool](/tools/json-formatter)** to automatically validate and format your JSON with detailed error messages.
 
 ### 2. Use Consistent Indentation
 
@@ -130,6 +134,8 @@ Always use arrays for collections of items, even if there's only one item curren
 
 ## Performance Optimization
 
+![Programming workspace showing code optimization](/images/blog/json-performance-optimization.jpg)
+
 ### Minify for Production
 
 While formatted JSON is great for development, minified JSON reduces file size by removing whitespace. This improves:
@@ -138,7 +144,7 @@ While formatted JSON is great for development, minified JSON reduces file size b
 - Storage efficiency
 - Network bandwidth usage
 
-**Use our JSON Minifier** to reduce file size by up to 40% for production deployments.
+**Use our free [JSON Minifier tool](/tools/css-minifier)** to reduce file size by up to 40% for production deployments.
 
 ### Consider GZIP Compression
 
@@ -149,6 +155,8 @@ Most modern web servers support GZIP compression. Combined with minification, yo
 - Minified + GZIP: 200 bytes
 
 ## Security Considerations
+
+![Security and code best practices concept](/images/blog/json-security-best-practices.jpg)
 
 ### Never Store Sensitive Data Unencrypted
 
@@ -213,13 +221,13 @@ JSON only supports `null` for empty values. `undefined`, `NaN`, and `Infinity` a
 }
 ```
 
-## Tools for JSON Development
+## Free Tools for JSON Development
 
-Speed up your JSON workflow with these essential tools:
+Speed up your JSON workflow with these free essential tools:
 
-- **JSON Formatter**: Beautify and validate JSON with syntax highlighting
-- **JSON Validator**: Check for errors with detailed error messages
-- **JSON Minifier**: Optimize JSON for production
+- **[Free JSON Formatter tool](/tools/json-formatter)**: Beautify and validate JSON with syntax highlighting
+- **[Free Hash Generator tool](/tools/hash-generator)**: Check for errors with detailed error messages
+- **[Free CSS Minifier tool](/tools/css-minifier)**: Optimize JSON for production
 
 ## Conclusion
 

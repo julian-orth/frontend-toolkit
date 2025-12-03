@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { getAllBlogPosts } from "@/lib/content/blog";
+import { getAllBlogPosts, getAllTags } from "@/lib/content/blog";
 import { Calendar, Clock, Tag, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -36,6 +36,7 @@ export default function BlogPage() {
   const posts = getAllBlogPosts();
   const featuredPosts = posts.filter((post) => post.featured);
   const recentPosts = posts.slice(0, 6);
+  const allTags = getAllTags();
 
   return (
     <main className="container mx-auto px-4 py-12">
@@ -49,6 +50,27 @@ export default function BlogPage() {
           Learn how to use developer tools effectively and write better code.
         </p>
       </div>
+
+      {/* Tags Filter */}
+      {allTags.length > 0 && (
+        <section className="mb-12">
+          <h2 className="mb-4 text-sm font-semibold tracking-wide text-gray-500 uppercase dark:text-gray-400">
+            Browse by Tag
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {allTags.map((tag) => (
+              <Link
+                key={tag}
+                href={`/blog/tag/${encodeURIComponent(tag)}`}
+                className="cursor-pointer rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-blue-100 hover:text-blue-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-blue-900/30 dark:hover:text-blue-400"
+                aria-label={`View posts tagged ${tag}`}
+              >
+                {tag}
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Featured Posts */}
       {featuredPosts.length > 0 && (

@@ -19,6 +19,7 @@ import {
   type GeneratorMode,
   type GeneratorType,
 } from "./utils";
+import "@/lib/styles/form-utilities.css";
 
 export function LoremIpsumUI() {
   const [mode, setMode] = useState<GeneratorMode>("paragraphs");

@@ -15,6 +15,7 @@ import {
 import PrimaryButton from "@/components/primary-button";
 import { Checkbox } from "@/components/checkbox";
 import { formatJson, minifyJson, validateJson, sortJsonKeys } from "./utils";
+import "@/lib/styles/form-utilities.css";
 
 type ValidationResult = {
   isValid: boolean;

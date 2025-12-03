@@ -4,6 +4,7 @@ import { Loader2, ChevronDown, Download } from "lucide-react";
 import { uuidv1, uuidv3, uuidv4, uuidv5, uuidv7, uuidNil } from "./uuid-utils";
 import { CopyButton } from "./copy-button";
 import PrimaryButton from "@/components/primary-button";
+import "@/lib/styles/form-utilities.css";
 
 export function GeneratorUI() {
   const [version, setVersion] = useState<

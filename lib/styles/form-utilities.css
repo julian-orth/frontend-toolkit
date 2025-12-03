@@ -1,0 +1,37 @@
+/* Form Utilities - Custom Select Styling */
+
+/* Custom select styling: hide native browser chevron and reserve space for custom icon */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-repeat: no-repeat;
+}
+
+select::-ms-expand {
+  display: none; /* IE/Edge */
+}
+
+/* Utility wrapper when adding a custom icon */
+.select-icon-wrapper {
+  position: relative;
+}
+
+.select-icon-wrapper select {
+  padding-right: 2.5rem; /* room for the custom chevron */
+}
+
+.select-icon {
+  position: absolute;
+  right: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-icon svg {
+  display: block;
+}

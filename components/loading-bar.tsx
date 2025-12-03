@@ -9,6 +9,7 @@ export function LoadingBar() {
   const [progress, setProgress] = useState(0);
   const startTimeRef = useRef<number>(0);
   const animationFrameRef = useRef<number | null>(null);
+  const isToolPage = pathname.startsWith("/tools/");
 
   useEffect(() => {
     // Handle navigation start by listening for link clicks
@@ -94,7 +95,9 @@ export function LoadingBar() {
   }
 
   return (
-    <div className="fixed top-[73px] right-0 left-0 z-50 h-1 overflow-hidden bg-transparent md:left-72">
+    <div
+      className={`fixed top-[73px] right-0 z-50 h-1 overflow-hidden bg-transparent transition-all ${isToolPage ? "left-0 md:left-72" : "left-0"}`}
+    >
       <div
         className="h-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 shadow-lg shadow-blue-500/50 transition-all duration-150 ease-linear"
         style={{ width: `${progress}%` }}

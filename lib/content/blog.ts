@@ -230,6 +230,20 @@ export function getRelatedBlogPosts(
 }
 
 /**
+ * Get all unique tags from all blog posts
+ */
+export function getAllTags(): string[] {
+  const allPosts = getAllBlogPosts();
+  const tagSet = new Set<string>();
+
+  allPosts.forEach((post) => {
+    post.tags.forEach((tag) => tagSet.add(tag));
+  });
+
+  return Array.from(tagSet).sort();
+}
+
+/**
  * Convert markdown to HTML (simple implementation without dependencies)
  */
 export function markdownToHtml(markdown: string): string {
@@ -241,6 +255,12 @@ export function markdownToHtml(markdown: string): string {
     '<pre><code class="language-$1">$2</code></pre>'
   );
 
+  // Images (must be before links since they have similar syntax)
+  html = html.replace(
+    /!\[([^\]]*)\]\(([^)]+)\)/g,
+    '<img src="$2" alt="$1" class="blog-image" loading="lazy" />'
+  );
+
   // Inline code
   html = html.replace(/`(.+?)`/g, "<code>$1</code>");
 
@@ -250,11 +270,15 @@ export function markdownToHtml(markdown: string): string {
   // Italic
   html = html.replace(/\*(.+?)\*/g, "<em>$1</em>");
 
-  // Links
-  html = html.replace(
-    /\[([^\]]+)\]\(([^)]+)\)/g,
-    '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
-  );
+  // Links - check if external or internal
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
+    // Internal links (start with / or relative)
+    if (url.startsWith("/")) {
+      return `<a href="${url}">${text}</a>`;
+    }
+    // External links
+    return `<a href="${url}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+  });
 
   // Split by paragraphs first
   const sections = html.split("\n\n");
@@ -275,6 +299,11 @@ export function markdownToHtml(markdown: string): string {
 
     // Code blocks (already processed)
     if (trimmed.startsWith("<pre>")) {
+      return trimmed;
+    }
+
+    // Images (standalone)
+    if (trimmed.startsWith("<img ")) {
       return trimmed;
     }
 

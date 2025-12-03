@@ -14,6 +14,7 @@ import {
 import PrimaryButton from "@/components/primary-button";
 import { Checkbox } from "@/components/checkbox";
 import { parseMarkdown, type MarkdownOptions } from "./utils";
+import "./markdown-preview.css";
 
 type ViewMode = "split" | "edit" | "preview";
 

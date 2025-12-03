@@ -6,7 +6,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Search, X } from "lucide-react";
 import * as Icons from "lucide-react";
-import { Logo } from "@/components/logo";
 
 function getToolIcon(iconName: string) {
   // Fallback to Lucide's Zap if not found
@@ -85,26 +84,7 @@ export function SidebarNav() {
       aria-label="Main navigation"
     >
       <div className="flex h-full flex-col">
-        <Link
-          href="/"
-          className="group flex items-center gap-3 border-b border-gray-200 px-6 py-5 transition-colors hover:bg-gray-50 dark:border-gray-800 dark:hover:bg-gray-900"
-        >
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white shadow-lg ring-1 ring-gray-200/50 dark:bg-gray-800 dark:ring-gray-700/50">
-            <Logo
-              size={32}
-              className="transition-transform group-hover:scale-110"
-            />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-sm font-bold text-gray-900 dark:text-white">
-              DeveloperUtility
-            </span>
-            <span className="text-sm font-bold text-gray-900 dark:text-white">
-              Tools
-            </span>
-          </div>
-        </Link>
-        <div className="relative mt-4 mb-4 px-6">
+        <div className="relative border-b border-gray-200/50 px-6 py-4 dark:border-gray-800/50">
           <label htmlFor="sidebar-search" className="sr-only">
             Search tools
           </label>
@@ -117,7 +97,7 @@ export function SidebarNav() {
             ref={inputRef}
             type="search"
             placeholder={`Search ${TOOLS.length} tools…`}
-            style={{ paddingRight: "71px" }}
+            style={{ paddingRight: "71px", marginBottom: "2px" }}
             className="w-full rounded-lg border border-gray-300 bg-gray-50 py-2 pl-10 text-sm text-gray-900 placeholder:text-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-400 [&::-webkit-search-cancel-button]:hidden"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -138,7 +118,7 @@ export function SidebarNav() {
             <span className="leading-none">K</span>
           </kbd>
         </div>
-        <div className="flex-1 overflow-y-auto px-6 pb-4">
+        <div className="flex-1 overflow-y-auto px-6 py-4 pb-4">
           {Object.keys(grouped).length === 0 && (
             <div className="px-3 py-2 text-gray-400 dark:text-gray-600">
               No tools found.

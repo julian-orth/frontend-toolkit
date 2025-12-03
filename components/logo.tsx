@@ -23,13 +23,13 @@ export function Logo({ className = "", size = 32 }: LogoProps) {
       {/* Background gradient circle */}
       <defs>
         <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#3b82f6" />
-          <stop offset="100%" stopColor="#8b5cf6" />
+          <stop offset="0%" stopColor="#2563eb" />
+          <stop offset="100%" stopColor="#7c3aed" />
         </linearGradient>
       </defs>
 
       {/* Outer circle */}
-      <circle cx="50" cy="50" r="48" fill="url(#logoGradient)" opacity="0.1" />
+      <circle cx="50" cy="50" r="48" fill="url(#logoGradient)" opacity="0.15" />
 
       {/* Left bracket < */}
       <path
@@ -91,8 +91,8 @@ export function LogoIcon({ className = "", size = 24 }: LogoProps) {
     >
       <defs>
         <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#3b82f6" />
-          <stop offset="100%" stopColor="#8b5cf6" />
+          <stop offset="0%" stopColor="#2563eb" />
+          <stop offset="100%" stopColor="#7c3aed" />
         </linearGradient>
       </defs>
 
