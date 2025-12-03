@@ -353,7 +353,7 @@ export function RegexTesterUI() {
           <div
             className="text-sm font-semibold text-gray-700 dark:text-gray-300"
             role="heading"
-            aria-level="3"
+            aria-level={3}
           >
             Highlighted Matches
           </div>
@@ -394,7 +394,7 @@ export function RegexTesterUI() {
           <div
             className="text-sm font-semibold text-gray-700 dark:text-gray-300"
             role="heading"
-            aria-level="3"
+            aria-level={3}
           >
             Match Details
           </div>

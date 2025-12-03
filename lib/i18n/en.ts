@@ -6,8 +6,9 @@
  * import { TOOLS } from "@/lib/tools/registry"
  */
 
-export const SITE_NAME = "Frontend Tools Hub";
-export const SITE_DESCRIPTION = "Free online tools for developers";
+export const SITE_NAME = "DeveloperUtilityTools.com";
+export const SITE_DESCRIPTION =
+  "Free online developer utilities and tools for everyday coding tasks";
 
 /**
  * @deprecated Import from @/lib/tools/registry instead
@@ -18,4 +19,6 @@ export { TOOLS } from "@/lib/tools/registry";
 export const NAV_ITEMS = [
   { name: "Home", href: "/" },
   { name: "Tools", href: "/tools" },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
 ];

@@ -338,7 +338,7 @@ export function Base64UI() {
             <div
               className="text-sm font-semibold text-gray-700 dark:text-gray-300"
               role="heading"
-              aria-level="3"
+              aria-level={3}
             >
               Output {mode === "encode" ? "(Base64)" : "(Text)"}
             </div>

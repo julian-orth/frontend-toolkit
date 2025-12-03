@@ -1,11 +1,12 @@
 "use client";
 
-import { TOOLS } from "@/lib/i18n/en";
+import { TOOLS, SITE_NAME } from "@/lib/i18n/en";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Search, X } from "lucide-react";
 import * as Icons from "lucide-react";
+import { Logo } from "@/components/logo";
 
 function getToolIcon(iconName: string) {
   // Fallback to Lucide's Zap if not found
@@ -76,6 +77,25 @@ export function SidebarNav() {
       aria-label="Main navigation"
     >
       <div className="flex h-full flex-col">
+        <Link
+          href="/"
+          className="group flex items-center gap-3 border-b border-gray-200 px-6 py-5 transition-colors hover:bg-gray-50 dark:border-gray-800 dark:hover:bg-gray-900"
+        >
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white shadow-lg ring-1 ring-gray-200/50 dark:bg-gray-800 dark:ring-gray-700/50">
+            <Logo
+              size={32}
+              className="transition-transform group-hover:scale-110"
+            />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-sm font-bold text-gray-900 dark:text-white">
+              DeveloperUtility
+            </span>
+            <span className="text-sm font-bold text-gray-900 dark:text-white">
+              Tools
+            </span>
+          </div>
+        </Link>
         <div className="relative mt-4 mb-4 px-6">
           <label htmlFor="sidebar-search" className="sr-only">
             Search tools

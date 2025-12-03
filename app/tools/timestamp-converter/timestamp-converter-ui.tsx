@@ -330,7 +330,7 @@ export function TimestampConverterUI() {
             <div
               className="text-sm font-semibold text-gray-700 dark:text-gray-300"
               role="heading"
-              aria-level="3"
+              aria-level={3}
             >
               Output{" "}
               {mode === "to-date" ? "(Date/Time Formats)" : "(Unix Timestamp)"}

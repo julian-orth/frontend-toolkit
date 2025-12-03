@@ -207,6 +207,51 @@ export const TOOL_REGISTRY: Tool[] = [
     keywords: ["jwt", "json web token", "decoder", "authentication"],
     relatedTools: ["json-formatter", "base64"],
   },
+  {
+    id: "hash-generator",
+    name: "Hash Generator",
+    description:
+      "Generate cryptographic hashes (MD5, SHA-1, SHA-256, SHA-512) and HMAC for data integrity, password hashing, and checksums with instant browser-based processing",
+    href: "/tools/hash-generator",
+    group: "Security",
+    groupColor: "indigo",
+    groupIcon: "shield",
+    keywords: [
+      "hash",
+      "md5",
+      "sha1",
+      "sha256",
+      "sha512",
+      "hmac",
+      "checksum",
+      "digest",
+      "cryptographic",
+      "password hash",
+    ],
+    relatedTools: ["base64", "jwt-decoder"],
+  },
+  {
+    id: "markdown-previewer",
+    name: "Markdown Previewer",
+    description:
+      "Live markdown editor with instant preview, GitHub-flavored markdown support, syntax highlighting, and export to HTML for documentation and content creation",
+    href: "/tools/markdown-previewer",
+    group: "Text",
+    groupColor: "yellow",
+    groupIcon: "file-text",
+    keywords: [
+      "markdown",
+      "md",
+      "preview",
+      "editor",
+      "github flavored",
+      "gfm",
+      "syntax highlighting",
+      "html export",
+      "documentation",
+    ],
+    relatedTools: ["text-diff", "lorem-ipsum"],
+  },
 ];
 
 /**

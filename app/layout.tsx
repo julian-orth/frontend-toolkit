@@ -11,9 +11,18 @@ export const metadata: Metadata = {
     default: SITE_NAME,
     template: `%s | ${SITE_NAME}`,
   },
-  description: "Free online tools for developers",
+  description:
+    "Free online developer utilities and tools for everyday coding tasks. JSON formatter, UUID generator, Base64 encoder, and more.",
+  keywords: [
+    "developer tools",
+    "online utilities",
+    "json formatter",
+    "uuid generator",
+    "base64 encoder",
+    "developer utilities",
+  ],
   icons: {
-    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🛠️</text></svg>",
+    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%233b82f6'/><stop offset='100%' stop-color='%238b5cf6'/></linearGradient></defs><path d='M 38 20 L 15 50 L 38 80' stroke='url(%23g)' stroke-width='8' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='M 62 20 L 85 50 L 62 80' stroke='url(%23g)' stroke-width='8' stroke-linecap='round' stroke-linejoin='round' fill='none'/><circle cx='50' cy='50' r='10' fill='url(%23g)'/></svg>",
   },
 };
 
