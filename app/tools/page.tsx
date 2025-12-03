@@ -70,7 +70,7 @@ export default function ToolsPage() {
   };
 
   return (
-    <div className="px-6 py-8">
+    <div className="container mx-auto px-4 py-4">
       <header className="mb-8">
         <h1 className="mb-3 text-4xl font-bold tracking-tight text-black dark:text-white">
           All Developer Tools

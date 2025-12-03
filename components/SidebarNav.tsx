@@ -41,6 +41,9 @@ export function SidebarNav() {
   const inputRef = useRef<HTMLInputElement>(null);
   const pathname = usePathname();
 
+  // Only show sidebar on tool pages (starting with /tools/)
+  const isToolPage = pathname.startsWith("/tools/");
+
   // Ctrl+K keyboard shortcut handler
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -70,6 +73,11 @@ export function SidebarNav() {
     },
     {} as Record<string, typeof TOOLS>
   );
+
+  // Don't render sidebar if not on a tool page
+  if (!isToolPage) {
+    return null;
+  }
 
   return (
     <nav

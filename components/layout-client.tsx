@@ -7,12 +7,40 @@ import { NAV_ITEMS, SITE_NAME, TOOLS } from "@/lib/i18n/en";
 import { Github, Twitter } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { MobileNavButton } from "@/components/MobileNav";
+import SidebarNav from "@/components/SidebarNav";
+
+export function ClientLayoutWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const pathname = usePathname();
+  const isToolPage = pathname.startsWith("/tools/");
+
+  return (
+    <>
+      <Header />
+      <div className="flex w-full flex-1">
+        <SidebarNav />
+        <main
+          className={`min-w-0 flex-1 pt-20 transition-all ${isToolPage ? "md:ml-72" : ""}`}
+        >
+          {children}
+        </main>
+      </div>
+      <Footer />
+    </>
+  );
+}
 
 export function Header() {
   const pathname = usePathname();
+  const isToolPage = pathname.startsWith("/tools/");
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full border-b border-gray-200/50 bg-white/70 backdrop-blur-xl transition-all md:left-72 md:w-[calc(100%-18rem)] dark:border-gray-800/50 dark:bg-gray-950/70">
+    <header
+      className={`fixed top-0 left-0 z-50 w-full border-b border-gray-200/50 bg-white/70 backdrop-blur-xl transition-all dark:border-gray-800/50 dark:bg-gray-950/70 ${isToolPage ? "md:left-72 md:w-[calc(100%-18rem)]" : ""}`}
+    >
       <div className="flex items-center justify-between px-6 py-4">
         <Link
           href="/"
@@ -61,9 +89,12 @@ export function Header() {
 
 export function Footer() {
   const pathname = usePathname();
+  const isToolPage = pathname.startsWith("/tools/");
 
   return (
-    <footer className="relative border-t border-gray-200/50 bg-gradient-to-b from-white to-gray-50 py-16 md:ml-72 dark:border-gray-800/50 dark:from-gray-950 dark:to-gray-900">
+    <footer
+      className={`relative border-t border-gray-200/50 bg-gradient-to-b from-white to-gray-50 py-16 dark:border-gray-800/50 dark:from-gray-950 dark:to-gray-900 ${isToolPage ? "md:ml-72" : ""}`}
+    >
       <div className="px-6">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
