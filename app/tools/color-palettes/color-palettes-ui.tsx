@@ -211,14 +211,14 @@ export function ColorPalettesUI() {
                       <button
                         type="button"
                         onClick={handleExport}
-                        className="flex-1 rounded-lg bg-indigo-600 px-3 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+                        className="flex-1 cursor-pointer rounded-lg bg-indigo-600 px-3 py-2 text-sm font-medium text-white hover:bg-indigo-700"
                       >
                         <Copy className="mx-auto h-4 w-4" aria-hidden="true" />
                       </button>
                       <button
                         type="button"
                         onClick={handleDownload}
-                        className="flex-1 rounded-lg bg-indigo-600 px-3 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+                        className="flex-1 cursor-pointer rounded-lg bg-indigo-600 px-3 py-2 text-sm font-medium text-white hover:bg-indigo-700"
                       >
                         <Download
                           className="mx-auto h-4 w-4"
@@ -253,7 +253,7 @@ export function ColorPalettesUI() {
               key={type}
               type="button"
               onClick={() => handleTypeChange(type)}
-              className={`rounded-lg px-4 py-2 text-sm font-medium capitalize transition-colors ${
+              className={`cursor-pointer rounded-lg px-4 py-2 text-sm font-medium capitalize transition-colors ${
                 paletteType === type
                   ? "bg-indigo-600 text-white dark:bg-indigo-500"
                   : "bg-indigo-100 text-indigo-700 hover:bg-indigo-200 dark:bg-indigo-900/30 dark:text-indigo-300 dark:hover:bg-indigo-900/50"
@@ -323,7 +323,7 @@ export function ColorPalettesUI() {
                     e.stopPropagation();
                     toggleLock(index);
                   }}
-                  className="absolute top-2 right-2 rounded-lg bg-black/30 p-2 opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100 hover:bg-black/50"
+                  className="absolute top-2 right-2 cursor-pointer rounded-lg bg-black/30 p-2 opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100 hover:bg-black/50"
                   title={isLocked ? "Unlock color" : "Lock color"}
                 >
                   {isLocked ? (
@@ -363,7 +363,7 @@ export function ColorPalettesUI() {
                 <button
                   type="button"
                   onClick={() => handleCopyColor(color, index)}
-                  className="mt-2 flex w-full items-center justify-center gap-1 rounded-lg bg-indigo-100 px-2 py-1.5 text-xs font-medium text-indigo-700 transition-colors hover:bg-indigo-200 dark:bg-indigo-900/30 dark:text-indigo-300 dark:hover:bg-indigo-900/50"
+                  className="mt-2 flex w-full cursor-pointer items-center justify-center gap-1 rounded-lg bg-indigo-100 px-2 py-1.5 text-xs font-medium text-indigo-700 transition-colors hover:bg-indigo-200 dark:bg-indigo-900/30 dark:text-indigo-300 dark:hover:bg-indigo-900/50"
                 >
                   <Copy className="h-3 w-3" aria-hidden="true" />
                   Copy HEX

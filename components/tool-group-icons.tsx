@@ -7,6 +7,9 @@ import {
   Text,
   Clock,
   ShieldCheck,
+  Shield,
+  FileText,
+  FileCode,
 } from "lucide-react";
 
 const icons: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -18,6 +21,9 @@ const icons: Record<string, React.ComponentType<{ className?: string }>> = {
   text: Text,
   clock: Clock,
   "shield-check": ShieldCheck,
+  shield: Shield,
+  "file-text": FileText,
+  "file-code": FileCode,
 };
 
 export function ToolGroupIcon({

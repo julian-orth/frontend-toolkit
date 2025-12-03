@@ -1,0 +1,150 @@
+import React from "react";
+import { RefreshCw, QrCode } from "lucide-react";
+import PrimaryButton from "@/components/primary-button";
+import type { ErrorCorrectionLevel } from "./utils";
+
+interface CustomizationOptionsProps {
+  errorLevel: ErrorCorrectionLevel;
+  onErrorLevelChange: (level: ErrorCorrectionLevel) => void;
+  foregroundColor: string;
+  backgroundColor: string;
+  onForegroundColorChange: (color: string) => void;
+  onBackgroundColorChange: (color: string) => void;
+  size: number;
+  onSizeChange: (size: number) => void;
+  onGenerate: () => void;
+  onReset: () => void;
+}
+
+export function CustomizationOptions({
+  errorLevel,
+  onErrorLevelChange,
+  foregroundColor,
+  backgroundColor,
+  onForegroundColorChange,
+  onBackgroundColorChange,
+  size,
+  onSizeChange,
+  onGenerate,
+  onReset,
+}: CustomizationOptionsProps) {
+  return (
+    <div className="space-y-4 rounded-xl border border-gray-200 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-800/50">
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
+        Customization
+      </h3>
+
+      {/* Error Correction Level */}
+      <div>
+        <label
+          htmlFor="error-level"
+          className="mb-2 block text-sm font-semibold text-gray-700 dark:text-gray-300"
+        >
+          Error Correction Level
+        </label>
+        <select
+          id="error-level"
+          value={errorLevel}
+          onChange={(e) =>
+            onErrorLevelChange(e.target.value as ErrorCorrectionLevel)
+          }
+          className="w-full cursor-pointer rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-gray-900 focus:border-purple-500 focus:ring-2 focus:ring-purple-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+        >
+          <option value="low">Low (7% recovery)</option>
+          <option value="medium">Medium (15% recovery)</option>
+          <option value="quartile">Quartile (25% recovery)</option>
+          <option value="high">High (30% recovery)</option>
+        </select>
+      </div>
+
+      {/* Colors */}
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <label
+            htmlFor="fg-color"
+            className="mb-2 block text-sm font-semibold text-gray-700 dark:text-gray-300"
+          >
+            Foreground Color
+          </label>
+          <div className="flex gap-2">
+            <input
+              id="fg-color"
+              type="color"
+              value={foregroundColor}
+              onChange={(e) => onForegroundColorChange(e.target.value)}
+              className="h-10 w-16 cursor-pointer rounded-lg border-2 border-gray-300 dark:border-gray-600"
+            />
+            <input
+              type="text"
+              value={foregroundColor.toUpperCase()}
+              onChange={(e) => onForegroundColorChange(e.target.value)}
+              className="flex-1 rounded-lg border border-gray-200 bg-white px-3 py-2 font-mono text-sm text-gray-900 focus:border-purple-500 focus:ring-2 focus:ring-purple-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+            />
+          </div>
+        </div>
+        <div>
+          <label
+            htmlFor="bg-color"
+            className="mb-2 block text-sm font-semibold text-gray-700 dark:text-gray-300"
+          >
+            Background Color
+          </label>
+          <div className="flex gap-2">
+            <input
+              id="bg-color"
+              type="color"
+              value={backgroundColor}
+              onChange={(e) => onBackgroundColorChange(e.target.value)}
+              className="h-10 w-16 cursor-pointer rounded-lg border-2 border-gray-300 dark:border-gray-600"
+            />
+            <input
+              type="text"
+              value={backgroundColor.toUpperCase()}
+              onChange={(e) => onBackgroundColorChange(e.target.value)}
+              className="flex-1 rounded-lg border border-gray-200 bg-white px-3 py-2 font-mono text-sm text-gray-900 focus:border-purple-500 focus:ring-2 focus:ring-purple-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Size */}
+      <div>
+        <label
+          htmlFor="size-slider"
+          className="mb-2 flex items-center justify-between text-sm font-semibold text-gray-700 dark:text-gray-300"
+        >
+          <span>Size</span>
+          <span className="font-mono text-xs text-gray-500 dark:text-gray-400">
+            {size}px
+          </span>
+        </label>
+        <input
+          id="size-slider"
+          type="range"
+          min="200"
+          max="800"
+          step="50"
+          value={size}
+          onChange={(e) => onSizeChange(parseInt(e.target.value))}
+          className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-gray-700"
+        />
+      </div>
+
+      {/* Action Buttons */}
+      <div className="flex gap-3">
+        <PrimaryButton onClick={onGenerate} className="flex-1">
+          <QrCode className="mr-2 h-4 w-4" />
+          Generate QR Code
+        </PrimaryButton>
+        <button
+          type="button"
+          onClick={onReset}
+          className="cursor-pointer rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+          title="Reset to defaults"
+        >
+          <RefreshCw className="h-4 w-4" />
+        </button>
+      </div>
+    </div>
+  );
+}

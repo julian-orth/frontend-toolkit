@@ -146,12 +146,19 @@ export function parseMarkdown(
     // Tables (GFM)
     if (gfm && line.includes("|")) {
       // Check if next line is separator
-      if (i + 1 < lines.length && lines[i + 1].match(/^\|?\s*[-:|\s]+\s*\|?\s*$/)) {
+      if (
+        i + 1 < lines.length &&
+        lines[i + 1].match(/^\|?\s*[-:|\s]+\s*\|?\s*$/)
+      ) {
         const tableLines = [line, lines[i + 1]];
         i += 2; // Skip header and separator
 
         // Collect table body rows
-        while (i < lines.length && lines[i].includes("|") && lines[i].trim() !== "") {
+        while (
+          i < lines.length &&
+          lines[i].includes("|") &&
+          lines[i].trim() !== ""
+        ) {
           tableLines.push(lines[i]);
           i++;
         }
@@ -190,7 +197,10 @@ function processInline(text: string): string {
   result = result.replace(/`([^`]+)`/g, "<code>$1</code>");
 
   // Images (before links since they have similar syntax)
-  result = result.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" />');
+  result = result.replace(
+    /!\[([^\]]*)\]\(([^)]+)\)/g,
+    '<img src="$2" alt="$1" />'
+  );
 
   // Links
   result = result.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');

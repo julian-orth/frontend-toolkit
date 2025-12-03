@@ -230,35 +230,35 @@ export function TimestampConverterUI() {
         <button
           type="button"
           onClick={() => handleQuickDate(-7)}
-          className="rounded-lg bg-white px-3 py-2 text-sm font-medium text-cyan-700 transition-colors hover:bg-cyan-100 dark:bg-gray-900 dark:text-cyan-400 dark:hover:bg-gray-800"
+          className="cursor-pointer rounded-lg bg-white px-3 py-2 text-sm font-medium text-cyan-700 transition-colors hover:bg-cyan-100 dark:bg-gray-900 dark:text-cyan-400 dark:hover:bg-gray-800"
         >
           1 week ago
         </button>
         <button
           type="button"
           onClick={() => handleQuickDate(-1)}
-          className="rounded-lg bg-white px-3 py-2 text-sm font-medium text-cyan-700 transition-colors hover:bg-cyan-100 dark:bg-gray-900 dark:text-cyan-400 dark:hover:bg-gray-800"
+          className="cursor-pointer rounded-lg bg-white px-3 py-2 text-sm font-medium text-cyan-700 transition-colors hover:bg-cyan-100 dark:bg-gray-900 dark:text-cyan-400 dark:hover:bg-gray-800"
         >
           Yesterday
         </button>
         <button
           type="button"
           onClick={() => handleQuickDate(0)}
-          className="rounded-lg bg-white px-3 py-2 text-sm font-medium text-cyan-700 transition-colors hover:bg-cyan-100 dark:bg-gray-900 dark:text-cyan-400 dark:hover:bg-gray-800"
+          className="cursor-pointer rounded-lg bg-white px-3 py-2 text-sm font-medium text-cyan-700 transition-colors hover:bg-cyan-100 dark:bg-gray-900 dark:text-cyan-400 dark:hover:bg-gray-800"
         >
           Today
         </button>
         <button
           type="button"
           onClick={() => handleQuickDate(1)}
-          className="rounded-lg bg-white px-3 py-2 text-sm font-medium text-cyan-700 transition-colors hover:bg-cyan-100 dark:bg-gray-900 dark:text-cyan-400 dark:hover:bg-gray-800"
+          className="cursor-pointer rounded-lg bg-white px-3 py-2 text-sm font-medium text-cyan-700 transition-colors hover:bg-cyan-100 dark:bg-gray-900 dark:text-cyan-400 dark:hover:bg-gray-800"
         >
           Tomorrow
         </button>
         <button
           type="button"
           onClick={() => handleQuickDate(7)}
-          className="rounded-lg bg-white px-3 py-2 text-sm font-medium text-cyan-700 transition-colors hover:bg-cyan-100 dark:bg-gray-900 dark:text-cyan-400 dark:hover:bg-gray-800"
+          className="cursor-pointer rounded-lg bg-white px-3 py-2 text-sm font-medium text-cyan-700 transition-colors hover:bg-cyan-100 dark:bg-gray-900 dark:text-cyan-400 dark:hover:bg-gray-800"
         >
           1 week ahead
         </button>

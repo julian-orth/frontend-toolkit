@@ -263,6 +263,7 @@ app/tools/{tool-id}/
 
 ### Interactive Elements
 
+- **Cursor pointer**: All clickable buttons must include `cursor-pointer` in their className
 - Minimum touch target size: 44x44px (or 48x48px for better UX)
 - Ensure sufficient spacing between clickable elements
 - Provide visual feedback for all interactive states (hover, focus, active)

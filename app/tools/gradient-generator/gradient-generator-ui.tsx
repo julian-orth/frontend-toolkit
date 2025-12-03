@@ -141,7 +141,7 @@ export function GradientGeneratorUI() {
           <button
             type="button"
             onClick={() => setViewMode("presets")}
-            className={`rounded-lg px-6 py-2.5 text-sm font-medium transition-colors ${
+            className={`cursor-pointer rounded-lg px-6 py-2.5 text-sm font-medium transition-colors ${
               viewMode === "presets"
                 ? "bg-rose-600 text-white dark:bg-rose-500"
                 : "bg-rose-100 text-rose-700 hover:bg-rose-200 dark:bg-rose-900/30 dark:text-rose-300 dark:hover:bg-rose-900/50"
@@ -153,7 +153,7 @@ export function GradientGeneratorUI() {
           <button
             type="button"
             onClick={() => setViewMode("custom")}
-            className={`rounded-lg px-6 py-2.5 text-sm font-medium transition-colors ${
+            className={`cursor-pointer rounded-lg px-6 py-2.5 text-sm font-medium transition-colors ${
               viewMode === "custom"
                 ? "bg-rose-600 text-white dark:bg-rose-500"
                 : "bg-rose-100 text-rose-700 hover:bg-rose-200 dark:bg-rose-900/30 dark:text-rose-300 dark:hover:bg-rose-900/50"
@@ -196,7 +196,7 @@ export function GradientGeneratorUI() {
                     <button
                       type="button"
                       onClick={() => handleExport(currentGradient)}
-                      className="flex-1 rounded-lg bg-rose-600 px-3 py-2 text-sm font-medium text-white hover:bg-rose-700"
+                      className="flex-1 cursor-pointer rounded-lg bg-rose-600 px-3 py-2 text-sm font-medium text-white hover:bg-rose-700"
                       title="Copy to clipboard"
                     >
                       <Copy className="mx-auto h-4 w-4" aria-hidden="true" />
@@ -204,7 +204,7 @@ export function GradientGeneratorUI() {
                     <button
                       type="button"
                       onClick={() => handleDownload(currentGradient)}
-                      className="flex-1 rounded-lg bg-rose-600 px-3 py-2 text-sm font-medium text-white hover:bg-rose-700"
+                      className="flex-1 cursor-pointer rounded-lg bg-rose-600 px-3 py-2 text-sm font-medium text-white hover:bg-rose-700"
                       title="Download file"
                     >
                       <Download
@@ -230,7 +230,7 @@ export function GradientGeneratorUI() {
                 key={category}
                 type="button"
                 onClick={() => setSelectedCategory(category)}
-                className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                className={`cursor-pointer rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                   selectedCategory === category
                     ? "bg-rose-600 text-white dark:bg-rose-500"
                     : "bg-rose-100 text-rose-700 hover:bg-rose-200 dark:bg-rose-900/30 dark:text-rose-300 dark:hover:bg-rose-900/50"
@@ -291,14 +291,14 @@ export function GradientGeneratorUI() {
                       <button
                         type="button"
                         onClick={() => handleCopyGradient(gradient)}
-                        className="flex-1 rounded-lg bg-rose-100 px-3 py-1.5 text-xs font-medium text-rose-700 transition-colors hover:bg-rose-200 dark:bg-rose-900/30 dark:text-rose-300 dark:hover:bg-rose-900/50"
+                        className="flex-1 cursor-pointer rounded-lg bg-rose-100 px-3 py-1.5 text-xs font-medium text-rose-700 transition-colors hover:bg-rose-200 dark:bg-rose-900/30 dark:text-rose-300 dark:hover:bg-rose-900/50"
                       >
                         Copy CSS
                       </button>
                       <button
                         type="button"
                         onClick={() => setSelectedGradient(gradient)}
-                        className="rounded-lg bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                        className="cursor-pointer rounded-lg bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
                       >
                         Details
                       </button>
@@ -338,7 +338,7 @@ export function GradientGeneratorUI() {
                   onClick={() =>
                     setCustomGradient((prev) => ({ ...prev, type }))
                   }
-                  className={`flex-1 rounded-lg px-4 py-2 text-sm font-medium capitalize transition-colors ${
+                  className={`flex-1 cursor-pointer rounded-lg px-4 py-2 text-sm font-medium capitalize transition-colors ${
                     customGradient.type === type
                       ? "bg-rose-600 text-white dark:bg-rose-500"
                       : "bg-rose-100 text-rose-700 hover:bg-rose-200 dark:bg-rose-900/30 dark:text-rose-300 dark:hover:bg-rose-900/50"
@@ -385,7 +385,7 @@ export function GradientGeneratorUI() {
                 <button
                   type="button"
                   onClick={handleRandomizeCustom}
-                  className="rounded-lg bg-rose-100 px-3 py-1 text-xs font-medium text-rose-700 hover:bg-rose-200 dark:bg-rose-900/30 dark:text-rose-300 dark:hover:bg-rose-900/50"
+                  className="cursor-pointer rounded-lg bg-rose-100 px-3 py-1 text-xs font-medium text-rose-700 hover:bg-rose-200 dark:bg-rose-900/30 dark:text-rose-300 dark:hover:bg-rose-900/50"
                 >
                   <RefreshCw
                     className="mr-1 inline h-3 w-3"
@@ -396,7 +396,7 @@ export function GradientGeneratorUI() {
                 <button
                   type="button"
                   onClick={handleAddStop}
-                  className="rounded-lg bg-rose-100 px-3 py-1 text-xs font-medium text-rose-700 hover:bg-rose-200 dark:bg-rose-900/30 dark:text-rose-300 dark:hover:bg-rose-900/50"
+                  className="cursor-pointer rounded-lg bg-rose-100 px-3 py-1 text-xs font-medium text-rose-700 hover:bg-rose-200 dark:bg-rose-900/30 dark:text-rose-300 dark:hover:bg-rose-900/50"
                 >
                   <Plus className="mr-1 inline h-3 w-3" aria-hidden="true" />
                   Add Stop
@@ -469,7 +469,7 @@ export function GradientGeneratorUI() {
                       type="button"
                       onClick={() => handleRemoveStop(index)}
                       disabled={customGradient.stops.length <= 2}
-                      className="rounded-lg p-2 text-red-600 transition-colors hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50 dark:text-red-400 dark:hover:bg-red-900/20"
+                      className="cursor-pointer rounded-lg p-2 text-red-600 transition-colors hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50 dark:text-red-400 dark:hover:bg-red-900/20"
                       title="Remove stop"
                     >
                       <Trash2 className="h-4 w-4" aria-hidden="true" />
@@ -491,7 +491,7 @@ export function GradientGeneratorUI() {
               <button
                 type="button"
                 onClick={() => handleCopyGradient(customGradient)}
-                className="absolute top-2 right-2 rounded-lg bg-rose-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-rose-700"
+                className="absolute top-2 right-2 cursor-pointer rounded-lg bg-rose-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-rose-700"
               >
                 <Copy className="mr-1 inline h-3 w-3" aria-hidden="true" />
                 Copy

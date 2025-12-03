@@ -329,7 +329,7 @@ export function ColorPickerUI() {
                   <button
                     type="button"
                     onClick={() => handleCopy(value, format)}
-                    className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-pink-600 transition-colors hover:bg-pink-100 dark:text-pink-400 dark:hover:bg-pink-900/30"
+                    className="flex h-8 w-8 flex-shrink-0 cursor-pointer items-center justify-center rounded-lg text-pink-600 transition-colors hover:bg-pink-100 dark:text-pink-400 dark:hover:bg-pink-900/30"
                     title={`Copy ${format.toUpperCase()}`}
                   >
                     {copiedFormat === format ? (
@@ -418,7 +418,7 @@ export function ColorPickerUI() {
                 key={type}
                 type="button"
                 onClick={() => setPaletteType(type)}
-                className={`rounded-lg px-4 py-1.5 text-xs font-medium capitalize transition-colors ${
+                className={`cursor-pointer rounded-lg px-4 py-1.5 text-xs font-medium capitalize transition-colors ${
                   paletteType === type
                     ? "bg-pink-600 text-white dark:bg-pink-500"
                     : "bg-pink-100 text-pink-700 hover:bg-pink-200 dark:bg-pink-900/30 dark:text-pink-300 dark:hover:bg-pink-900/50"
@@ -445,7 +445,7 @@ export function ColorPickerUI() {
                   setColor(paletteColor);
                   setInputValue(paletteColor);
                 }}
-                className="group relative aspect-square overflow-hidden rounded-xl border-2 border-pink-200 shadow-sm transition-all hover:scale-105 hover:shadow-md dark:border-pink-800"
+                className="group relative aspect-square cursor-pointer overflow-hidden rounded-xl border-2 border-pink-200 shadow-sm transition-all hover:scale-105 hover:shadow-md dark:border-pink-800"
                 style={{ backgroundColor: paletteColor }}
                 title={`Click to use ${paletteColor.toUpperCase()}`}
               >
