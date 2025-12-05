@@ -24,7 +24,7 @@ export function Header() {
           aria-label="DeveloperUtilityTools Home"
         >
           <Image
-            src={theme === "dark" ? "/logo-dark.svg" : "/logo.svg"}
+            src={theme === "dark" ? "/logo-darkmode.svg" : "/logo.svg"}
             alt="DeveloperUtilityTools"
             width={320}
             height={48}

@@ -20,7 +20,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <div className="mb-4">
               <Image
-                src={theme === "dark" ? "/logo-dark.svg" : "/logo.svg"}
+                src={theme === "dark" ? "/logo-darkmode.svg" : "/logo.svg"}
                 alt="DeveloperUtilityTools"
                 width={250}
                 height={38}
