@@ -44,7 +44,7 @@ export default function BlogPage() {
   const allTags = getAllTags();
 
   return (
-    <main className="container mx-auto px-4 py-12">
+    <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
       {/* Header */}
       <div className="mb-12 text-center">
         <h1 className="mb-4 text-5xl font-bold tracking-tight text-gray-900 dark:text-gray-50">

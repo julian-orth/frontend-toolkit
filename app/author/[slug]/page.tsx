@@ -44,7 +44,7 @@ export default async function AuthorPage({ params }: Props) {
   const posts = getBlogPostsByAuthor(slug);
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
       {/* Author Header */}
       <div className="mb-12 flex flex-col items-center text-center">
         <div className="mb-6 h-32 w-32 overflow-hidden rounded-full">

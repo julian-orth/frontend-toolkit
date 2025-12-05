@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SITE_CONFIG } from "@/lib/site-config";
+import { getToolById } from "@/lib/tools/registry";
 
 function toTitle(str: string) {
   // Special cases for acronyms
@@ -32,13 +33,37 @@ export default function Breadcrumb() {
   const segments = pathname.split("/").filter(Boolean);
 
   // Build breadcrumb items
-  const crumbs = [
-    { name: "Home", href: "/" },
-    ...segments.map((seg, idx) => ({
-      name: toTitle(seg),
-      href: "/" + segments.slice(0, idx + 1).join("/"),
-    })),
-  ];
+  let crumbs = [{ name: "Home", href: "/" }];
+
+  // Check if we're on a tool page
+  if (segments[0] === "tools" && segments[1]) {
+    const tool = getToolById(segments[1]);
+
+    if (tool) {
+      // Add Tools > Group > Tool Name
+      crumbs.push(
+        { name: "Tools", href: "/tools" },
+        {
+          name: `${tool.group} Tools`,
+          href: `/tools#${tool.group.toLowerCase().replace(/\s+/g, "-")}`,
+        },
+        { name: tool.name, href: pathname }
+      );
+    } else {
+      // Fallback if tool not found in registry
+      crumbs.push({ name: "Tools", href: "/tools" });
+      crumbs.push({ name: toTitle(segments[1]), href: pathname });
+    }
+  } else {
+    // Default behavior for non-tool pages
+    crumbs = [
+      { name: "Home", href: "/" },
+      ...segments.map((seg, idx) => ({
+        name: toTitle(seg),
+        href: "/" + segments.slice(0, idx + 1).join("/"),
+      })),
+    ];
+  }
 
   // Generate Schema.org BreadcrumbList structured data
   const breadcrumbSchema = {

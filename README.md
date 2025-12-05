@@ -1,61 +1,90 @@
-# DeveloperUtilityTools.com
+# DeveloperUtilityTools
 
-A modern web application built with Next.js 15 that provides a collection of free online developer tools. All tools run client-side, ensuring privacy and speed.
+A modern, privacy-first web application built with Next.js 15 that provides a comprehensive collection of free online developer tools. All tools run entirely client-side in your browser, ensuring your data never leaves your device.
 
 ## 🚀 Features
 
-- **15+ Developer Tools** including JSON Formatter, UUID Generator, Base64 Encoder/Decoder, and more
-- **Next.js 15 App Router** with TypeScript
+- **21+ Developer Tools** including JSON Formatter, UUID Suite, Base64 Encoder/Decoder, and more
+- **Next.js 15 App Router** with React 19 and TypeScript
 - **Tailwind CSS 4** for modern, responsive styling
-- **SEO Optimized** with sitemap, metadata, and robots.txt
-- **Dark Mode** with persistent theme switching
+- **SEO Optimized** with structured data, sitemap, metadata, and robots.txt
+- **Dark Mode** with persistent theme switching (localStorage-based)
 - **Tool Maintenance System** - Scalable architecture for 100+ tools
-- **Zero Registration** - all tools work instantly, client-side only
-- **Privacy First** - no data sent to servers
+- **Zero Registration** - all tools work instantly without sign-up
+- **Privacy First** - 100% client-side processing, no data sent to servers
+- **Accessibility** - WCAG AA compliant with keyboard navigation and screen reader support
+- **Blog & Content** - Developer guides and best practices
 
 ## 📋 Available Tools
 
-- JSON Formatter - Format and validate JSON data
-- UUID Generator - Generate unique identifiers
-- Base64 Encoder/Decoder - Encode and decode Base64 strings
-- URL Encoder/Decoder - Encode and decode URLs
-- Regex Tester - Test regular expressions
-- Color Picker - Pick and convert colors
-- Lorem Ipsum Generator - Generate placeholder text
-- Timestamp Converter - Convert Unix timestamps
-- Text Diff - Compare text differences
-- JWT Decoder - Decode JSON Web Tokens
+### UUID Tools
+
+- **UUID Generator** - Generate RFC 4122 compliant UUIDs (v1, v3, v4, v5, v7, NIL)
+- **UUID Validator** - Validate UUID format and structure
+- **UUID Decoder & Analyzer** - Extract timestamp, version, and node information
+- **UUID Format Converter** - Convert between different UUID formats
+
+### JSON Tools
+
+- **JSON Formatter** - Format, validate, minify, and beautify JSON
+
+### Encoding Tools
+
+- **Base64 Encoder/Decoder** - Encode and decode Base64 strings
+- **URL Encoder/Decoder** - Percent-encode URLs for safe transmission
+- **HTML Encoder/Decoder** - Convert special characters to HTML entities
+
+### Text Tools
+
+- **Text Diff** - Compare text differences with highlighting
+- **Lorem Ipsum Generator** - Generate placeholder text
+- **Markdown Previewer** - Live markdown editor with GitHub-flavored markdown
+
+### Color Tools
+
+- **Color Picker** - Pick and convert colors (HEX, RGB, HSL)
+- **Color Palette Generator** - Generate color harmonies
+- **Gradient Generator** - Create CSS gradients with 45+ presets
+
+### Security Tools
+
+- **JWT Decoder** - Decode JSON Web Tokens
+- **Hash Generator** - Generate MD5, SHA-1, SHA-256, SHA-512, HMAC hashes
+
+### Other Tools
+
+- **Regex Tester** - Test regular expressions with real-time matching
+- **Timestamp Converter** - Convert Unix timestamps to dates
+- **CSS Minifier/Beautifier** - Minify or beautify CSS
+- **QR Code Generator** - Generate customizable QR codes
 
 ## 🛠️ Tech Stack
 
 - **Framework:** Next.js 15 (App Router)
+- **React:** React 19
 - **Language:** TypeScript
-- **Styling:** TailwindCSS
+- **Styling:** Tailwind CSS 4 with custom CSS variables
+- **Icons:** Lucide React
 - **Code Quality:** ESLint + Prettier with Tailwind plugin
+- **Deployment:** Vercel-ready (zero-config)
 
-## 📦 Installation
+## 📦 Getting Started
 
-1. **Clone the repository:**
+**Prerequisites:**
 
-   ```bash
-   git clone <your-repo-url>
-   cd frontend-toolkit
-   ```
+- Node.js 18+ and npm
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-## 🚀 Development
-
-Run the development server:
+**Installation:**
 
 ```bash
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000) to see the app.
 
 ## 🛠️ Available Scripts
 
@@ -73,38 +102,52 @@ npm run validate:tools   # Validate all tools in registry
 
 ```
 frontend-toolkit/
-├── app/                      # Next.js App Router
+├── app/                      # Next.js 15 App Router
 │   ├── layout.tsx           # Root layout with theme provider
 │   ├── page.tsx             # Homepage with tool grid
 │   ├── globals.css          # Global styles and CSS variables
 │   ├── sitemap.ts           # Dynamic sitemap generation
 │   ├── robots.ts            # SEO robots configuration
+│   ├── blog/                # Blog posts and articles
+│   ├── about/               # About page
+│   ├── contact/             # Contact page
 │   └── tools/               # Tool pages (each tool has own folder)
 │       ├── json-formatter/
 │       │   ├── page.tsx            # Server component with metadata
-│       │   ├── client.tsx          # Client component with UI
+│       │   ├── formatter-ui.tsx    # Client component with UI
 │       │   └── utils.ts            # Tool logic
-│       └── ...other tools
+│       └── ...21+ tools
 ├── components/              # Reusable React components
 │   ├── layout-client.tsx    # Header & Footer (client components)
 │   ├── breadcrumb.tsx       # Navigation breadcrumbs
-│   └── theme-toggle.tsx     # Dark mode toggle
+│   ├── theme-toggle.tsx     # Dark mode toggle
+│   ├── tool-schema.tsx      # Structured data for SEO
+│   └── ...
 ├── lib/
+│   ├── site-config.ts       # Central site configuration
 │   ├── tools/
-│   │   ├── registry.ts      # Central tool registry
+│   │   ├── registry.ts      # Central tool registry (21+ tools)
 │   │   └── validator.ts     # Validation functions
 │   ├── types/
-│   │   └── tool.ts          # TypeScript interfaces
+│   │   ├── tool.ts          # Tool TypeScript interfaces
+│   │   └── blog.ts          # Blog TypeScript interfaces
 │   ├── contexts/
-│   │   └── theme-context.tsx # Theme provider
-│   └── i18n/                # Internationalization
+│   │   ├── theme-context.tsx      # Theme provider
+│   │   └── mobile-nav-context.tsx # Mobile navigation
+│   ├── content/
+│   │   └── blog.ts          # Blog content utilities
+│   └── i18n/                # Internationalization (future-ready)
 │       ├── index.ts
 │       └── en.ts            # English content
+├── content/
+│   └── blog/                # Markdown blog posts
 ├── scripts/
 │   ├── create-tool.js       # Tool generator CLI
 │   └── validate-tools.js    # Tool validator
 ├── docs/
-│   └── TOOL_MAINTENANCE.md  # Maintenance system docs
+│   ├── TOOL_MAINTENANCE.md  # Maintenance system docs
+│   ├── SCHEMA_IMPLEMENTATION.md
+│   └── QUICK_REFERENCE.md
 ├── tailwind.config.ts       # Tailwind CSS 4 configuration
 ├── tsconfig.json            # TypeScript configuration
 └── package.json             # Dependencies and scripts
@@ -112,99 +155,123 @@ frontend-toolkit/
 
 ## 🔧 Tool Maintenance System
 
-This project includes a powerful maintenance system for scaling to 100+ tools:
+This project includes a powerful, scalable maintenance system designed for managing 100+ tools efficiently.
 
 ### Adding a New Tool
 
-**Quick way (Recommended):**
+**Recommended: Use the interactive CLI**
 
 ```bash
 npm run create:tool
 ```
 
-This interactive CLI will:
+This scaffolds:
 
-- ✅ Scaffold all required files
-- ✅ Generate boilerplate code
-- ✅ Add tool to registry
-- ✅ Set up SEO metadata
+- ✅ All required files (page, UI component, utils)
+- ✅ Boilerplate code with proper structure
+- ✅ Registry entry with SEO metadata
+- ✅ Next.js metadata and accessibility patterns
 
-**Manual way:**
+**Manual Process:**
 
 1. Add tool to `lib/tools/registry.ts`
-2. Create `app/tools/{tool-id}/page.tsx`
-3. Create `app/tools/{tool-id}/{tool-id}-ui.tsx`
-4. Create `app/tools/{tool-id}/utils.ts`
+2. Create `app/tools/{tool-id}/page.tsx` (server component)
+3. Create `app/tools/{tool-id}/{tool-id}-ui.tsx` (client component)
+4. Create `app/tools/{tool-id}/utils.ts` (logic)
 5. Run `npm run validate:tools`
 
-See [docs/TOOL_MAINTENANCE.md](docs/TOOL_MAINTENANCE.md) for details.
-
-### Validating Tools
+### Tool Validation
 
 ```bash
 npm run validate:tools
 ```
 
-Checks for:
+Automatically checks:
 
-- Required fields present
-- Proper naming conventions
-- No duplicate IDs or routes
-- File structure exists
-- SEO optimization (description length, keywords, etc.)
+- ✅ Required fields present
+- ✅ Proper naming conventions
+- ✅ No duplicate IDs or routes
+- ✅ File structure exists
+- ✅ SEO optimization (description length, keywords)
+- ✅ Accessibility requirements
 
-**Validation runs automatically before build!**
+**Note:** Validation runs automatically before production builds.
 
-## 🌍 Internationalization
+### Tool Registry
 
-The project is structured to support multiple languages. Currently, only English is implemented.
+All tools are defined in `lib/tools/registry.ts`. Each tool configuration includes:
 
-Content is managed through:
+- **Metadata:** ID, name, description, keywords
+- **Grouping:** Category, icon, color
+- **Relationships:** Related tools for cross-linking
+- **SEO:** Structured data and Open Graph tags
 
-- `lib/i18n/en.ts` - English content (re-exports from registry)
-- `lib/tools/registry.ts` - Central tool definitions
+Tools automatically appear in:
 
-## 🎨 Customization
-
-### Changing the Theme
-
-Edit `app/globals.css` to customize CSS variables for light/dark modes.
-
-### Adding a New Tool
-
-Use the interactive CLI for the fastest setup:
-
-```bash
-npm run create:tool
-```
-
-Or follow the manual process in [CONTRIBUTING.md](CONTRIBUTING.md).
-
-All tools automatically appear in:
-
-- Homepage tool grid
+- Homepage grid
 - Sidebar navigation
 - Sitemap
 - Search functionality
+- Related tools sections
+
+## 🌍 Internationalization
+
+The project is structured for multi-language support (currently English only).
+
+- `lib/tools/registry.ts` - Central tool definitions
+- `lib/i18n/en.ts` - English content (re-exports from registry)
+- `lib/i18n/index.ts` - i18n aggregation
+
+To add a language: Create `lib/i18n/{locale}.ts` and update `getTranslations()`.
+
+## 🎨 Theme Customization
+
+Edit CSS variables in `app/globals.css`:
+
+```css
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+  /* ... */
+}
+
+.dark {
+  --background: 0 0% 3.9%;
+  --foreground: 0 0% 98%;
+  /* ... */
+}
+```
+
+Theme persists to `localStorage` and uses Tailwind's class-based dark mode.
 
 ## 📚 Documentation
 
-- [CONTRIBUTING.md](CONTRIBUTING.md) - Detailed guide for contributors
-- [docs/TOOL_MAINTENANCE.md](docs/TOOL_MAINTENANCE.md) - Tool maintenance system
-- [.github/copilot-instructions.md](.github/copilot-instructions.md) - Architecture details
+- [TOOL_MAINTENANCE.md](docs/TOOL_MAINTENANCE.md) - Tool system guide
+- [SCHEMA_IMPLEMENTATION.md](docs/SCHEMA_IMPLEMENTATION.md) - SEO structured data
+- [QUICK_REFERENCE.md](docs/QUICK_REFERENCE.md) - Quick command reference
+- [copilot-instructions.md](.github/copilot-instructions.md) - Architecture details
+
+## 🚀 Deployment
+
+**Vercel (Recommended):**
+
+1. Push to GitHub
+2. Import project in Vercel
+3. Zero configuration needed - deploys automatically
+
+**Manual Build:**
+
+```bash
+npm run build
+npm run start
+```
+
+The app is fully static-exportable if needed.
 
 ## 📝 License
 
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📧 Contact
-
-For questions or suggestions, please open an issue on GitHub.
+This project is licensed under the MIT License.
 
 ---
 
-Built with ❤️ using Next.js 15
+**DeveloperUtilityTools** - Built with Next.js 15, React 19, and Tailwind CSS 4

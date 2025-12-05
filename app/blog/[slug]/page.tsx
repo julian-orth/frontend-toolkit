@@ -164,7 +164,7 @@ export default async function BlogPostPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      <article className="container mx-auto px-4 py-12">
+      <article className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
         {/* Back Link */}
         <Link
           href="/blog"

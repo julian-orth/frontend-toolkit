@@ -39,7 +39,7 @@ export default async function TagPage({ params }: Props) {
   const allTags = getAllTags();
 
   return (
-    <main className="container mx-auto px-4 py-12">
+    <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
       {/* Back Button */}
       <div className="mb-8">
         <Link

@@ -13,13 +13,23 @@ export function Header() {
   const isToolPage = pathname.startsWith("/tools/");
   const { theme } = useTheme();
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 z-50 w-full border-b border-gray-200/50 bg-white/70 backdrop-blur-xl transition-all dark:border-gray-800/50 dark:bg-gray-950/70 ${isToolPage ? "md:left-72 md:w-[calc(100%-18rem)]" : ""}`}
     >
-      <div className="flex items-center justify-between px-6 py-4">
+      <div
+        className={`mx-auto flex items-center justify-between px-4 py-4 sm:px-6 ${isToolPage ? "max-w-full" : "max-w-7xl"}`}
+      >
         <Link
           href="/"
+          onClick={handleLogoClick}
           className="group flex items-center transition-opacity hover:opacity-80"
           aria-label="DeveloperUtilityTools Home"
         >

@@ -15,7 +15,9 @@ export function Footer() {
     <footer
       className={`relative border-t border-gray-200/50 bg-gradient-to-b from-white to-gray-50 py-16 dark:border-gray-800/50 dark:from-gray-950 dark:to-gray-900 ${isToolPage ? "md:ml-72" : ""}`}
     >
-      <div className="px-6">
+      <div
+        className={`px-4 sm:px-6 ${isToolPage ? "max-w-full" : "mx-auto max-w-7xl"}`}
+      >
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <div className="mb-4">

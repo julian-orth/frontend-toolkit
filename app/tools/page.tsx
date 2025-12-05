@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { SITE_NAME, TOOLS } from "@/lib/i18n/en";
 import { SITE_CONFIG } from "@/lib/site-config";
 import { ToolGroupIcon } from "@/components/tool-group-icons";
+import { ScrollToGroup } from "@/components/scroll-to-group";
 
 export const metadata: Metadata = {
   title: "All Developer Tools",
@@ -76,7 +77,8 @@ export default function ToolsPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-4">
+    <div className="mx-auto max-w-7xl px-4 py-4 pb-16 sm:px-6">
+      <ScrollToGroup />
       <header className="mb-8">
         <h1 className="mb-3 text-4xl font-bold tracking-tight text-black dark:text-white">
           All Developer Tools
@@ -92,8 +94,9 @@ export default function ToolsPage() {
         <div className="flex flex-col gap-12">
           {Object.entries(grouped).map(([group, tools]) => {
             const { groupColor, groupIcon } = groupMeta(tools);
+            const groupId = group.toLowerCase().replace(/\s+/g, "-");
             return (
-              <div key={group}>
+              <div key={group} id={groupId}>
                 <div className="mb-6 flex items-center gap-3">
                   <span
                     className={`rounded-full p-3 text-xl font-bold shadow-sm ${colorMap[groupColor] || "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300"}`}
