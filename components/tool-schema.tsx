@@ -5,6 +5,8 @@
  * in search results. Implements WebApplication schema for developer tools.
  */
 
+import { SITE_CONFIG } from "@/lib/site-config";
+
 interface ToolSchemaProps {
   name: string;
   description: string;
@@ -25,7 +27,7 @@ export function ToolSchema({
     "@type": "WebApplication",
     name: name,
     description: description,
-    url: `https://frontend-tools-hub.com${url}`,
+    url: `${SITE_CONFIG.domain}${url}`,
     applicationCategory: category,
     operatingSystem: "Web Browser",
     offers: {
@@ -43,7 +45,7 @@ export function ToolSchema({
     },
     creator: {
       "@type": "Organization",
-      name: "Frontend Tools Hub",
+      name: SITE_CONFIG.name,
     },
   };
 

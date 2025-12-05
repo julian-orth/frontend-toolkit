@@ -13,6 +13,17 @@ export const metadata: Metadata = {
     title: "Text Diff Checker - Compare Text Differences Online",
     description:
       "Compare two texts and visualize differences with split or unified view. Perfect for reviewing changes, merging files, and code reviews.",
+    url: "https://developerutilitytools.com/tools/text-diff",
+    siteName: "DeveloperUtilityTools",
+  },
+  twitter: {
+    card: "summary",
+    title: "Text Diff Checker - DeveloperUtilityTools",
+    description:
+      "Compare two texts and visualize differences with split or unified view. Perfect for reviewing changes, merging files, and code reviews.",
+  },
+  alternates: {
+    canonical: "https://developerutilitytools.com/tools/text-diff",
   },
 };
 

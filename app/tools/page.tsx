@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { SITE_NAME, TOOLS } from "@/lib/i18n/en";
+import { SITE_CONFIG } from "@/lib/site-config";
 import { ToolGroupIcon } from "@/components/tool-group-icons";
 
 export const metadata: Metadata = {
@@ -20,16 +21,21 @@ export const metadata: Metadata = {
     "free tools",
   ],
   openGraph: {
-    title: "All Developer Tools | Frontend Tools Hub",
+    title: `All Developer Tools | ${SITE_CONFIG.name}`,
     description:
       "Free online developer tools for web development. Format JSON, generate UUIDs, encode Base64, test regex patterns, and more.",
     type: "website",
+    url: `${SITE_CONFIG.domain}/tools`,
+    siteName: SITE_CONFIG.name,
   },
   twitter: {
     card: "summary_large_image",
-    title: "All Developer Tools | Frontend Tools Hub",
+    title: `All Developer Tools | ${SITE_CONFIG.name}`,
     description:
       "Free online developer tools for web development. All tools run in your browser.",
+  },
+  alternates: {
+    canonical: `${SITE_CONFIG.domain}/tools`,
   },
 };
 

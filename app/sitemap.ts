@@ -1,9 +1,10 @@
 import { MetadataRoute } from "next";
 import { TOOL_REGISTRY } from "@/lib/tools/registry";
 import { getAllBlogPosts, getAllTags } from "@/lib/content/blog";
+import { SITE_CONFIG } from "@/lib/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://frontend-tools-hub.com";
+  const baseUrl = SITE_CONFIG.domain;
 
   // Dynamically generate tool URLs from registry
   const toolUrls = TOOL_REGISTRY.map((tool) => ({

@@ -6,8 +6,9 @@ import { useMobileNav } from "@/lib/contexts/mobile-nav-context";
 import { TOOLS } from "@/lib/i18n/en";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import * as Icons from "lucide-react";
-import { Logo } from "@/components/logo";
+import { useTheme } from "@/lib/contexts/theme-context";
 
 function getToolIcon(iconName: string) {
   const LucideIcon =
@@ -54,6 +55,7 @@ export default function MobileNav() {
   const { isOpen, close } = useMobileNav();
   const dialogRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+  const { theme } = useTheme();
 
   // Trap focus when open
   useEffect(() => {
@@ -110,23 +112,18 @@ export default function MobileNav() {
           <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4 dark:border-gray-800">
             <Link
               href="/"
-              className="group flex items-center gap-3"
+              className="group flex items-center transition-opacity hover:opacity-80"
               onClick={close}
+              aria-label="DeveloperUtilityTools Home"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white shadow-lg ring-1 ring-gray-200/50 dark:bg-gray-800 dark:ring-gray-700/50">
-                <Logo
-                  size={32}
-                  className="transition-transform group-hover:scale-110"
-                />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-sm font-bold text-gray-900 dark:text-white">
-                  DeveloperUtility
-                </span>
-                <span className="text-sm font-bold text-gray-900 dark:text-white">
-                  Tools
-                </span>
-              </div>
+              <Image
+                src={theme === "dark" ? "/logo-dark.svg" : "/logo.svg"}
+                alt="DeveloperUtilityTools"
+                width={200}
+                height={30}
+                className="h-8 w-auto"
+                priority
+              />
             </Link>
             <button
               className="rounded-lg border border-gray-300 bg-white p-2 text-gray-700 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus:ring-offset-gray-950"

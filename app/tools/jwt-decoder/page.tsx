@@ -23,17 +23,17 @@ export const metadata: Metadata = {
     title: "JWT Decoder — Decode & Analyze JSON Web Tokens",
     description:
       "Free online JWT decoder to inspect headers, payloads, signatures, and claims. Check token expiration and algorithm detection instantly.",
-    url: "/tools/jwt-decoder",
-    siteName: "Frontend Tools Hub",
+    url: "https://developerutilitytools.com/tools/jwt-decoder",
+    siteName: "DeveloperUtilityTools",
   },
   twitter: {
     card: "summary",
-    title: "JWT Decoder — Frontend Tools Hub",
+    title: "JWT Decoder — DeveloperUtilityTools",
     description:
       "Decode and analyze JSON Web Tokens with header, payload, and signature inspection. Free online tool.",
   },
   alternates: {
-    canonical: "/tools/jwt-decoder",
+    canonical: "https://developerutilitytools.com/tools/jwt-decoder",
   },
 };
 

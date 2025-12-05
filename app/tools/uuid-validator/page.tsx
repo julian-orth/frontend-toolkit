@@ -20,19 +20,19 @@ export const metadata: Metadata = {
     "nil",
   ],
   openGraph: {
-    title: "UUID Validator — Frontend Tools Hub",
+    title: "UUID Validator — DeveloperUtilityTools",
     description:
       "Validate RFC 4122 compliant UUIDs instantly. Check if a string is a valid UUID and determine its version.",
-    url: "/tools/uuid-validator",
-    siteName: "Frontend Tools Hub",
+    url: "https://developerutilitytools.com/tools/uuid-validator",
+    siteName: "DeveloperUtilityTools",
   },
   twitter: {
     card: "summary",
-    title: "UUID Validator — Frontend Tools Hub",
+    title: "UUID Validator — DeveloperUtilityTools",
     description: "Validate RFC 4122 compliant UUIDs instantly.",
   },
   alternates: {
-    canonical: "/tools/uuid-validator",
+    canonical: "https://developerutilitytools.com/tools/uuid-validator",
   },
 };
 

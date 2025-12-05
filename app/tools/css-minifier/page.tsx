@@ -24,17 +24,17 @@ export const metadata: Metadata = {
     title: "CSS Minifier/Beautifier — Minify & Format CSS Online",
     description:
       "Minify CSS to reduce file size or beautify for readability with instant formatting, comment preservation options, and zero data transmission.",
-    url: "/tools/css-minifier",
-    siteName: "Frontend Tools Hub",
+    url: "https://developerutilitytools.com/tools/css-minifier",
+    siteName: "DeveloperUtilityTools",
   },
   twitter: {
     card: "summary",
-    title: "CSS Minifier/Beautifier — Frontend Tools Hub",
+    title: "CSS Minifier/Beautifier — DeveloperUtilityTools",
     description:
       "Minify CSS to reduce file size or beautify for readability. All processing happens in your browser.",
   },
   alternates: {
-    canonical: "/tools/css-minifier",
+    canonical: "https://developerutilitytools.com/tools/css-minifier",
   },
 };
 

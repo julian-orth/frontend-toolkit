@@ -38,17 +38,17 @@ export const metadata: Metadata = {
     title: "QR Code Generator — Create Custom QR Codes with Logo & Colors",
     description:
       "Free QR code generator for URLs, WiFi, vCards, email, and SMS. Customize with colors and logos, adjust error correction, download as PNG/SVG.",
-    url: "/tools/qr-code-generator",
-    siteName: "Frontend Tools Hub",
+    url: "https://developerutilitytools.com/tools/qr-code-generator",
+    siteName: "DeveloperUtilityTools",
   },
   twitter: {
     card: "summary",
-    title: "QR Code Generator — Frontend Tools Hub",
+    title: "QR Code Generator — DeveloperUtilityTools",
     description:
       "Generate custom QR codes with logos and colors. Support for URLs, WiFi, vCards. Download PNG/SVG. Free tool.",
   },
   alternates: {
-    canonical: "/tools/qr-code-generator",
+    canonical: "https://developerutilitytools.com/tools/qr-code-generator",
   },
 };
 

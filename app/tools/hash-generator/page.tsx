@@ -24,17 +24,17 @@ export const metadata: Metadata = {
     title: "Hash Generator — MD5, SHA-256, SHA-512 & HMAC Calculator",
     description:
       "Generate cryptographic hashes with MD5, SHA-1, SHA-256, SHA-512. HMAC support for API signing. Free online hash tool with instant results.",
-    url: "/tools/hash-generator",
-    siteName: "Frontend Tools Hub",
+    url: "https://developerutilitytools.com/tools/hash-generator",
+    siteName: "DeveloperUtilityTools",
   },
   twitter: {
     card: "summary",
-    title: "Hash Generator — Frontend Tools Hub",
+    title: "Hash Generator — DeveloperUtilityTools",
     description:
       "Generate MD5, SHA-256, SHA-512 hashes and HMAC. Free cryptographic hash calculator for developers.",
   },
   alternates: {
-    canonical: "/tools/hash-generator",
+    canonical: "https://developerutilitytools.com/tools/hash-generator",
   },
 };
 

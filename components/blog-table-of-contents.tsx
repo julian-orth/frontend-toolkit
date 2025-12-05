@@ -19,31 +19,39 @@ export function BlogTableOfContents({ content }: TableOfContentsProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    // Extract headings from HTML content
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = content;
-    const headingElements = tempDiv.querySelectorAll("h2, h3");
+    // Wait for content to be rendered in the DOM
+    const extractHeadingsFromDOM = () => {
+      const blogContent = document.querySelector(".blog-content");
+      if (!blogContent) {
+        // Retry if content not yet rendered
+        setTimeout(extractHeadingsFromDOM, 50);
+        return;
+      }
 
-    const extractedHeadings: Heading[] = [];
-    headingElements.forEach((heading, index) => {
-      const text = heading.textContent || "";
-      const id = `heading-${index}`;
-      const level = parseInt(heading.tagName.substring(1));
+      const headingElements = blogContent.querySelectorAll("h2, h3");
+      const extractedHeadings: Heading[] = [];
 
-      extractedHeadings.push({ id, text, level });
+      headingElements.forEach((heading, index) => {
+        const text = heading.textContent || "";
+        // Create a more semantic ID from the heading text
+        const id =
+          heading.id ||
+          `heading-${text
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-|-$/g, "")}-${index}`;
+        const level = parseInt(heading.tagName.substring(1));
 
-      // Add id to actual DOM element for scroll targeting
-      setTimeout(() => {
-        const actualHeading = document.querySelector(
-          `.blog-content ${heading.tagName}:nth-of-type(${index + 1})`
-        );
-        if (actualHeading) {
-          actualHeading.id = id;
-        }
-      }, 100);
-    });
+        // Add id to the heading element
+        heading.id = id;
 
-    setHeadings(extractedHeadings);
+        extractedHeadings.push({ id, text, level });
+      });
+
+      setHeadings(extractedHeadings);
+    };
+
+    extractHeadingsFromDOM();
   }, [content]);
 
   useEffect(() => {
@@ -74,10 +82,8 @@ export function BlogTableOfContents({ content }: TableOfContentsProps) {
   const handleClick = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const yOffset = -100;
-      const y =
-        element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
+      // Use native scrollIntoView with block option for better behavior
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
       setIsOpen(false);
     }
   };

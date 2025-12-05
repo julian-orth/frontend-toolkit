@@ -28,17 +28,17 @@ export const metadata: Metadata = {
     title: "Color Palette Generator — Create Harmonious Color Schemes",
     description:
       "Generate beautiful color palettes using color theory. Monochromatic, complementary, triadic schemes. Export to CSS, Tailwind, SCSS, JSON, SVG.",
-    url: "/tools/color-palettes",
-    siteName: "Frontend Tools Hub",
+    url: "https://developerutilitytools.com/tools/color-palettes",
+    siteName: "DeveloperUtilityTools",
   },
   twitter: {
     card: "summary",
-    title: "Color Palette Generator — Frontend Tools Hub",
+    title: "Color Palette Generator — DeveloperUtilityTools",
     description:
       "Create harmonious color schemes with color theory harmonies. Export to multiple formats. Free online tool.",
   },
   alternates: {
-    canonical: "/tools/color-palettes",
+    canonical: "https://developerutilitytools.com/tools/color-palettes",
   },
 };
 

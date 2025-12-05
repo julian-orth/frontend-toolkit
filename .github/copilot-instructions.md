@@ -209,8 +209,22 @@ app/tools/{tool-id}/
 - **Title format**: Descriptive title (50-60 chars optimal)
 - **Description**: Detailed, keyword-rich (150-160 chars optimal)
 - **Keywords**: Include relevant search terms (optional but recommended)
-- **Open Graph**: Add `openGraph` object for social media sharing
+- **Open Graph**: Add `openGraph` object for social media sharing with full URL
 - **Twitter Card**: Add `twitter` object for Twitter/X previews
+- **Canonical URLs**: Always use **absolute URLs** with `SITE_CONFIG.domain`
+  ```typescript
+  alternates: {
+    canonical: `${SITE_CONFIG.domain}/tools/your-tool`,
+  }
+  ```
+
+### Structured Data (Schema.org)
+
+- **Tool Pages**: Use `<ToolSchema>` component for WebApplication markup
+- **Breadcrumbs**: Use `<Breadcrumb>` component (includes BreadcrumbList schema automatically)
+- **Blog Posts**: Include Article/TechArticle schema with author, datePublished, dateModified
+- **Homepage**: Consider adding Organization and WebSite schema
+- All schema URLs must use `SITE_CONFIG.domain` for consistency
 
 ### Content Structure
 
@@ -224,6 +238,14 @@ app/tools/{tool-id}/
 - Use descriptive, hyphenated URLs: `/tools/json-formatter` not `/tools/jf`
 - Keep URLs short and readable
 - Match URL structure to site hierarchy
+- Always use absolute URLs in metadata, OpenGraph, and structured data
+
+### Domain Configuration
+
+- **Single source of truth**: All URLs must use `SITE_CONFIG.domain`
+- Never hardcode domains in components or metadata
+- Import: `import { SITE_CONFIG } from "@/lib/site-config"`
+- Use helper functions: `getToolUrl()`, `getBlogUrl()`, etc.
 
 ## Accessibility (a11y) Best Practices
 

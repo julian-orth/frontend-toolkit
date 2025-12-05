@@ -19,19 +19,19 @@ export const metadata: Metadata = {
     "mac",
   ],
   openGraph: {
-    title: "UUID Decoder & Analyzer — Frontend Tools Hub",
+    title: "UUID Decoder & Analyzer — DeveloperUtilityTools",
     description:
       "Decode and inspect RFC 4122 UUIDs. Extract version, variant, timestamp (for v1) and other fields.",
-    url: "/tools/uuid-decoder",
-    siteName: "Frontend Tools Hub",
+    url: "https://developerutilitytools.com/tools/uuid-decoder",
+    siteName: "DeveloperUtilityTools",
   },
   twitter: {
     card: "summary",
-    title: "UUID Decoder & Analyzer — Frontend Tools Hub",
+    title: "UUID Decoder & Analyzer — DeveloperUtilityTools",
     description: "Decode and inspect RFC 4122 UUIDs in the browser.",
   },
   alternates: {
-    canonical: "/tools/uuid-decoder",
+    canonical: "https://developerutilitytools.com/tools/uuid-decoder",
   },
 };
 

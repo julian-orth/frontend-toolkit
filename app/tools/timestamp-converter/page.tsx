@@ -22,17 +22,17 @@ export const metadata: Metadata = {
     title: "Unix Timestamp Converter — Epoch Time to Date",
     description:
       "Convert Unix timestamps to human-readable dates instantly. Supports multiple formats and timezones. Live epoch clock included.",
-    url: "/tools/timestamp-converter",
-    siteName: "Frontend Tools Hub",
+    url: "https://developerutilitytools.com/tools/timestamp-converter",
+    siteName: "DeveloperUtilityTools",
   },
   twitter: {
     card: "summary",
-    title: "Unix Timestamp Converter — Frontend Tools Hub",
+    title: "Unix Timestamp Converter — DeveloperUtilityTools",
     description:
       "Convert Unix timestamps to dates and vice versa. Live epoch clock with timezone support.",
   },
   alternates: {
-    canonical: "/tools/timestamp-converter",
+    canonical: "https://developerutilitytools.com/tools/timestamp-converter",
   },
 };
 

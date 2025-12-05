@@ -29,17 +29,17 @@ export const metadata: Metadata = {
       "CSS Gradient Generator — Create Beautiful Gradients with 45+ Presets",
     description:
       "Free CSS gradient generator with linear, radial, and conic gradients. Export to CSS, Tailwind, SCSS, JSON, and SVG. 45+ preset gradients included.",
-    url: "/tools/gradient-generator",
-    siteName: "Frontend Tools Hub",
+    url: "https://developerutilitytools.com/tools/gradient-generator",
+    siteName: "DeveloperUtilityTools",
   },
   twitter: {
     card: "summary",
-    title: "CSS Gradient Generator — Frontend Tools Hub",
+    title: "CSS Gradient Generator — DeveloperUtilityTools",
     description:
       "Create stunning CSS gradients with 45+ presets. Export to CSS, Tailwind, and more. Free online tool.",
   },
   alternates: {
-    canonical: "/tools/gradient-generator",
+    canonical: "https://developerutilitytools.com/tools/gradient-generator",
   },
 };
 

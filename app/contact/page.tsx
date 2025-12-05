@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { SITE_NAME } from "@/lib/i18n/en";
+import { SITE_CONFIG } from "@/lib/site-config";
 import ContactForm from "./contact-form";
 
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with the DeveloperUtilityTools.com team. We're here to help with questions, feedback, or feature requests.",
+    "Get in touch with the DeveloperUtilityTools team. We're here to help with questions, feedback, or feature requests.",
   keywords: [
     "contact",
     "support",
@@ -15,16 +16,21 @@ export const metadata: Metadata = {
     "developer tools support",
   ],
   openGraph: {
-    title: `Contact Us | ${SITE_NAME}`,
+    title: `Contact Us | ${SITE_CONFIG.name}`,
     description:
-      "Get in touch with the DeveloperUtilityTools.com team. We're here to help!",
+      "Get in touch with the DeveloperUtilityTools team. We're here to help!",
     type: "website",
+    url: `${SITE_CONFIG.domain}/contact`,
+    siteName: SITE_CONFIG.name,
   },
   twitter: {
-    card: "summary_large_image",
-    title: `Contact Us | ${SITE_NAME}`,
+    card: "summary",
+    title: `Contact Us | ${SITE_CONFIG.name}`,
     description:
-      "Get in touch with the DeveloperUtilityTools.com team. We're here to help!",
+      "Get in touch with the DeveloperUtilityTools team. We're here to help!",
+  },
+  alternates: {
+    canonical: `${SITE_CONFIG.domain}/contact`,
   },
 };
 

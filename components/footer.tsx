@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import { NAV_ITEMS, SITE_NAME, TOOLS } from "@/lib/i18n/en";
-import { Github, Twitter } from "lucide-react";
-import { Logo } from "@/components/logo";
+import { useTheme } from "@/lib/contexts/theme-context";
 
 export function Footer() {
   const pathname = usePathname();
   const isToolPage = pathname.startsWith("/tools/");
+  const { theme } = useTheme();
 
   return (
     <footer
@@ -17,37 +18,20 @@ export function Footer() {
       <div className="px-6">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-white shadow-lg ring-1 ring-gray-200/50 dark:bg-gray-800 dark:ring-gray-700/50">
-                <Logo size={36} />
-              </div>
-              <h3 className="text-2xl font-bold">{SITE_NAME}</h3>
+            <div className="mb-4">
+              <Image
+                src={theme === "dark" ? "/logo-dark.svg" : "/logo.svg"}
+                alt="DeveloperUtilityTools"
+                width={250}
+                height={38}
+                className="h-10 w-auto"
+              />
             </div>
             <p className="mb-4 max-w-md text-sm leading-relaxed text-gray-700 dark:text-gray-400">
               Your go-to collection of powerful, privacy-focused developer
               utilities. All tools run client-side in your browser—no data ever
               leaves your device.
             </p>
-            <div className="flex gap-3">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-gray-700 transition-all hover:border-gray-300 hover:bg-gray-100 dark:border-gray-800 dark:text-gray-300 dark:hover:border-gray-700 dark:hover:bg-gray-800"
-                aria-label="GitHub"
-              >
-                <Github className="h-5 w-5" aria-hidden="true" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-gray-700 transition-all hover:border-gray-300 hover:bg-gray-100 dark:border-gray-800 dark:text-gray-300 dark:hover:border-gray-700 dark:hover:bg-gray-800"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-5 w-5" aria-hidden="true" />
-              </a>
-            </div>
           </div>
           <div>
             <h4 className="mb-4 text-sm font-bold tracking-wider text-gray-900 uppercase dark:text-white">

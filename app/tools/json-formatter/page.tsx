@@ -21,17 +21,17 @@ export const metadata: Metadata = {
     title: "JSON Formatter & Validator — Format, Validate & Beautify JSON",
     description:
       "Online JSON formatter and validator with advanced features: beautify, minify, validate, sort keys, and detect errors with line numbers.",
-    url: "/tools/json-formatter",
-    siteName: "Frontend Tools Hub",
+    url: "https://developerutilitytools.com/tools/json-formatter",
+    siteName: "DeveloperUtilityTools",
   },
   twitter: {
     card: "summary",
-    title: "JSON Formatter & Validator — Frontend Tools Hub",
+    title: "JSON Formatter & Validator — DeveloperUtilityTools",
     description:
       "Format, validate, and minify JSON with detailed error detection and multiple formatting options.",
   },
   alternates: {
-    canonical: "/tools/json-formatter",
+    canonical: "https://developerutilitytools.com/tools/json-formatter",
   },
 };
 

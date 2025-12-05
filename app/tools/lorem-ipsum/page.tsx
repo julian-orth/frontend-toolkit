@@ -22,17 +22,17 @@ export const metadata: Metadata = {
     title: "Lorem Ipsum Generator — Classic Placeholder Text",
     description:
       "Generate Lorem Ipsum placeholder text instantly. Choose paragraphs, sentences, or words. Perfect for design mockups, wireframes, and prototypes.",
-    url: "/tools/lorem-ipsum",
-    siteName: "Frontend Tools Hub",
+    url: "https://developerutilitytools.com/tools/lorem-ipsum",
+    siteName: "DeveloperUtilityTools",
   },
   twitter: {
     card: "summary",
-    title: "Lorem Ipsum Generator — Frontend Tools Hub",
+    title: "Lorem Ipsum Generator — DeveloperUtilityTools",
     description:
       "Generate classic Lorem Ipsum placeholder text for your designs. Paragraphs, sentences, or words with instant copy.",
   },
   alternates: {
-    canonical: "/tools/lorem-ipsum",
+    canonical: "https://developerutilitytools.com/tools/lorem-ipsum",
   },
 };
 

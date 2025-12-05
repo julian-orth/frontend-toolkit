@@ -1,6 +1,6 @@
 {
-  "name": "frontend-tools-hub",
-  "version": "0.1.0",
+  "name": "developer-utility-tools",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",

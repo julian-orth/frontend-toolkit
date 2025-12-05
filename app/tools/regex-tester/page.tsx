@@ -23,17 +23,17 @@ export const metadata: Metadata = {
     title: "Regex Tester — Test Regular Expressions with Live Highlighting",
     description:
       "Free regex tester with real-time match highlighting, capture groups, and pattern examples. Debug regular expressions instantly in your browser.",
-    url: "/tools/regex-tester",
-    siteName: "Frontend Tools Hub",
+    url: "https://developerutilitytools.com/tools/regex-tester",
+    siteName: "DeveloperUtilityTools",
   },
   twitter: {
     card: "summary",
-    title: "Regex Tester — Frontend Tools Hub",
+    title: "Regex Tester — DeveloperUtilityTools",
     description:
       "Test and debug regular expressions with real-time highlighting and capture groups. Free online regex tool.",
   },
   alternates: {
-    canonical: "/tools/regex-tester",
+    canonical: "https://developerutilitytools.com/tools/regex-tester",
   },
 };
 

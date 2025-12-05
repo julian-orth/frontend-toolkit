@@ -22,17 +22,17 @@ export const metadata: Metadata = {
     title: "Color Picker & Converter — HEX, RGB, HSL Conversion Tool",
     description:
       "Free color picker with instant format conversion, palette generation, and WCAG contrast checking. Perfect for designers and developers.",
-    url: "/tools/color-picker",
-    siteName: "Frontend Tools Hub",
+    url: "https://developerutilitytools.com/tools/color-picker",
+    siteName: "DeveloperUtilityTools",
   },
   twitter: {
     card: "summary",
-    title: "Color Picker & Converter — Frontend Tools Hub",
+    title: "Color Picker & Converter — DeveloperUtilityTools",
     description:
       "Pick colors and convert between HEX, RGB, HSL formats. Generate palettes and check accessibility. Free tool.",
   },
   alternates: {
-    canonical: "/tools/color-picker",
+    canonical: "https://developerutilitytools.com/tools/color-picker",
   },
 };
 

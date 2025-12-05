@@ -22,17 +22,17 @@ export const metadata: Metadata = {
     title: "URL Encoder/Decoder — Percent Encoding for URLs & Query Strings",
     description:
       "Free online URL encoder/decoder with query parameter support and RFC3986 compliance. Encode special characters safely for web URLs.",
-    url: "/tools/url-encoder",
-    siteName: "Frontend Tools Hub",
+    url: "https://developerutilitytools.com/tools/url-encoder",
+    siteName: "DeveloperUtilityTools",
   },
   twitter: {
     card: "summary",
-    title: "URL Encoder/Decoder — Frontend Tools Hub",
+    title: "URL Encoder/Decoder — DeveloperUtilityTools",
     description:
       "Encode and decode URLs with percent encoding. Supports query strings and full URIs. Free online tool.",
   },
   alternates: {
-    canonical: "/tools/url-encoder",
+    canonical: "https://developerutilitytools.com/tools/url-encoder",
   },
 };
 

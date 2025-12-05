@@ -8,9 +8,9 @@ import {
   markdownToHtml,
 } from "@/lib/content/blog";
 import { TOOLS } from "@/lib/tools/registry";
+import { SITE_CONFIG, getBlogUrl } from "@/lib/site-config";
 import { Calendar, Clock, Tag, ArrowLeft, ExternalLink } from "lucide-react";
 import { AuthorCard } from "@/components/author-card";
-import { SocialShare } from "@/components/social-share";
 import { BlogTableOfContents } from "@/components/blog-table-of-contents";
 import { BlogContent } from "@/components/blog-content";
 
@@ -41,7 +41,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         publishedTime: post.publishedAt,
         modifiedTime: post.updatedAt,
         authors: [post.author.name],
-        url: `https://developerutilitytools.com/blog/${post.slug}`,
+        url: getBlogUrl(post.slug),
+        siteName: SITE_CONFIG.name,
         images: post.seo.ogImage ? [{ url: post.seo.ogImage }] : undefined,
       },
       twitter: {
@@ -51,9 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         images: post.seo.ogImage ? [post.seo.ogImage] : undefined,
       },
       alternates: {
-        canonical:
-          post.seo.canonical ||
-          `https://developerutilitytools.com/blog/${post.slug}`,
+        canonical: post.seo.canonical || getBlogUrl(post.slug),
       },
       other: {
         "article:published_time": post.publishedAt,
@@ -240,13 +239,6 @@ export default async function BlogPostPage({ params }: Props) {
             <div className="mx-auto max-w-3xl">
               <BlogContent content={contentHtml} />
             </div>
-
-            {/* Social Share */}
-            <SocialShare
-              url={`https://developerutilitytools.com/blog/${post.slug}`}
-              title={post.title}
-              description={post.description}
-            />
 
             {/* Related Tools */}
             {relatedTools.length > 0 && (

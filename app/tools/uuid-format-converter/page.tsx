@@ -19,19 +19,19 @@ export const metadata: Metadata = {
     "compact",
   ],
   openGraph: {
-    title: "UUID Format Converter — Frontend Tools Hub",
+    title: "UUID Format Converter — DeveloperUtilityTools",
     description:
       "Convert UUIDs between common representations: hyphenated, compact, uppercase, URN and braces.",
-    url: "/tools/uuid-format-converter",
-    siteName: "Frontend Tools Hub",
+    url: "https://developerutilitytools.com/tools/uuid-format-converter",
+    siteName: "DeveloperUtilityTools",
   },
   twitter: {
     card: "summary",
-    title: "UUID Format Converter — Frontend Tools Hub",
+    title: "UUID Format Converter — DeveloperUtilityTools",
     description: "Convert UUID representations for storage or display.",
   },
   alternates: {
-    canonical: "/tools/uuid-format-converter",
+    canonical: "https://developerutilitytools.com/tools/uuid-format-converter",
   },
 };
 

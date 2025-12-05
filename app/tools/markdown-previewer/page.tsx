@@ -23,17 +23,17 @@ export const metadata: Metadata = {
       "Markdown Previewer & Editor — Live GFM Preview with Syntax Highlighting",
     description:
       "Write and preview markdown with live rendering, GitHub-flavored markdown support, and HTML export. Free online markdown editor for developers.",
-    url: "/tools/markdown-previewer",
-    siteName: "Frontend Tools Hub",
+    url: "https://developerutilitytools.com/tools/markdown-previewer",
+    siteName: "DeveloperUtilityTools",
   },
   twitter: {
     card: "summary",
-    title: "Markdown Previewer & Editor — Frontend Tools Hub",
+    title: "Markdown Previewer & Editor — DeveloperUtilityTools",
     description:
       "Live markdown editor with GitHub-flavored support and syntax highlighting. Export to HTML. Free tool.",
   },
   alternates: {
-    canonical: "/tools/markdown-previewer",
+    canonical: "https://developerutilitytools.com/tools/markdown-previewer",
   },
 };
 

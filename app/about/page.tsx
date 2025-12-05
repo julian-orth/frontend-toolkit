@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { SITE_NAME } from "@/lib/i18n/en";
+import { SITE_CONFIG } from "@/lib/site-config";
 import { Shield, Code, Zap, Heart } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about DeveloperUtilityTools.com - a free, privacy-focused collection of developer utilities that run entirely in your browser.",
+    "Learn about DeveloperUtilityTools - a free, privacy-focused collection of developer utilities that run entirely in your browser.",
   keywords: [
     "about",
     "developer tools",
@@ -14,16 +15,20 @@ export const metadata: Metadata = {
     "open source",
   ],
   openGraph: {
-    title: `About | ${SITE_NAME}`,
+    title: `About | ${SITE_CONFIG.name}`,
     description:
-      "Learn about DeveloperUtilityTools.com - a free, privacy-focused collection of developer utilities.",
-    type: "website",
+      "Learn about our commitment to privacy-first developer tools and client-side processing.",
+    url: `${SITE_CONFIG.domain}/about`,
+    siteName: SITE_CONFIG.name,
   },
   twitter: {
-    card: "summary_large_image",
-    title: `About | ${SITE_NAME}`,
+    card: "summary",
+    title: `About | ${SITE_CONFIG.name}`,
     description:
-      "Learn about DeveloperUtilityTools.com - a free, privacy-focused collection of developer utilities.",
+      "Privacy-first developer tools running entirely in your browser.",
+  },
+  alternates: {
+    canonical: `${SITE_CONFIG.domain}/about`,
   },
 };
 
@@ -188,28 +193,10 @@ export default function AboutPage() {
           <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-50">
             Let&apos;s Chat
           </h2>
-          <p className="mb-4 text-gray-700 dark:text-gray-300">
-            Got ideas for new tools? Found a bug? Just want to say hi?
-            We&apos;re all ears. Drop by our GitHub or ping us on Twitter.
+          <p className="text-gray-700 dark:text-gray-300">
+            Got ideas for new tools? Found a bug? Just want to say hi? Feel free
+            to reach out via the contact page.
           </p>
-          <div className="flex flex-wrap gap-4">
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-gray-900 px-6 py-3 font-semibold text-white transition-colors hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-6 py-3 font-semibold text-gray-900 transition-colors hover:bg-gray-100 dark:border-gray-700 dark:text-gray-50 dark:hover:bg-gray-800"
-            >
-              Twitter
-            </a>
-          </div>
         </section>
       </div>
     </main>

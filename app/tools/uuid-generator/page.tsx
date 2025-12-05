@@ -23,17 +23,17 @@ export const metadata: Metadata = {
     title: "UUID (GUID) Generator — Generate v1, v3, v4, v5, v7",
     description:
       "Generate RFC 4122 compliant UUIDs (GUIDs) instantly. Choose version, namespace and name for namespaced UUIDs, and copy shareable links (use `?version=v1`).",
-    url: "/tools/uuid-generator",
-    siteName: "Frontend Tools Hub",
+    url: "https://developerutilitytools.com/tools/uuid-generator",
+    siteName: "DeveloperUtilityTools",
   },
   twitter: {
     card: "summary",
-    title: "UUID (GUID) Generator — Frontend Tools Hub",
+    title: "UUID (GUID) Generator — DeveloperUtilityTools",
     description:
       "Generate v1, v3, v4, v5, v7 UUIDs (GUIDs) in-browser. Share links using `?version=` to preselect the generator.",
   },
   alternates: {
-    canonical: "/tools/uuid-generator",
+    canonical: "https://developerutilitytools.com/tools/uuid-generator",
   },
 };
 

@@ -32,12 +32,17 @@ export const metadata: Metadata = {
     description:
       "Encode and decode HTML entities instantly. Convert < > & \" ' and other special characters to their HTML entity equivalents. Free, fast, and secure.",
     type: "website",
+    url: "https://developerutilitytools.com/tools/html-encoder",
+    siteName: "DeveloperUtilityTools",
   },
   twitter: {
     card: "summary_large_image",
     title: "HTML Encoder/Decoder - Convert Special Characters to HTML Entities",
     description:
       "Convert special characters to HTML entities and decode them back. Supports named entities, numeric codes, and live mode. 100% client-side processing.",
+  },
+  alternates: {
+    canonical: "https://developerutilitytools.com/tools/html-encoder",
   },
 };
 

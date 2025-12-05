@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { getAllBlogPosts, getAllTags } from "@/lib/content/blog";
+import { SITE_CONFIG } from "@/lib/site-config";
 import { Calendar, Clock, Tag, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Blog - Developer Tutorials, Guides & Updates",
   description:
-    "Explore tutorials, best practices, and guides for web development tools. Learn JSON formatting, regex patterns, color theory, and more from the Frontend Toolkit team.",
+    "Explore tutorials, best practices, and guides for web development tools. Learn JSON formatting, regex patterns, color theory, and more.",
   keywords: [
     "web development tutorials",
     "developer blog",
@@ -18,17 +19,21 @@ export const metadata: Metadata = {
     "developer tools guides",
   ],
   openGraph: {
-    title: "Blog - Developer Tutorials & Guides | Frontend Toolkit",
+    title: `Blog - Developer Tutorials & Guides | ${SITE_CONFIG.name}`,
     description:
       "Explore tutorials, best practices, and guides for web development tools.",
     type: "website",
-    url: "https://yourdomain.com/blog",
+    url: `${SITE_CONFIG.domain}/blog`,
+    siteName: SITE_CONFIG.name,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog - Developer Tutorials & Guides | Frontend Toolkit",
+    title: `Blog - Developer Tutorials & Guides | ${SITE_CONFIG.name}`,
     description:
       "Explore tutorials, best practices, and guides for web development tools.",
+  },
+  alternates: {
+    canonical: `${SITE_CONFIG.domain}/blog`,
   },
 };
 

@@ -2,14 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { NAV_ITEMS, SITE_NAME } from "@/lib/i18n/en";
-import { Logo } from "@/components/logo";
+import { NAV_ITEMS } from "@/lib/i18n/en";
 import { MobileNavButton } from "@/components/MobileNav";
+import { useTheme } from "@/lib/contexts/theme-context";
 
 export function Header() {
   const pathname = usePathname();
   const isToolPage = pathname.startsWith("/tools/");
+  const { theme } = useTheme();
 
   return (
     <header
@@ -18,17 +20,17 @@ export function Header() {
       <div className="flex items-center justify-between px-6 py-4">
         <Link
           href="/"
-          className="group flex items-center gap-3 text-xl font-bold transition-colors"
+          className="group flex items-center transition-opacity hover:opacity-80"
+          aria-label="DeveloperUtilityTools Home"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white shadow-lg ring-1 ring-gray-200/50 dark:bg-gray-800 dark:ring-gray-700/50">
-            <Logo
-              size={32}
-              className="transition-transform group-hover:scale-110"
-            />
-          </div>
-          <span className="hidden text-gray-900 transition-colors group-hover:text-blue-600 lg:inline dark:text-white dark:group-hover:text-blue-400">
-            {SITE_NAME}
-          </span>
+          <Image
+            src={theme === "dark" ? "/logo-dark.svg" : "/logo.svg"}
+            alt="DeveloperUtilityTools"
+            width={320}
+            height={48}
+            className="h-10 w-auto"
+            priority
+          />
         </Link>
         <div className="flex items-center gap-3 md:gap-6">
           <MobileNavButton />

@@ -21,17 +21,17 @@ export const metadata: Metadata = {
     title: "Base64 Encoder/Decoder — Encode & Decode Base64 Online",
     description:
       "Free Base64 encoder/decoder with URL-safe format, MIME chunks, and line-by-line processing. All processing in your browser for complete privacy.",
-    url: "/tools/base64",
-    siteName: "Frontend Tools Hub",
+    url: "https://developerutilitytools.com/tools/base64",
+    siteName: "DeveloperUtilityTools",
   },
   twitter: {
     card: "summary",
-    title: "Base64 Encoder/Decoder — Frontend Tools Hub",
+    title: "Base64 Encoder/Decoder — DeveloperUtilityTools",
     description:
       "Encode and decode Base64 strings with URL-safe format and MIME support. Free online tool.",
   },
   alternates: {
-    canonical: "/tools/base64",
+    canonical: "https://developerutilitytools.com/tools/base64",
   },
 };
 
