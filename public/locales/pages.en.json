@@ -38,11 +38,11 @@
       }
     ],
     "qualityTitle": "Quality, in numbers",
-    "qualityIntro": "Lighthouse scores measured with the CLI against the production build (as of August 2026). The performance score swings heavily with the test machine and network simulation, so it's deliberately left out here - accessibility, best practices, and SEO are stable and more meaningful.",
+    "qualityIntro": "Core Web Vitals measured with Lighthouse against the production build, desktop. No real field/CrUX data exists for this site, so Total Blocking Time is shown as a lab proxy for INP.",
     "qualityMetrics": [
-      { "label": "Accessibility", "value": "100" },
-      { "label": "Best Practices", "value": "100" },
-      { "label": "SEO", "value": "100" },
+      { "label": "Largest Contentful Paint", "value": "0.7 s" },
+      { "label": "Cumulative Layout Shift", "value": "0" },
+      { "label": "Total Blocking Time", "value": "200 ms" },
       { "label": "Tests passing", "value": "334" }
     ]
   },

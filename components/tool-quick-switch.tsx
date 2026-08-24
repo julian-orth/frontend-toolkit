@@ -36,7 +36,11 @@ export function ToolQuickSwitch() {
   useEffect(() => {
     if (!isOpen) return;
 
-    inputRef.current?.focus();
+    // Focusing the search input on touch devices makes iOS Safari zoom in,
+    // and there's no physical keyboard benefit to gain from it there anyway.
+    const isTouchDevice = window.matchMedia("(hover: none)").matches;
+    if (!isTouchDevice) inputRef.current?.focus();
+
     const handlePointerDown = (event: MouseEvent) => {
       if (!containerRef.current?.contains(event.target as Node)) {
         setIsOpen(false);
@@ -55,7 +59,7 @@ export function ToolQuickSwitch() {
   }, [isOpen]);
 
   return (
-    <IconTooltip label={t("nav.tools")} side="right">
+    <IconTooltip label={t("nav.tools")} side="right" hideOnTouch>
       <div ref={containerRef} className="relative">
         <button
           type="button"

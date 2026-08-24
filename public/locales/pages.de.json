@@ -38,11 +38,11 @@
       }
     ],
     "qualityTitle": "Qualität in Zahlen",
-    "qualityIntro": "Lighthouse-Werte gemessen mit der CLI gegen den Production-Build (Stand: August 2026). Der Performance-Score schwankt je nach Testmaschine und Netzwerksimulation stark und steht deshalb bewusst nicht hier - Accessibility, Best Practices und SEO sind stabil und aussagekräftiger.",
+    "qualityIntro": "Core Web Vitals gemessen mit Lighthouse gegen den Production-Build, Desktop. Echte Feld-/CrUX-Daten liegen für diese Seite nicht vor - Total Blocking Time dient hier als Lab-Näherung für INP.",
     "qualityMetrics": [
-      { "label": "Accessibility", "value": "100" },
-      { "label": "Best Practices", "value": "100" },
-      { "label": "SEO", "value": "100" },
+      { "label": "Largest Contentful Paint", "value": "0,7 s" },
+      { "label": "Cumulative Layout Shift", "value": "0" },
+      { "label": "Total Blocking Time", "value": "200 ms" },
       { "label": "Tests bestanden", "value": "334" }
     ]
   },
